@@ -83,25 +83,25 @@ export function SwipeCard({ dog, onSwipe }: SwipeCardProps) {
             </span>
           </div>
 
+          {/* Adoption link - always visible */}
+          <a
+            href={dog.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card-adopt-link"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Adopt {dog.name} &rarr;
+          </a>
+
           {expanded && (
             <div className="card-expanded">
               <p className="card-description">{dog.description}</p>
               <p className="card-org">{dog.organizationName}</p>
-              {dog.url && (
-                <a
-                  href={dog.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="card-link"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  View full profile &rarr;
-                </a>
-              )}
             </div>
           )}
 
-          {!expanded && (
+          {!expanded && dog.description && (
             <button className="expand-btn">
               Tap for more info
             </button>

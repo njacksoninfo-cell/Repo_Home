@@ -56,16 +56,41 @@ function parseAnimal(
   for (const pid of pictureIds) {
     const pic = included.find((i) => i.type === 'pictures' && i.id === pid);
     if (pic?.attributes) {
+      const a = pic.attributes;
       const url =
-        (pic.attributes.large as string) ||
-        (pic.attributes.small as string) ||
-        (pic.attributes.original as string);
+        (a.large as string) ||
+        (a.original as string) ||
+        (a.small as string) ||
+        (a.fullsize as string) ||
+        (a.originalUrl as string) ||
+        (a.largeUrl as string) ||
+        (a.smallUrl as string) ||
+        (a.url as string) ||
+        (a.thumbnailUrl as string);
       if (url) photos.push(url);
     }
   }
 
+  // Fallback to the thumbnail on the animal itself
   if (photos.length === 0 && attrs.pictureThumbnailUrl) {
     photos.push(attrs.pictureThumbnailUrl);
+  }
+
+  // If still no photos, try any remaining picture includes for this animal
+  if (photos.length === 0) {
+    for (const pid of pictureIds) {
+      const pic = included.find((i) => i.type === 'pictures' && i.id === pid);
+      if (pic?.attributes) {
+        // Grab the first string value that looks like a URL
+        for (const val of Object.values(pic.attributes)) {
+          if (typeof val === 'string' && val.startsWith('http')) {
+            photos.push(val);
+            break;
+          }
+        }
+      }
+      if (photos.length > 0) break;
+    }
   }
 
   const orgId = animal.relationships?.orgs?.data?.[0]?.id;
@@ -80,6 +105,11 @@ function parseAnimal(
     breed += ` / ${attrs.breedSecondary}`;
   }
 
+  // Always provide an adoption link
+  const adoptionUrl =
+    attrs.url ||
+    `https://www.rescuegroups.org/animals/detail?animalID=${animal.id}`;
+
   return {
     id: animal.id,
     name: attrs.name ?? 'Unknown',
@@ -91,7 +121,7 @@ function parseAnimal(
     photos,
     location: attrs.locationCitystate ?? 'Unknown location',
     organizationName,
-    url: attrs.url ?? '',
+    url: adoptionUrl,
     distance: attrs.distance ? `${Math.round(attrs.distance)} mi` : undefined,
   };
 }
@@ -118,6 +148,11 @@ export async function fetchDogs(
     page: String(page),
     sort: 'random',
     include: 'pictures,orgs',
+    'fields[animals]':
+      'name,breedPrimary,breedSecondary,ageGroup,sex,sizeGroup,descriptionText,pictureThumbnailUrl,distance,locationCitystate,url',
+    'fields[pictures]':
+      'original,large,small,fullsize,url,thumbnailUrl,originalUrl,largeUrl,smallUrl',
+    'fields[orgs]': 'name',
   });
 
   const response = await fetch(`${url}?${params}`, {

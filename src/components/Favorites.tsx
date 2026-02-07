@@ -53,16 +53,14 @@ export function Favorites({ favorites, onClose, onRemove }: FavoritesProps) {
                     {dog.age} &middot; {dog.sex} &middot; {dog.location}
                   </p>
                   <p className="favorite-org">{dog.organizationName}</p>
-                  {dog.url && (
-                    <a
-                      href={dog.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="favorite-link"
-                    >
-                      View profile &rarr;
-                    </a>
-                  )}
+                  <a
+                    href={dog.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="favorite-adopt-btn"
+                  >
+                    Adopt {dog.name}
+                  </a>
                 </div>
                 <button
                   className="remove-btn"

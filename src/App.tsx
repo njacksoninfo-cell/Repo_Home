@@ -137,7 +137,7 @@ function App() {
             </button>
           </div>
         ) : (
-          <SwipeCard dog={currentDog} onSwipe={handleSwipe} />
+          <SwipeCard key={currentDog.id} dog={currentDog} onSwipe={handleSwipe} />
         )}
       </main>
 
