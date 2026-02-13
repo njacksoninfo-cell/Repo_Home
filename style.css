@@ -1,0 +1,432 @@
+/* === RESET & BASE === */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #0c1220;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* === MODE SELECT SCREEN === */
+#modeSelect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.mode-header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #e81f3e;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.mode-header h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: 8px;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.mode-subtitle {
+    color: #8a94a6;
+    font-size: 0.95rem;
+    margin-top: 16px;
+}
+
+.mode-buttons {
+    display: flex;
+    gap: 24px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mode-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    color: #fff;
+}
+
+.mode-btn:hover {
+    transform: translateY(-4px);
+    border-color: #e81f3e;
+    background: rgba(232, 31, 62, 0.08);
+    box-shadow: 0 8px 30px rgba(232, 31, 62, 0.2);
+}
+
+.mode-btn-icon {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.mode-btn-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.mode-btn-count {
+    font-size: 0.8rem;
+    color: #8a94a6;
+    margin-top: 6px;
+}
+
+.mode-footer {
+    color: #5a6478;
+    font-size: 0.85rem;
+    margin-top: 48px;
+}
+
+/* === BATTLE / COMPARISON SCREEN === */
+#battleScreen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.battle-header {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.back-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #8a94a6;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.back-btn:hover {
+    border-color: #e81f3e;
+    color: #fff;
+}
+
+.matchup-info {
+    font-size: 1rem;
+    color: #8a94a6;
+    text-align: right;
+    line-height: 1.4;
+}
+
+.progress-container {
+    width: 100%;
+    max-width: 900px;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #e81f3e, #3b6de8);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+    width: 0%;
+}
+
+.battle-instruction {
+    color: #5a6478;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.battle-area {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    flex: 1;
+}
+
+.kit-card {
+    flex: 1;
+    max-width: 400px;
+    background: rgba(255,255,255,0.04);
+    border: 2px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    min-height: 400px;
+}
+
+.kit-card:hover {
+    border-color: #e81f3e;
+    background: rgba(232, 31, 62, 0.06);
+    transform: scale(1.02);
+    box-shadow: 0 4px 30px rgba(232, 31, 62, 0.15);
+}
+
+.kit-card:active {
+    transform: scale(0.98);
+}
+
+.kit-card img {
+    max-width: 100%;
+    max-height: 280px;
+    object-fit: contain;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+
+.kit-card .kit-team {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 8px;
+}
+
+.kit-card .kit-name {
+    font-size: 0.85rem;
+    color: #8a94a6;
+    margin-top: 4px;
+}
+
+.vs-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 2px;
+    min-width: 50px;
+}
+
+.battle-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.tie-btn, .undo-btn {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+    color: #8a94a6;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.tie-btn:hover, .undo-btn:hover {
+    border-color: rgba(255,255,255,0.3);
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+}
+
+/* === LOADING OVERLAY === */
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(12, 18, 32, 0.95);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(255,255,255,0.1);
+    border-top-color: #e81f3e;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 16px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loader-content p {
+    color: #8a94a6;
+    font-size: 0.95rem;
+}
+
+/* === RESULT MODAL === */
+.result-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 100000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.result-modal img {
+    max-width: 95%;
+    max-height: 75vh;
+    object-fit: contain;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    border-radius: 8px;
+}
+
+.result-modal .modal-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.result-modal .modal-btn {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.result-modal .modal-btn:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.result-modal .modal-btn.primary {
+    background: #e81f3e;
+    border-color: #e81f3e;
+}
+
+.result-modal .modal-btn.primary:hover {
+    background: #c41834;
+}
+
+.result-modal .modal-hint {
+    color: #8a94a6;
+    font-size: 0.8rem;
+    margin-top: 12px;
+    text-align: center;
+}
+
+/* === PLACEHOLDER IMAGE STYLING === */
+.placeholder-kit {
+    width: 160px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(232,31,62,0.15), rgba(59,109,232,0.15));
+    border: 2px dashed rgba(255,255,255,0.15);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.75rem;
+    margin-bottom: 16px;
+}
+
+.placeholder-kit .placeholder-icon {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    opacity: 0.4;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 700px) {
+    .mode-header h1 {
+        font-size: 2rem;
+    }
+
+    .mode-header h2 {
+        font-size: 1.2rem;
+        letter-spacing: 4px;
+    }
+
+    .mode-buttons {
+        gap: 16px;
+    }
+
+    .mode-btn {
+        width: 160px;
+        height: 160px;
+    }
+
+    .battle-area {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .kit-card {
+        max-width: 100%;
+        min-height: 280px;
+        padding: 20px 16px;
+    }
+
+    .kit-card img {
+        max-height: 180px;
+    }
+
+    .vs-divider {
+        font-size: 1.2rem;
+        min-width: auto;
+    }
+
+    .battle-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+}

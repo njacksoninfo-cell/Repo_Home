@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC Dallas Kit Ranker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="kitinfo.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <!-- MODE SELECT SCREEN -->
+    <div id="modeSelect">
+        <div class="mode-header">
+            <h1>FC DALLAS</h1>
+            <h2>KIT RANKER</h2>
+            <p class="mode-subtitle">Compare kits head-to-head to build your ultimate ranking</p>
+        </div>
+        <div class="mode-buttons">
+            <button class="mode-btn home-btn" onclick="startRanking('home')">
+                <span class="mode-btn-icon">&#127968;</span>
+                <span class="mode-btn-label">Home Kits</span>
+                <span class="mode-btn-count" id="homeCount"></span>
+            </button>
+            <button class="mode-btn away-btn" onclick="startRanking('away')">
+                <span class="mode-btn-icon">&#9992;</span>
+                <span class="mode-btn-label">Away Kits</span>
+                <span class="mode-btn-count" id="awayCount"></span>
+            </button>
+        </div>
+        <p class="mode-footer">Pick a mode to start ranking. You'll compare two kits at a time.</p>
+    </div>
+
+    <!-- COMPARISON SCREEN -->
+    <div id="battleScreen" style="display:none;">
+        <div class="battle-header">
+            <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+            <div id="matchupNumber" class="matchup-info"></div>
+        </div>
+        <div class="progress-container">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <div class="battle-instruction">Tap the kit you prefer</div>
+        <div id="mainTable" class="battle-area">
+            <div id="leftField" class="kit-card" onclick="sortList(-1)"></div>
+            <div class="vs-divider">VS</div>
+            <div id="rightField" class="kit-card" onclick="sortList(1)"></div>
+        </div>
+        <div class="battle-actions">
+            <button class="tie-btn" onclick="sortList(0)">Can't Decide (Tie)</button>
+            <button class="undo-btn" onclick="undoLast()">&#8634; Undo</button>
+        </div>
+    </div>
+
+    <!-- LOADING OVERLAY -->
+    <div id="loadingOverlay" style="display:none;">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p>Generating your ranking...</p>
+        </div>
+    </div>
+
+</body>
+</html>
