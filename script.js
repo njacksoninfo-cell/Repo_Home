@@ -278,7 +278,7 @@ function generateCanvasPoster() {
     overlay.style.display = "flex";
 
     var modeLabel = currentMode === "home" ? "HOME" : "AWAY";
-    var kits = currentMode === "home" ? homeKits : awayKits;
+    var kits = getAllKits(currentMode);
 
     // Color gradient from green (best) to red (worst)
     var colors = generateGradient(namMember.length);
@@ -513,6 +513,6 @@ function showResultModal(dataUrl) {
 // === INIT ===
 
 window.onload = function() {
-    document.getElementById("homeCount").textContent = homeKits.length + " kits";
-    document.getElementById("awayCount").textContent = awayKits.length + " kits";
+    document.getElementById("homeCount").textContent = (homeKits.length + thirdKits.length) + " kits";
+    document.getElementById("awayCount").textContent = (awayKits.length + thirdKits.length) + " kits";
 };

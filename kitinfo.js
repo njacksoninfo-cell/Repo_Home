@@ -27,6 +27,11 @@ var homeKits = [
     { year: "2026",    team: "FC Dallas",    kit: "DNA Kit",               img: "kits/home/2026.png" },
 ];
 
+var thirdKits = [
+    { year: "2001-02", team: "Dallas Burn",  kit: "Black Third Kit",       img: "kits/third/2001.png" },
+    { year: "2025",    team: "FC Dallas",    kit: "Legacy Third Kit",      img: "kits/third/2025.png" },
+];
+
 var awayKits = [
     { year: "1996",    team: "Dallas Burn",  kit: "Inaugural Away Kit",    img: "kits/away/1996.png" },
     { year: "1997",    team: "Dallas Burn",  kit: "Red Away Kit",          img: "kits/away/1997.png" },
@@ -52,14 +57,22 @@ var awayKits = [
 ];
 
 // Build namMember array from selected mode
+// Third kits are included in both home and away modes
 // Format: "imgHTML|TeamName Year|KitName"
 function buildKitList(mode) {
     var kits = (mode === "home") ? homeKits : awayKits;
+    var combined = kits.concat(thirdKits);
     var list = [];
-    for (var i = 0; i < kits.length; i++) {
-        var k = kits[i];
+    for (var i = 0; i < combined.length; i++) {
+        var k = combined[i];
         var imgHTML = "<img src='" + k.img + "' alt='" + k.team + " " + k.year + "'>";
         list.push(imgHTML + "|" + k.team + " " + k.year + "|" + k.kit);
     }
     return list;
+}
+
+// Get all kits for a mode (used by canvas poster)
+function getAllKits(mode) {
+    var kits = (mode === "home") ? homeKits : awayKits;
+    return kits.concat(thirdKits);
 }
