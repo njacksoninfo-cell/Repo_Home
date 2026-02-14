@@ -516,7 +516,6 @@ body::after {
 .result-card {
     background: linear-gradient(180deg, rgba(42, 64, 118, 0.3), rgba(30, 47, 88, 0.5));
     border: 1px solid var(--border-subtle);
-    border-left: 3px solid var(--fcd-red);
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
@@ -530,15 +529,36 @@ body::after {
     border-color: var(--fcd-red);
 }
 
+/* Top 3 podium treatment */
+.result-card-top {
+    border-color: rgba(255, 215, 0, 0.3);
+    background: linear-gradient(180deg, rgba(42, 64, 118, 0.5), rgba(30, 47, 88, 0.7));
+    box-shadow: 0 2px 16px rgba(255, 215, 0, 0.1);
+}
+
+.result-card-top:hover {
+    box-shadow: 0 6px 30px rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
 .result-card .result-color-bar {
-    height: 8px;
+    height: 6px;
     width: 100%;
+}
+
+.result-card-top .result-color-bar {
+    height: 8px;
 }
 
 .result-card .result-rank {
     font-size: 1.2rem;
     font-weight: 800;
     margin: 10px 0 6px;
+}
+
+.result-medal {
+    margin-right: 4px;
+    font-size: 1.1rem;
 }
 
 .result-card img {
