@@ -518,41 +518,19 @@ function showResults() {
 
 // === CANVAS INFOGRAPHIC WITH KIT IMAGES ===
 
-// Load a single image as a base64 data URI (avoids canvas taint)
-function loadImageAsDataURI(src) {
-    return new Promise(function(resolve, reject) {
-        fetch(src)
-            .then(function(response) {
-                if (!response.ok) throw new Error("HTTP " + response.status);
-                return response.blob();
-            })
-            .then(function(blob) {
-                return new Promise(function(res, rej) {
-                    var reader = new FileReader();
-                    reader.onload = function() { res(reader.result); };
-                    reader.onerror = function() { rej(reader.error); };
-                    reader.readAsDataURL(blob);
-                });
-            })
-            .then(function(dataURI) {
-                var img = new Image();
-                img.onload = function() { resolve(img); };
-                img.onerror = function() { resolve(null); };
-                img.src = dataURI;
-            })
-            .catch(function() {
-                reject(new Error("fetch_failed"));
-            });
-    });
-}
-
-// Load image directly via new Image() (for Tier 2 fallback)
-function loadImageDirect(src) {
-    return new Promise(function(resolve, reject) {
+// Load a kit image from pre-encoded base64 data (kitimages.js)
+// Data URIs are same-origin so they never taint the canvas
+function loadKitImage(src) {
+    return new Promise(function(resolve) {
+        var dataURI = (typeof kitImageData !== "undefined") ? kitImageData[src] : null;
+        if (!dataURI) {
+            resolve(null);
+            return;
+        }
         var img = new Image();
         img.onload = function() { resolve(img); };
-        img.onerror = function() { reject(new Error("load_failed")); };
-        img.src = src;
+        img.onerror = function() { resolve(null); };
+        img.src = dataURI;
     });
 }
 
@@ -561,42 +539,24 @@ function generateInfographic() {
 
     var kits = kitObjects;
     var totalKits = namMember.length;
-    var dataURIPromises = [];
+    var promises = [];
 
     for (var i = 0; i < totalKits; i++) {
         var idx = lstMember[0][i];
-        dataURIPromises.push(loadImageAsDataURI(kits[idx].img));
+        promises.push(loadKitImage(kits[idx].img));
     }
 
-    // Tier 1: fetch → dataURI → canvas with images (works on HTTP, no taint)
-    Promise.all(dataURIPromises)
-        .then(function(images) {
-            if (!drawAndDownload(images, true)) {
-                // Safety net: if dataURI somehow taints, go text-only
-                drawAndDownload([], false);
-            }
-        })
-        .catch(function() {
-            // fetch failed (likely file:// protocol)
-            // Tier 2: load images directly via new Image() — may work in some browsers
-            var directPromises = [];
-            for (var i = 0; i < totalKits; i++) {
-                var idx = lstMember[0][i];
-                directPromises.push(loadImageDirect(kits[idx].img));
-            }
-            Promise.all(directPromises)
-                .then(function(images) {
-                    if (!drawAndDownload(images, true)) {
-                        // Canvas tainted by cross-origin images
-                        // Tier 3: text-only canvas (always works)
-                        drawAndDownload([], false);
-                    }
-                })
-                .catch(function() {
-                    // Images couldn't load at all — text-only
-                    drawAndDownload([], false);
-                });
-        });
+    Promise.all(promises).then(function(images) {
+        // Check if any images loaded (kitimages.js present and working)
+        var hasImages = false;
+        for (var i = 0; i < images.length; i++) {
+            if (images[i]) { hasImages = true; break; }
+        }
+        if (!drawAndDownload(images, hasImages)) {
+            // Canvas tainted (shouldn't happen with data URIs, safety net)
+            drawAndDownload([], false);
+        }
+    });
 }
 
 // Draw the infographic canvas and trigger PNG download.
