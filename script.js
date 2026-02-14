@@ -14,6 +14,7 @@ var totalSize;
 var finishSize;
 
 var currentMode = null; // "home" or "away"
+var kitObjects = [];
 
 // Undo history
 var undoHistory = [];
@@ -46,6 +47,7 @@ function resetState() {
     rec = [];
     undoHistory = [];
     currentMode = null;
+    kitObjects = [];
 }
 
 function initList() {
@@ -244,7 +246,7 @@ function generateCanvasPoster() {
     overlay.style.display = "flex";
 
     var modeLabel = currentMode === "home" ? "HOME" : "AWAY";
-    var kits = getAllKits(currentMode);
+    var kits = kitObjects;
 
     // Color gradient from green (best) to red (worst)
     var colors = generateGradient(namMember.length);
@@ -353,7 +355,14 @@ function generateCanvasPoster() {
 
         }
 
-        var dataUrl = canvas.toDataURL("image/png");
+        var dataUrl;
+        try {
+            dataUrl = canvas.toDataURL("image/png");
+        } catch (e) {
+            overlay.style.display = "none";
+            alert("Unable to export image. Try opening this page via a local web server instead of file://.");
+            return;
+        }
         overlay.style.display = "none";
         showResultModal(dataUrl);
     }).catch(function(err) {
@@ -368,9 +377,8 @@ function generateCanvasPoster() {
 function loadImageSafe(src) {
     return new Promise(function(resolve) {
         var img = new Image();
-        img.crossOrigin = "Anonymous";
         img.onload = function() { resolve(img); };
-        img.onerror = function() { resolve(null); }; // Resolve null on failure
+        img.onerror = function() { resolve(null); };
         img.src = src;
     });
 }

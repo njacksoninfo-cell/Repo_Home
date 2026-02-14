@@ -60,17 +60,56 @@ var awayKits = [
     { year: "2026",    team: "FC Dallas",    kit: "2026 Away Kit",         img: "kits/away/2026 Away.jpg" },
 ];
 
+// Fisher-Yates shuffle (in-place)
+function shuffleArray(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    return arr;
+}
+
 // Build namMember array from selected mode
 // Third kits are included in both home and away modes
 // Format: "imgHTML|TeamName Year|KitName"
+// Also populates the global kitObjects array in the same shuffled order
 function buildKitList(mode) {
     var kits = (mode === "home") ? homeKits : awayKits;
     var combined = kits.concat(thirdKits);
+
+    shuffleArray(combined);
+
+    // Ensure the last 2 items are primary (home/away) kits, not third kits.
+    // The merge sort engine shows the last two items as the first matchup.
+    function isThirdKit(kitObj) {
+        for (var t = 0; t < thirdKits.length; t++) {
+            if (kitObj === thirdKits[t]) return true;
+        }
+        return false;
+    }
+
+    for (var pos = combined.length - 1; pos >= combined.length - 2; pos--) {
+        if (isThirdKit(combined[pos])) {
+            for (var s = 0; s < combined.length - 2; s++) {
+                if (!isThirdKit(combined[s])) {
+                    var temp = combined[pos];
+                    combined[pos] = combined[s];
+                    combined[s] = temp;
+                    break;
+                }
+            }
+        }
+    }
+
     var list = [];
+    kitObjects = [];
     for (var i = 0; i < combined.length; i++) {
         var k = combined[i];
         var imgHTML = "<img src='" + k.img + "' alt='" + k.team + " " + k.year + "'>";
         list.push(imgHTML + "|" + k.team + " " + k.year + "|" + k.kit);
+        kitObjects.push(k);
     }
     return list;
 }
