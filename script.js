@@ -1,34 +1,74 @@
-// === MERGE SORT COMPARISON ENGINE ===
-// Based on the pairwise comparison approach from full-kit-ranker
+// === FC DALLAS KIT RANKER ===
+// Supports two ranking engines: Merge Sort (full) and Elo (quick)
 
+// === SHARED STATE ===
 var namMember = [];
+var kitObjects = [];
+var currentMode = null; // "home", "away", or "third"
+var rankingSpeed = "quick"; // "quick" or "full"
+var undoHistory = [];
+
+// Final sorted order stored in lstMember[0] for both engines
 var lstMember = [];
+
+// === MERGE SORT STATE ===
 var parent = [];
 var rec = [];
 var cmp1, cmp2;
 var head1, head2;
 var nrec;
-
 var numQuestion;
 var totalSize;
 var finishSize;
 
-var currentMode = null; // "home" or "away"
-var kitObjects = [];
+// === ELO STATE ===
+var eloRatings = [];
+var eloCompared = {};
+var eloLeft = 0;
+var eloRight = 1;
+var eloRound = 0;
+var eloMaxRounds = 0;
 
-// Undo history
-var undoHistory = [];
+// === SPEED TOGGLE ===
+
+function setSpeed(speed) {
+    rankingSpeed = speed;
+    document.getElementById("speedQuick").className = speed === "quick" ? "speed-btn active" : "speed-btn";
+    document.getElementById("speedFull").className = speed === "full" ? "speed-btn active" : "speed-btn";
+    updateRoundEstimates();
+}
+
+function updateRoundEstimates() {
+    var counts = { home: homeKits.length, away: awayKits.length, third: thirdKits.length };
+    var modes = ["home", "away", "third"];
+    for (var m = 0; m < modes.length; m++) {
+        var n = counts[modes[m]];
+        var rounds;
+        if (rankingSpeed === "quick") {
+            rounds = Math.ceil(n * 1.5);
+        } else {
+            rounds = n * Math.ceil(Math.log(n) / Math.log(2));
+        }
+        var el = document.getElementById(modes[m] + "Count");
+        if (el) el.textContent = n + " kits \u00B7 ~" + rounds + " rounds";
+    }
+}
 
 // === INITIALIZATION ===
 
 function startRanking(mode) {
     currentMode = mode;
     namMember = buildKitList(mode);
+    undoHistory = [];
 
     document.getElementById("modeSelect").style.display = "none";
     document.getElementById("battleScreen").style.display = "flex";
 
-    initList();
+    if (rankingSpeed === "quick") {
+        initEloRank();
+    } else {
+        initMergeSort();
+    }
     showImage();
 }
 
@@ -48,16 +88,20 @@ function resetState() {
     undoHistory = [];
     currentMode = null;
     kitObjects = [];
+    eloRatings = [];
+    eloCompared = {};
+    eloRound = 0;
 }
 
-function initList() {
+// === MERGE SORT ENGINE ===
+
+function initMergeSort() {
     var n = 0;
     var mid;
 
     lstMember = [];
     parent = [];
     rec = [];
-    undoHistory = [];
 
     lstMember[n] = [];
     for (var i = 0; i < namMember.length; i++) {
@@ -96,59 +140,16 @@ function initList() {
     finishSize = 0;
 }
 
-// === SAVE STATE FOR UNDO ===
-
-function saveState() {
-    undoHistory.push({
-        lstMember: JSON.parse(JSON.stringify(lstMember)),
-        parent: parent.slice(),
-        rec: rec.slice(),
-        cmp1: cmp1,
-        cmp2: cmp2,
-        head1: head1,
-        head2: head2,
-        nrec: nrec,
-        numQuestion: numQuestion,
-        finishSize: finishSize
-    });
-    // Keep history manageable
-    if (undoHistory.length > 100) undoHistory.shift();
-}
-
-function undoLast() {
-    if (undoHistory.length === 0) return;
-    var state = undoHistory.pop();
-    lstMember = state.lstMember;
-    parent = state.parent;
-    rec = state.rec;
-    cmp1 = state.cmp1;
-    cmp2 = state.cmp2;
-    head1 = state.head1;
-    head2 = state.head2;
-    nrec = state.nrec;
-    numQuestion = state.numQuestion;
-    finishSize = state.finishSize;
-    showImage();
-}
-
-// === SORT LOGIC ===
-
-function sortList(flag) {
-    saveState();
-
+function processMergeSortChoice(flag) {
     if (flag < 0) {
-        // Left chosen
         rec[nrec] = lstMember[cmp1][head1];
         head1++;
-        nrec++;
-        finishSize++;
     } else {
-        // Right chosen
         rec[nrec] = lstMember[cmp2][head2];
         head2++;
-        nrec++;
-        finishSize++;
     }
+    nrec++;
+    finishSize++;
 
     // Drain remaining items
     if (head1 < lstMember[cmp1].length && head2 === lstMember[cmp2].length) {
@@ -187,31 +188,221 @@ function sortList(flag) {
 
     // Check if sorting is complete
     if (cmp1 < 0) {
-        document.getElementById("matchupNumber").innerHTML = "Matchup #" + (numQuestion - 1) + " &middot; 100% sorted";
         document.getElementById("battleScreen").style.display = "none";
         showResults();
-    } else {
-        showImage();
+        return;
     }
+    showImage();
+}
+
+// === ELO ENGINE ===
+
+function initEloRank() {
+    eloRatings = [];
+    eloCompared = {};
+    eloRound = 0;
+    eloMaxRounds = Math.ceil(namMember.length * 1.5);
+
+    for (var i = 0; i < namMember.length; i++) {
+        eloRatings.push({ rating: 1500, count: 0 });
+    }
+
+    pickEloMatchup();
+}
+
+function pickEloMatchup() {
+    var bestPair = null;
+    var bestScore = -Infinity;
+    var n = namMember.length;
+
+    for (var i = 0; i < n; i++) {
+        for (var j = i + 1; j < n; j++) {
+            var key = i + "," + j;
+            if (eloCompared[key]) continue;
+
+            var ratingDiff = Math.abs(eloRatings[i].rating - eloRatings[j].rating);
+            var minCount = Math.min(eloRatings[i].count, eloRatings[j].count);
+
+            // Prioritize kits with fewer comparisons, then closer ratings
+            var score = (10 - minCount) * 1000 - ratingDiff;
+
+            if (score > bestScore) {
+                bestScore = score;
+                bestPair = [i, j];
+            }
+        }
+    }
+
+    if (!bestPair) {
+        // All pairs exhausted — finish early
+        finishEloRank();
+        return;
+    }
+
+    // Randomize left/right to avoid position bias
+    if (Math.random() < 0.5) {
+        eloLeft = bestPair[0];
+        eloRight = bestPair[1];
+    } else {
+        eloLeft = bestPair[1];
+        eloRight = bestPair[0];
+    }
+}
+
+function processEloChoice(flag) {
+    var winner, loser;
+    if (flag < 0) {
+        winner = eloLeft;
+        loser = eloRight;
+    } else {
+        winner = eloRight;
+        loser = eloLeft;
+    }
+
+    // Elo update (K=32)
+    var K = 32;
+    var Ra = eloRatings[winner].rating;
+    var Rb = eloRatings[loser].rating;
+    var Ea = 1 / (1 + Math.pow(10, (Rb - Ra) / 400));
+
+    eloRatings[winner].rating = Ra + K * (1 - Ea);
+    eloRatings[loser].rating = Rb - K * Ea;
+
+    eloRatings[winner].count++;
+    eloRatings[loser].count++;
+
+    var key = Math.min(eloLeft, eloRight) + "," + Math.max(eloLeft, eloRight);
+    eloCompared[key] = true;
+
+    eloRound++;
+
+    if (eloRound >= eloMaxRounds) {
+        finishEloRank();
+        return;
+    }
+
+    pickEloMatchup();
+    showImage();
+}
+
+function finishEloRank() {
+    // Build sorted index array by rating (descending)
+    var indices = [];
+    for (var i = 0; i < namMember.length; i++) {
+        indices.push(i);
+    }
+    indices.sort(function(a, b) {
+        return eloRatings[b].rating - eloRatings[a].rating;
+    });
+
+    lstMember = [indices];
+
+    document.getElementById("battleScreen").style.display = "none";
+    showResults();
+}
+
+// === UNIFIED CHOICE DISPATCHER ===
+
+function makeChoice(flag) {
+    saveState();
+    if (rankingSpeed === "quick") {
+        processEloChoice(flag);
+    } else {
+        numQuestion++;
+        processMergeSortChoice(flag);
+    }
+}
+
+// === SAVE STATE FOR UNDO ===
+
+function saveState() {
+    var state = {
+        rankingSpeed: rankingSpeed,
+        lstMember: JSON.parse(JSON.stringify(lstMember)),
+        numQuestion: numQuestion
+    };
+
+    if (rankingSpeed === "quick") {
+        state.eloRatings = JSON.parse(JSON.stringify(eloRatings));
+        state.eloCompared = JSON.parse(JSON.stringify(eloCompared));
+        state.eloLeft = eloLeft;
+        state.eloRight = eloRight;
+        state.eloRound = eloRound;
+        state.eloMaxRounds = eloMaxRounds;
+    } else {
+        state.parent = parent.slice();
+        state.rec = rec.slice();
+        state.cmp1 = cmp1;
+        state.cmp2 = cmp2;
+        state.head1 = head1;
+        state.head2 = head2;
+        state.nrec = nrec;
+        state.finishSize = finishSize;
+        state.totalSize = totalSize;
+    }
+
+    undoHistory.push(state);
+    if (undoHistory.length > 100) undoHistory.shift();
+}
+
+function undoLast() {
+    if (undoHistory.length === 0) return;
+    var state = undoHistory.pop();
+
+    lstMember = state.lstMember;
+    numQuestion = state.numQuestion;
+
+    if (state.rankingSpeed === "quick") {
+        eloRatings = state.eloRatings;
+        eloCompared = state.eloCompared;
+        eloLeft = state.eloLeft;
+        eloRight = state.eloRight;
+        eloRound = state.eloRound;
+        eloMaxRounds = state.eloMaxRounds;
+    } else {
+        parent = state.parent;
+        rec = state.rec;
+        cmp1 = state.cmp1;
+        cmp2 = state.cmp2;
+        head1 = state.head1;
+        head2 = state.head2;
+        nrec = state.nrec;
+        finishSize = state.finishSize;
+        totalSize = state.totalSize;
+    }
+
+    showImage();
 }
 
 // === DISPLAY COMPARISON ===
 
 function showImage() {
-    var pct = Math.floor(finishSize * 100 / totalSize);
+    var pct, matchupText, leftIdx, rightIdx;
+
+    if (rankingSpeed === "quick") {
+        pct = Math.floor(eloRound * 100 / eloMaxRounds);
+        var currentRound = eloRound + 1;
+        matchupText = "Matchup " + currentRound + " of ~" + eloMaxRounds + " \u00B7 " + pct + "%";
+        leftIdx = eloLeft;
+        rightIdx = eloRight;
+    } else {
+        pct = Math.floor(finishSize * 100 / totalSize);
+        var estTotal = namMember.length * Math.ceil(Math.log(namMember.length) / Math.log(2));
+        matchupText = "Matchup " + numQuestion + " of ~" + estTotal + " \u00B7 " + pct + "%";
+        leftIdx = lstMember[cmp1][head1];
+        rightIdx = lstMember[cmp2][head2];
+    }
+
     var bar = document.getElementById("progressBar");
     bar.style.width = pct + "%";
+    document.getElementById("matchupNumber").innerHTML = matchupText;
 
-    document.getElementById("matchupNumber").innerHTML =
-        "Matchup #" + numQuestion + " &middot; " + pct + "% sorted";
-
-    var leftData = namMember[lstMember[cmp1][head1]].split("|");
-    var rightData = namMember[lstMember[cmp2][head2]].split("|");
+    var leftData = namMember[leftIdx].split("|");
+    var rightData = namMember[rightIdx].split("|");
 
     var leftCard = document.getElementById("leftField");
     var rightCard = document.getElementById("rightField");
 
-    // Brief fade to signal kit change
     leftCard.style.opacity = "0";
     rightCard.style.opacity = "0";
     leftCard.innerHTML = buildCardHTML(leftData);
@@ -220,8 +411,6 @@ function showImage() {
         leftCard.style.opacity = "1";
         rightCard.style.opacity = "1";
     }, 50);
-
-    numQuestion++;
 }
 
 function buildCardHTML(parts) {
@@ -229,7 +418,6 @@ function buildCardHTML(parts) {
     var teamYear = parts[1];
     var kitName = parts[2];
 
-    // Extract the src from the img tag and rebuild with error handling
     var srcMatch = imgTag.match(/src='([^']*)'/);
     var imgSrc = srcMatch ? srcMatch[1] : "";
 
@@ -242,7 +430,7 @@ function buildCardHTML(parts) {
 // === RESULTS DISPLAY ===
 
 function showResults() {
-    var modeLabel = currentMode === "home" ? "HOME" : "AWAY";
+    var modeLabel = currentMode.toUpperCase();
     var kits = kitObjects;
     var colors = generateGradient(namMember.length);
 
@@ -252,9 +440,10 @@ function showResults() {
     // Header
     var header = document.createElement("div");
     header.className = "results-header";
+    var speedLabel = rankingSpeed === "quick" ? " (Quick Rank)" : " (Full Rank)";
     header.innerHTML = '<h1>FC DALLAS ' + modeLabel + ' KIT RANKINGS</h1>' +
                        '<div class="results-accent"></div>' +
-                       '<p>Ranked by pairwise comparison</p>';
+                       '<p>Ranked by ' + (rankingSpeed === "quick" ? "Elo rating" : "pairwise comparison") + speedLabel + '</p>';
 
     // Grid
     var grid = document.createElement("div");
@@ -327,21 +516,59 @@ function showResults() {
     document.body.appendChild(modal);
 }
 
-// === CANVAS INFOGRAPHIC (text-only, no images = no taint on file://) ===
+// === CANVAS INFOGRAPHIC WITH KIT IMAGES ===
 
 function generateInfographic() {
-    var modeLabel = currentMode === "home" ? "HOME" : "AWAY";
+    showToast("Generating image...");
+
+    var modeLabel = currentMode.toUpperCase();
     var kits = kitObjects;
     var colors = generateGradient(namMember.length);
     var totalKits = namMember.length;
 
-    var cols = 5;
+    // Load all kit images first
+    var images = [];
+    var loaded = 0;
+
+    for (var i = 0; i < totalKits; i++) {
+        (function(index) {
+            var img = new Image();
+            img.onload = function() {
+                images[index] = img;
+                loaded++;
+                if (loaded === totalKits) drawInfographic(images, true);
+            };
+            img.onerror = function() {
+                images[index] = null;
+                loaded++;
+                if (loaded === totalKits) drawInfographic(images, true);
+            };
+            var idx = lstMember[0][index];
+            img.src = kits[idx].img;
+        })(i);
+    }
+
+    // Timeout fallback after 5 seconds
+    setTimeout(function() {
+        if (loaded < totalKits) {
+            drawInfographic(images, true);
+        }
+    }, 5000);
+}
+
+function drawInfographic(images, tryWithImages) {
+    var modeLabel = currentMode.toUpperCase();
+    var kits = kitObjects;
+    var colors = generateGradient(namMember.length);
+    var totalKits = namMember.length;
+
+    var cols = 3;
     var rows = Math.ceil(totalKits / cols);
-    var cardW = 200;
-    var cardH = 100;
-    var cardGap = 12;
+    var cardW = 330;
+    var cardH = tryWithImages ? 300 : 100;
+    var cardGap = 16;
     var padX = 40;
-    var padTop = 120;
+    var padTop = 130;
     var padBottom = 60;
 
     var canvasW = padX * 2 + cols * cardW + (cols - 1) * cardGap;
@@ -368,17 +595,17 @@ function generateInfographic() {
 
     // Title
     ctx.fillStyle = "#E81F3E";
-    ctx.font = "bold 36px -apple-system, BlinkMacSystemFont, sans-serif";
+    ctx.font = "bold 42px -apple-system, BlinkMacSystemFont, sans-serif";
     ctx.textAlign = "center";
-    ctx.fillText("FC DALLAS", canvasW / 2, 50);
+    ctx.fillText("FC DALLAS", canvasW / 2, 55);
 
     ctx.fillStyle = "#FFFFFF";
-    ctx.font = "bold 24px -apple-system, BlinkMacSystemFont, sans-serif";
-    ctx.fillText(modeLabel + " KIT RANKINGS", canvasW / 2, 82);
+    ctx.font = "bold 28px -apple-system, BlinkMacSystemFont, sans-serif";
+    ctx.fillText(modeLabel + " KIT RANKINGS", canvasW / 2, 90);
 
     // Accent line
     ctx.fillStyle = "#E81F3E";
-    ctx.fillRect(canvasW / 2 - 60, 94, 120, 3);
+    ctx.fillRect(canvasW / 2 - 60, 104, 120, 3);
 
     // Kit cards
     for (var i = 0; i < totalKits; i++) {
@@ -395,51 +622,93 @@ function generateInfographic() {
         // Card background
         ctx.fillStyle = "rgba(42, 64, 118, 0.5)";
         ctx.beginPath();
-        canvasRoundRect(ctx, x, y, cardW, cardH, 6);
+        canvasRoundRect(ctx, x, y, cardW, cardH, 8);
         ctx.fill();
 
         // Card border
         ctx.strokeStyle = "rgba(204, 203, 204, 0.2)";
         ctx.lineWidth = 1;
         ctx.beginPath();
-        canvasRoundRect(ctx, x, y, cardW, cardH, 6);
+        canvasRoundRect(ctx, x, y, cardW, cardH, 8);
         ctx.stroke();
 
         // Color bar
         ctx.fillStyle = rankColor;
-        ctx.fillRect(x, y, cardW, 4);
+        ctx.fillRect(x, y, cardW, 5);
 
-        // Rank number
-        ctx.fillStyle = rankColor;
-        ctx.font = "bold 28px -apple-system, BlinkMacSystemFont, sans-serif";
-        ctx.textAlign = "left";
-        ctx.fillText("#" + rank, x + 10, y + 38);
+        if (tryWithImages) {
+            // Draw kit image if available
+            var img = images[i];
+            if (img && img.naturalWidth > 0) {
+                var imgMaxH = 180;
+                var imgMaxW = cardW - 40;
+                var scale = Math.min(imgMaxW / img.naturalWidth, imgMaxH / img.naturalHeight);
+                var drawW = img.naturalWidth * scale;
+                var drawH = img.naturalHeight * scale;
+                var imgX = x + (cardW - drawW) / 2;
+                var imgY = y + 15;
+                ctx.drawImage(img, imgX, imgY, drawW, drawH);
+            }
 
-        // Team name
-        ctx.fillStyle = "#FFFFFF";
-        ctx.font = "bold 13px -apple-system, BlinkMacSystemFont, sans-serif";
-        ctx.textAlign = "left";
-        ctx.fillText(k.team + " " + k.year, x + 65, y + 35);
+            // Rank number
+            ctx.fillStyle = rankColor;
+            ctx.font = "bold 26px -apple-system, BlinkMacSystemFont, sans-serif";
+            ctx.textAlign = "left";
+            ctx.fillText("#" + rank, x + 12, y + 230);
 
-        // Kit name
-        ctx.fillStyle = "#CCCBCC";
-        ctx.font = "italic 11px -apple-system, BlinkMacSystemFont, sans-serif";
-        ctx.fillText(k.kit, x + 65, y + 52);
+            // Team name
+            ctx.fillStyle = "#FFFFFF";
+            ctx.font = "bold 15px -apple-system, BlinkMacSystemFont, sans-serif";
+            ctx.textAlign = "left";
+            ctx.fillText(k.team + " " + k.year, x + 60, y + 228);
+
+            // Kit name
+            ctx.fillStyle = "#CCCBCC";
+            ctx.font = "italic 13px -apple-system, BlinkMacSystemFont, sans-serif";
+            ctx.fillText(k.kit, x + 60, y + 250);
+        } else {
+            // Text-only fallback
+            ctx.fillStyle = rankColor;
+            ctx.font = "bold 28px -apple-system, BlinkMacSystemFont, sans-serif";
+            ctx.textAlign = "left";
+            ctx.fillText("#" + rank, x + 10, y + 38);
+
+            ctx.fillStyle = "#FFFFFF";
+            ctx.font = "bold 13px -apple-system, BlinkMacSystemFont, sans-serif";
+            ctx.fillText(k.team + " " + k.year, x + 65, y + 35);
+
+            ctx.fillStyle = "#CCCBCC";
+            ctx.font = "italic 11px -apple-system, BlinkMacSystemFont, sans-serif";
+            ctx.fillText(k.kit, x + 65, y + 52);
+        }
     }
 
     // Footer
     ctx.fillStyle = "rgba(204, 203, 204, 0.4)";
     ctx.font = "11px -apple-system, BlinkMacSystemFont, sans-serif";
     ctx.textAlign = "center";
-    ctx.fillText("Ranked by pairwise comparison  |  FC Dallas Kit Ranker", canvasW / 2, canvasH - 20);
+    var speedLabel = rankingSpeed === "quick" ? "Elo rating" : "pairwise comparison";
+    ctx.fillText("Ranked by " + speedLabel + "  |  FC Dallas Kit Ranker", canvasW / 2, canvasH - 20);
 
-    // Download
-    var link = document.createElement("a");
-    link.download = "fc-dallas-" + currentMode + "-kit-rankings.png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-
-    showToast("Image downloaded!");
+    // Try to export
+    try {
+        var dataUrl = canvas.toDataURL("image/png");
+        var link = document.createElement("a");
+        link.download = "fc-dallas-" + currentMode + "-kit-rankings.png";
+        link.href = dataUrl;
+        link.click();
+        showToast("Image downloaded!");
+    } catch (e) {
+        // Canvas tainted (file:// protocol in Chrome) — fall back to text-only
+        if (tryWithImages) {
+            showToast("Retrying without images (file:// restriction)...");
+            setTimeout(function() {
+                drawInfographic([], false);
+            }, 300);
+        } else {
+            showToast("Could not generate image.");
+        }
+    }
 }
 
 function canvasRoundRect(ctx, x, y, w, h, r) {
@@ -458,7 +727,7 @@ function canvasRoundRect(ctx, x, y, w, h, r) {
 // === COPY RESULTS TO CLIPBOARD ===
 
 function copyResultsToClipboard() {
-    var modeLabel = currentMode === "home" ? "Home" : "Away";
+    var modeLabel = currentMode.charAt(0).toUpperCase() + currentMode.slice(1);
     var lines = [];
     lines.push("FC Dallas " + modeLabel + " Kit Rankings");
     lines.push("================================");
@@ -510,7 +779,6 @@ function showToast(message) {
     toast.textContent = message;
     document.body.appendChild(toast);
 
-    // Trigger reflow then show
     toast.offsetHeight;
     toast.classList.add("show");
 
@@ -546,6 +814,5 @@ function generateGradient(count) {
 // === INIT ===
 
 window.onload = function() {
-    document.getElementById("homeCount").textContent = (homeKits.length + thirdKits.length) + " kits";
-    document.getElementById("awayCount").textContent = (awayKits.length + thirdKits.length) + " kits";
+    updateRoundEstimates();
 };

@@ -72,41 +72,20 @@ function shuffleArray(arr) {
 }
 
 // Build namMember array from selected mode
-// Third kits are included in both home and away modes
 // Format: "imgHTML|TeamName Year|KitName"
 // Also populates the global kitObjects array in the same shuffled order
 function buildKitList(mode) {
-    var kits = (mode === "home") ? homeKits : awayKits;
-    var combined = kits.concat(thirdKits);
+    var kits;
+    if (mode === "home") kits = homeKits.slice();
+    else if (mode === "away") kits = awayKits.slice();
+    else kits = thirdKits.slice();
 
-    shuffleArray(combined);
-
-    // Ensure the last 2 items are primary (home/away) kits, not third kits.
-    // The merge sort engine shows the last two items as the first matchup.
-    function isThirdKit(kitObj) {
-        for (var t = 0; t < thirdKits.length; t++) {
-            if (kitObj === thirdKits[t]) return true;
-        }
-        return false;
-    }
-
-    for (var pos = combined.length - 1; pos >= combined.length - 2; pos--) {
-        if (isThirdKit(combined[pos])) {
-            for (var s = 0; s < combined.length - 2; s++) {
-                if (!isThirdKit(combined[s])) {
-                    var temp = combined[pos];
-                    combined[pos] = combined[s];
-                    combined[s] = temp;
-                    break;
-                }
-            }
-        }
-    }
+    shuffleArray(kits);
 
     var list = [];
     kitObjects = [];
-    for (var i = 0; i < combined.length; i++) {
-        var k = combined[i];
+    for (var i = 0; i < kits.length; i++) {
+        var k = kits[i];
         var imgHTML = "<img src='" + k.img + "' alt='" + k.team + " " + k.year + "'>";
         list.push(imgHTML + "|" + k.team + " " + k.year + "|" + k.kit);
         kitObjects.push(k);
@@ -114,8 +93,3 @@ function buildKitList(mode) {
     return list;
 }
 
-// Get all kits for a mode (used by canvas poster)
-function getAllKits(mode) {
-    var kits = (mode === "home") ? homeKits : awayKits;
-    return kits.concat(thirdKits);
-}

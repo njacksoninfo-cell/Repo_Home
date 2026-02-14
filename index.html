@@ -18,6 +18,10 @@
             <div class="brand-divider"></div>
             <p class="mode-subtitle">Compare kits head-to-head to build your ultimate ranking</p>
         </div>
+        <div class="speed-toggle">
+            <button class="speed-btn active" id="speedQuick" onclick="setSpeed('quick')">Quick Rank</button>
+            <button class="speed-btn" id="speedFull" onclick="setSpeed('full')">Full Rank</button>
+        </div>
         <div class="mode-buttons">
             <button class="mode-btn home-btn" onclick="startRanking('home')">
                 <span class="mode-btn-icon">&#127968;</span>
@@ -28,6 +32,11 @@
                 <span class="mode-btn-icon">&#9992;</span>
                 <span class="mode-btn-label">Away Kits</span>
                 <span class="mode-btn-count" id="awayCount"></span>
+            </button>
+            <button class="mode-btn third-btn" onclick="startRanking('third')">
+                <span class="mode-btn-icon">&#9733;</span>
+                <span class="mode-btn-label">Third Kits</span>
+                <span class="mode-btn-count" id="thirdCount"></span>
             </button>
         </div>
         <p class="mode-footer">Pick a mode to start ranking. You'll compare two kits at a time.</p>
@@ -44,9 +53,9 @@
         </div>
         <div class="battle-instruction">Tap the kit you prefer</div>
         <div id="mainTable" class="battle-area">
-            <div id="leftField" class="kit-card" onclick="sortList(-1)"></div>
+            <div id="leftField" class="kit-card" onclick="makeChoice(-1)"></div>
             <div class="vs-divider">VS</div>
-            <div id="rightField" class="kit-card" onclick="sortList(1)"></div>
+            <div id="rightField" class="kit-card" onclick="makeChoice(1)"></div>
         </div>
         <div class="battle-actions">
             <button class="undo-btn" onclick="undoLast()">&#8634; Undo</button>
