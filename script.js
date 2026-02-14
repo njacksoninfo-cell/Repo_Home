@@ -518,42 +518,54 @@ function showResults() {
 
 // === CANVAS INFOGRAPHIC WITH KIT IMAGES ===
 
+// Load a single image as a base64 data URI (avoids canvas taint)
+function loadImageAsDataURI(src) {
+    return new Promise(function(resolve, reject) {
+        fetch(src)
+            .then(function(response) {
+                if (!response.ok) throw new Error("HTTP " + response.status);
+                return response.blob();
+            })
+            .then(function(blob) {
+                return new Promise(function(res, rej) {
+                    var reader = new FileReader();
+                    reader.onload = function() { res(reader.result); };
+                    reader.onerror = function() { rej(reader.error); };
+                    reader.readAsDataURL(blob);
+                });
+            })
+            .then(function(dataURI) {
+                var img = new Image();
+                img.onload = function() { resolve(img); };
+                img.onerror = function() { resolve(null); };
+                img.src = dataURI;
+            })
+            .catch(function() {
+                reject(new Error("fetch_failed"));
+            });
+    });
+}
+
 function generateInfographic() {
     showToast("Generating image...");
 
-    var modeLabel = currentMode.toUpperCase();
     var kits = kitObjects;
-    var colors = generateGradient(namMember.length);
     var totalKits = namMember.length;
-
-    // Load all kit images first
-    var images = [];
-    var loaded = 0;
+    var promises = [];
 
     for (var i = 0; i < totalKits; i++) {
-        (function(index) {
-            var img = new Image();
-            img.onload = function() {
-                images[index] = img;
-                loaded++;
-                if (loaded === totalKits) drawInfographic(images, true);
-            };
-            img.onerror = function() {
-                images[index] = null;
-                loaded++;
-                if (loaded === totalKits) drawInfographic(images, true);
-            };
-            var idx = lstMember[0][index];
-            img.src = kits[idx].img;
-        })(i);
+        var idx = lstMember[0][i];
+        promises.push(loadImageAsDataURI(kits[idx].img));
     }
 
-    // Timeout fallback after 5 seconds
-    setTimeout(function() {
-        if (loaded < totalKits) {
+    Promise.all(promises)
+        .then(function(images) {
             drawInfographic(images, true);
-        }
-    }, 5000);
+        })
+        .catch(function() {
+            // fetch failed (likely file:// protocol) — use HTML fallback
+            openPrintableResults();
+        });
 }
 
 function drawInfographic(images, tryWithImages) {
@@ -634,7 +646,7 @@ function drawInfographic(images, tryWithImages) {
 
         // Color bar
         ctx.fillStyle = rankColor;
-        ctx.fillRect(x, y, cardW, 5);
+        ctx.fillRect(x, y, cardW, 8);
 
         if (tryWithImages) {
             // Draw kit image if available
@@ -699,15 +711,8 @@ function drawInfographic(images, tryWithImages) {
         link.click();
         showToast("Image downloaded!");
     } catch (e) {
-        // Canvas tainted (file:// protocol in Chrome) — fall back to text-only
-        if (tryWithImages) {
-            showToast("Retrying without images (file:// restriction)...");
-            setTimeout(function() {
-                drawInfographic([], false);
-            }, 300);
-        } else {
-            showToast("Could not generate image.");
-        }
+        // Canvas still tainted — use printable HTML fallback
+        openPrintableResults();
     }
 }
 
@@ -722,6 +727,68 @@ function canvasRoundRect(ctx, x, y, w, h, r) {
     ctx.lineTo(x, y + r);
     ctx.arcTo(x, y, x + r, y, r);
     ctx.closePath();
+}
+
+// === PRINTABLE HTML FALLBACK (for file:// protocol) ===
+
+function openPrintableResults() {
+    var modeLabel = currentMode.toUpperCase();
+    var kits = kitObjects;
+    var colors = generateGradient(namMember.length);
+    var totalKits = namMember.length;
+    var speedLabel = rankingSpeed === "quick" ? "Elo rating" : "pairwise comparison";
+
+    var html = '<!DOCTYPE html><html><head><meta charset="UTF-8">';
+    html += '<title>FC Dallas ' + modeLabel + ' Kit Rankings</title>';
+    html += '<style>';
+    html += 'body{background:#1E2F58;color:#fff;font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:30px;}';
+    html += '.title{text-align:center;margin-bottom:24px;}';
+    html += '.title h1{color:#E81F3E;font-size:2.5rem;margin:0;letter-spacing:4px;font-weight:900;}';
+    html += '.title h2{font-size:1.5rem;margin:8px 0;letter-spacing:6px;font-weight:700;}';
+    html += '.title hr{width:120px;border:none;height:3px;background:#E81F3E;margin:12px auto;}';
+    html += '.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1080px;margin:0 auto;}';
+    html += '.card{background:rgba(42,64,118,0.5);border:1px solid rgba(204,203,204,0.2);border-left:3px solid #E81F3E;border-radius:8px;overflow:hidden;text-align:center;padding-bottom:14px;}';
+    html += '.card .bar{height:8px;}';
+    html += '.card img{max-width:85%;max-height:180px;object-fit:contain;margin:10px auto;display:block;}';
+    html += '.card .rank{font-size:1.3rem;font-weight:800;margin:8px 0 4px;}';
+    html += '.card .team{font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;}';
+    html += '.card .kit{font-size:0.75rem;color:#CCCBCC;font-style:italic;}';
+    html += '.footer{text-align:center;color:rgba(204,203,204,0.5);font-size:0.75rem;margin-top:24px;}';
+    html += '.actions{text-align:center;margin-top:16px;}';
+    html += '.actions button{padding:12px 28px;background:#E81F3E;color:#fff;border:none;border-radius:6px;font-size:0.9rem;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:1px;}';
+    html += '.actions button:hover{background:#C41834;}';
+    html += '@media print{.actions{display:none;}}';
+    html += '</style></head><body>';
+    html += '<div class="title"><h1>FC DALLAS</h1><h2>' + modeLabel + ' KIT RANKINGS</h2><hr></div>';
+    html += '<div class="grid">';
+
+    for (var i = 0; i < totalKits; i++) {
+        var idx = lstMember[0][i];
+        var k = kits[idx];
+        var rank = i + 1;
+        var color = colors[i] || "#666";
+        html += '<div class="card">';
+        html += '<div class="bar" style="background:' + color + '"></div>';
+        html += '<div class="rank" style="color:' + color + '">#' + rank + '</div>';
+        html += '<img src="' + k.img + '" alt="' + k.team + ' ' + k.year + '">';
+        html += '<div class="team">' + k.team + ' ' + k.year + '</div>';
+        html += '<div class="kit">' + k.kit + '</div>';
+        html += '</div>';
+    }
+
+    html += '</div>';
+    html += '<div class="footer">Ranked by ' + speedLabel + '  |  FC Dallas Kit Ranker</div>';
+    html += '<div class="actions"><button onclick="window.print()">Print / Save as PDF</button></div>';
+    html += '</body></html>';
+
+    var popup = window.open('', '_blank');
+    if (popup) {
+        popup.document.write(html);
+        popup.document.close();
+        showToast("Opened printable results \u2014 use Print to save.");
+    } else {
+        showToast("Popup blocked. Please allow popups and try again.");
+    }
 }
 
 // === COPY RESULTS TO CLIPBOARD ===
