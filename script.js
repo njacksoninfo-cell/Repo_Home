@@ -189,7 +189,7 @@ function sortList(flag) {
     if (cmp1 < 0) {
         document.getElementById("matchupNumber").innerHTML = "Matchup #" + (numQuestion - 1) + " &middot; 100% sorted";
         document.getElementById("battleScreen").style.display = "none";
-        generateCanvasPoster();
+        showResults();
     } else {
         showImage();
     }
@@ -239,169 +239,82 @@ function buildCardHTML(parts) {
            '<div class="kit-name">' + kitName + '</div>';
 }
 
-// === CANVAS POSTER GENERATION ===
+// === RESULTS DISPLAY ===
 
-function generateCanvasPoster() {
-    var overlay = document.getElementById("loadingOverlay");
-    overlay.style.display = "flex";
-
+function showResults() {
     var modeLabel = currentMode === "home" ? "HOME" : "AWAY";
     var kits = kitObjects;
-
-    // Color gradient from green (best) to red (worst)
     var colors = generateGradient(namMember.length);
 
-    var cols = 5;
-    var rows = Math.ceil(namMember.length / cols);
-    var cardW = 200;
-    var cardH = 280;
-    var gap = 12;
-    var pad = 30;
-    var headerH = 80;
-
-    var canvasW = (cols * cardW) + ((cols - 1) * gap) + (pad * 2);
-    var canvasH = headerH + (rows * cardH) + ((rows - 1) * gap) + (pad * 2);
-
-    var canvas = document.createElement("canvas");
-    canvas.width = canvasW;
-    canvas.height = canvasH;
-    var ctx = canvas.getContext("2d");
-
-    // Background
-    ctx.fillStyle = "#0c1220";
-    ctx.fillRect(0, 0, canvasW, canvasH);
+    var modal = document.createElement("div");
+    modal.className = "result-modal";
 
     // Header
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 36px -apple-system, BlinkMacSystemFont, sans-serif";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText("FC DALLAS " + modeLabel + " KIT RANKINGS", canvasW / 2, pad + headerH / 2 - 8);
+    var header = document.createElement("div");
+    header.className = "results-header";
+    header.innerHTML = '<h1>FC DALLAS ' + modeLabel + ' KIT RANKINGS</h1>' +
+                       '<div class="results-accent"></div>' +
+                       '<p>Ranked by pairwise comparison</p>';
 
-    // Subtitle line
-    ctx.fillStyle = "#8a94a6";
-    ctx.font = "14px sans-serif";
-    ctx.fillText("Ranked by pairwise comparison", canvasW / 2, pad + headerH / 2 + 18);
+    // Grid
+    var grid = document.createElement("div");
+    grid.className = "results-grid";
 
-    // Red accent line
-    ctx.fillStyle = "#e81f3e";
-    ctx.fillRect(canvasW / 2 - 60, pad + headerH - 8, 120, 3);
-
-    // Load all images then draw
-    var imagePromises = [];
     for (var i = 0; i < namMember.length; i++) {
         var idx = lstMember[0][i];
         var kitData = kits[idx];
-        imagePromises.push(loadImageSafe(kitData.img));
+        var ranking = i + 1;
+        var rankColor = colors[i] || "#666";
+
+        var card = document.createElement("div");
+        card.className = "result-card";
+        card.innerHTML = '<div class="result-color-bar" style="background:' + rankColor + '"></div>' +
+                         '<div class="result-rank" style="color:' + rankColor + '">#' + ranking + '</div>' +
+                         '<img src="' + kitData.img + '" onerror="this.style.display=\'none\'" alt="' + kitData.team + ' ' + kitData.year + '">' +
+                         '<div class="result-team">' + kitData.team + ' ' + kitData.year + '</div>' +
+                         '<div class="result-kit">' + kitData.kit + '</div>';
+
+        grid.appendChild(card);
     }
 
-    Promise.all(imagePromises).then(function(images) {
-        for (var i = 0; i < namMember.length; i++) {
-            var idx = lstMember[0][i];
-            var kitData = kits[idx];
-            var ranking = i + 1;
-            var col = i % cols;
-            var row = Math.floor(i / cols);
-            var x = pad + col * (cardW + gap);
-            var y = pad + headerH + row * (cardH + gap);
-            var rankColor = colors[i] || "#666";
+    // Actions
+    var actions = document.createElement("div");
+    actions.className = "modal-actions";
 
-            // Card background
-            ctx.fillStyle = "rgba(255,255,255,0.04)";
-            roundRect(ctx, x, y, cardW, cardH, 8);
-            ctx.fill();
+    var restartBtn = document.createElement("button");
+    restartBtn.className = "modal-btn primary";
+    restartBtn.textContent = "Rank Again";
+    restartBtn.onclick = function(e) {
+        e.stopPropagation();
+        document.body.removeChild(modal);
+        startRanking(currentMode);
+    };
 
-            // Top color bar
-            ctx.fillStyle = rankColor;
-            ctx.fillRect(x, y, cardW, 6);
+    var closeBtn = document.createElement("button");
+    closeBtn.className = "modal-btn";
+    closeBtn.textContent = "Close";
+    closeBtn.onclick = function() {
+        document.body.removeChild(modal);
+        document.getElementById("modeSelect").style.display = "flex";
+        resetState();
+    };
 
-            // Rank number
-            ctx.fillStyle = "#ffffff";
-            ctx.font = "bold 22px sans-serif";
-            ctx.textAlign = "center";
-            ctx.fillText("#" + ranking, x + cardW / 2, y + 32);
+    actions.appendChild(restartBtn);
+    actions.appendChild(closeBtn);
 
-            // Kit image
-            var img = images[i];
-            if (img) {
-                var imgAreaH = 150;
-                var imgAreaW = cardW - 30;
-                var scale = Math.min(imgAreaW / img.width, imgAreaH / img.height);
-                var drawW = img.width * scale;
-                var drawH = img.height * scale;
-                var drawX = x + (cardW - drawW) / 2;
-                var drawY = y + 48 + (imgAreaH - drawH) / 2;
-                ctx.drawImage(img, drawX, drawY, drawW, drawH);
-            } else {
-                // Placeholder rectangle
-                ctx.fillStyle = "rgba(255,255,255,0.06)";
-                roundRect(ctx, x + 30, y + 58, cardW - 60, 130, 4);
-                ctx.fill();
-                ctx.fillStyle = "rgba(255,255,255,0.2)";
-                ctx.font = "12px sans-serif";
-                ctx.fillText("No Image", x + cardW / 2, y + 125);
-            }
+    modal.appendChild(header);
+    modal.appendChild(grid);
+    modal.appendChild(actions);
 
-            // Team name + year
-            ctx.fillStyle = "#ffffff";
-            ctx.font = "bold 13px sans-serif";
-            ctx.textAlign = "center";
-            ctx.fillText(kitData.team + " " + kitData.year, x + cardW / 2, y + 222);
-
-            // Kit name
-            ctx.fillStyle = "#8a94a6";
-            ctx.font = "italic 11px sans-serif";
-            ctx.fillText(kitData.kit, x + cardW / 2, y + 242);
-
-        }
-
-        var dataUrl;
-        try {
-            dataUrl = canvas.toDataURL("image/png");
-        } catch (e) {
-            overlay.style.display = "none";
-            alert("Unable to export image. Try opening this page via a local web server instead of file://.");
-            return;
-        }
-        overlay.style.display = "none";
-        showResultModal(dataUrl);
-    }).catch(function(err) {
-        console.error(err);
-        overlay.style.display = "none";
-        alert("Error generating ranking image. Check console for details.");
-    });
+    document.body.appendChild(modal);
 }
 
 // === HELPERS ===
-
-function loadImageSafe(src) {
-    return new Promise(function(resolve) {
-        var img = new Image();
-        img.onload = function() { resolve(img); };
-        img.onerror = function() { resolve(null); };
-        img.src = src;
-    });
-}
-
-function roundRect(ctx, x, y, w, h, r) {
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.lineTo(x + w - r, y);
-    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-    ctx.lineTo(x + w, y + h - r);
-    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-    ctx.lineTo(x + r, y + h);
-    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-    ctx.lineTo(x, y + r);
-    ctx.quadraticCurveTo(x, y, x + r, y);
-    ctx.closePath();
-}
 
 function generateGradient(count) {
     var colors = [];
     for (var i = 0; i < count; i++) {
         var t = count === 1 ? 0 : i / (count - 1);
-        // Green -> Yellow -> Orange -> Red
         var r, g, b;
         if (t < 0.5) {
             var p = t * 2;
@@ -417,60 +330,6 @@ function generateGradient(count) {
         colors.push("rgb(" + r + "," + g + "," + b + ")");
     }
     return colors;
-}
-
-function showResultModal(dataUrl) {
-    var modal = document.createElement("div");
-    modal.className = "result-modal";
-
-    var img = new Image();
-    img.src = dataUrl;
-
-    var actions = document.createElement("div");
-    actions.className = "modal-actions";
-
-    var downloadBtn = document.createElement("button");
-    downloadBtn.className = "modal-btn primary";
-    downloadBtn.textContent = "Download Image";
-    downloadBtn.onclick = function(e) {
-        e.stopPropagation();
-        var a = document.createElement("a");
-        a.href = dataUrl;
-        a.download = "fc-dallas-" + currentMode + "-kit-ranking.png";
-        a.click();
-    };
-
-    var closeBtn = document.createElement("button");
-    closeBtn.className = "modal-btn";
-    closeBtn.textContent = "Close";
-    closeBtn.onclick = function() {
-        document.body.removeChild(modal);
-        document.getElementById("modeSelect").style.display = "flex";
-        resetState();
-    };
-
-    var restartBtn = document.createElement("button");
-    restartBtn.className = "modal-btn";
-    restartBtn.textContent = "Rank Again";
-    restartBtn.onclick = function(e) {
-        e.stopPropagation();
-        document.body.removeChild(modal);
-        startRanking(currentMode);
-    };
-
-    actions.appendChild(downloadBtn);
-    actions.appendChild(restartBtn);
-    actions.appendChild(closeBtn);
-
-    var hint = document.createElement("div");
-    hint.className = "modal-hint";
-    hint.textContent = "You can also right-click the image to save it";
-
-    modal.appendChild(img);
-    modal.appendChild(actions);
-    modal.appendChild(hint);
-
-    document.body.appendChild(modal);
 }
 
 // === INIT ===

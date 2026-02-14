@@ -306,25 +306,92 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: #0c1220;
     z-index: 100000;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
+    overflow-y: auto;
+    padding: 30px 20px;
 }
 
-.result-modal img {
-    max-width: 95%;
-    max-height: 75vh;
-    object-fit: contain;
-    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+.results-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.results-header h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #ffffff;
+}
+
+.results-header .results-accent {
+    width: 120px;
+    height: 3px;
+    background: #e81f3e;
+    margin: 10px auto;
+}
+
+.results-header p {
+    color: #8a94a6;
+    font-size: 0.9rem;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 180px);
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.result-card {
+    background: rgba(255,255,255,0.04);
     border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 14px;
+}
+
+.result-card .result-color-bar {
+    height: 5px;
+    width: 100%;
+}
+
+.result-card .result-rank {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin: 10px 0 6px;
+}
+
+.result-card img {
+    max-width: 85%;
+    max-height: 140px;
+    object-fit: contain;
+    margin: 0 auto 8px;
+    display: block;
+    border-radius: 4px;
+}
+
+.result-card .result-team {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    padding: 0 8px;
+}
+
+.result-card .result-kit {
+    font-size: 0.7rem;
+    color: #8a94a6;
+    font-style: italic;
+    padding: 2px 8px 0;
 }
 
 .result-modal .modal-actions {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
@@ -353,13 +420,6 @@ body {
 
 .result-modal .modal-btn.primary:hover {
     background: #c41834;
-}
-
-.result-modal .modal-hint {
-    color: #8a94a6;
-    font-size: 0.8rem;
-    margin-top: 12px;
-    text-align: center;
 }
 
 /* === PLACEHOLDER IMAGE STYLING === */
@@ -428,5 +488,19 @@ body {
     .battle-actions {
         flex-direction: column;
         align-items: center;
+    }
+
+    .results-header h1 {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .result-card img {
+        max-height: 100px;
     }
 }
