@@ -281,8 +281,24 @@ function showResults() {
     var actions = document.createElement("div");
     actions.className = "modal-actions";
 
+    var downloadBtn = document.createElement("button");
+    downloadBtn.className = "modal-btn primary";
+    downloadBtn.textContent = "Download Image";
+    downloadBtn.onclick = function(e) {
+        e.stopPropagation();
+        generateInfographic();
+    };
+
+    var copyBtn = document.createElement("button");
+    copyBtn.className = "modal-btn";
+    copyBtn.textContent = "Copy Results";
+    copyBtn.onclick = function(e) {
+        e.stopPropagation();
+        copyResultsToClipboard();
+    };
+
     var restartBtn = document.createElement("button");
-    restartBtn.className = "modal-btn primary";
+    restartBtn.className = "modal-btn";
     restartBtn.textContent = "Rank Again";
     restartBtn.onclick = function(e) {
         e.stopPropagation();
@@ -299,6 +315,8 @@ function showResults() {
         resetState();
     };
 
+    actions.appendChild(downloadBtn);
+    actions.appendChild(copyBtn);
     actions.appendChild(restartBtn);
     actions.appendChild(closeBtn);
 
@@ -307,6 +325,199 @@ function showResults() {
     modal.appendChild(actions);
 
     document.body.appendChild(modal);
+}
+
+// === CANVAS INFOGRAPHIC (text-only, no images = no taint on file://) ===
+
+function generateInfographic() {
+    var modeLabel = currentMode === "home" ? "HOME" : "AWAY";
+    var kits = kitObjects;
+    var colors = generateGradient(namMember.length);
+    var totalKits = namMember.length;
+
+    var cols = 5;
+    var rows = Math.ceil(totalKits / cols);
+    var cardW = 200;
+    var cardH = 100;
+    var cardGap = 12;
+    var padX = 40;
+    var padTop = 120;
+    var padBottom = 60;
+
+    var canvasW = padX * 2 + cols * cardW + (cols - 1) * cardGap;
+    var canvasH = padTop + rows * cardH + (rows - 1) * cardGap + padBottom;
+
+    var canvas = document.createElement("canvas");
+    canvas.width = canvasW;
+    canvas.height = canvasH;
+    var ctx = canvas.getContext("2d");
+
+    // Background
+    ctx.fillStyle = "#1E2F58";
+    ctx.fillRect(0, 0, canvasW, canvasH);
+
+    // Diagonal stripe pattern
+    ctx.strokeStyle = "rgba(232, 31, 62, 0.06)";
+    ctx.lineWidth = 2;
+    for (var s = -canvasH; s < canvasW; s += 40) {
+        ctx.beginPath();
+        ctx.moveTo(s, 0);
+        ctx.lineTo(s + canvasH, canvasH);
+        ctx.stroke();
+    }
+
+    // Title
+    ctx.fillStyle = "#E81F3E";
+    ctx.font = "bold 36px -apple-system, BlinkMacSystemFont, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("FC DALLAS", canvasW / 2, 50);
+
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = "bold 24px -apple-system, BlinkMacSystemFont, sans-serif";
+    ctx.fillText(modeLabel + " KIT RANKINGS", canvasW / 2, 82);
+
+    // Accent line
+    ctx.fillStyle = "#E81F3E";
+    ctx.fillRect(canvasW / 2 - 60, 94, 120, 3);
+
+    // Kit cards
+    for (var i = 0; i < totalKits; i++) {
+        var idx = lstMember[0][i];
+        var k = kits[idx];
+        var rank = i + 1;
+        var rankColor = colors[i] || "#666666";
+
+        var col = i % cols;
+        var row = Math.floor(i / cols);
+        var x = padX + col * (cardW + cardGap);
+        var y = padTop + row * (cardH + cardGap);
+
+        // Card background
+        ctx.fillStyle = "rgba(42, 64, 118, 0.5)";
+        ctx.beginPath();
+        canvasRoundRect(ctx, x, y, cardW, cardH, 6);
+        ctx.fill();
+
+        // Card border
+        ctx.strokeStyle = "rgba(204, 203, 204, 0.2)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        canvasRoundRect(ctx, x, y, cardW, cardH, 6);
+        ctx.stroke();
+
+        // Color bar
+        ctx.fillStyle = rankColor;
+        ctx.fillRect(x, y, cardW, 4);
+
+        // Rank number
+        ctx.fillStyle = rankColor;
+        ctx.font = "bold 28px -apple-system, BlinkMacSystemFont, sans-serif";
+        ctx.textAlign = "left";
+        ctx.fillText("#" + rank, x + 10, y + 38);
+
+        // Team name
+        ctx.fillStyle = "#FFFFFF";
+        ctx.font = "bold 13px -apple-system, BlinkMacSystemFont, sans-serif";
+        ctx.textAlign = "left";
+        ctx.fillText(k.team + " " + k.year, x + 65, y + 35);
+
+        // Kit name
+        ctx.fillStyle = "#CCCBCC";
+        ctx.font = "italic 11px -apple-system, BlinkMacSystemFont, sans-serif";
+        ctx.fillText(k.kit, x + 65, y + 52);
+    }
+
+    // Footer
+    ctx.fillStyle = "rgba(204, 203, 204, 0.4)";
+    ctx.font = "11px -apple-system, BlinkMacSystemFont, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("Ranked by pairwise comparison  |  FC Dallas Kit Ranker", canvasW / 2, canvasH - 20);
+
+    // Download
+    var link = document.createElement("a");
+    link.download = "fc-dallas-" + currentMode + "-kit-rankings.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+
+    showToast("Image downloaded!");
+}
+
+function canvasRoundRect(ctx, x, y, w, h, r) {
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.arcTo(x + w, y, x + w, y + r, r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+    ctx.lineTo(x + r, y + h);
+    ctx.arcTo(x, y + h, x, y + h - r, r);
+    ctx.lineTo(x, y + r);
+    ctx.arcTo(x, y, x + r, y, r);
+    ctx.closePath();
+}
+
+// === COPY RESULTS TO CLIPBOARD ===
+
+function copyResultsToClipboard() {
+    var modeLabel = currentMode === "home" ? "Home" : "Away";
+    var lines = [];
+    lines.push("FC Dallas " + modeLabel + " Kit Rankings");
+    lines.push("================================");
+
+    for (var i = 0; i < namMember.length; i++) {
+        var idx = lstMember[0][i];
+        var k = kitObjects[idx];
+        lines.push("#" + (i + 1) + " - " + k.team + " " + k.year + " - " + k.kit);
+    }
+
+    lines.push("================================");
+    lines.push("Ranked with FC Dallas Kit Ranker");
+
+    var text = lines.join("\n");
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+            showToast("Results copied to clipboard!");
+        }, function() {
+            fallbackCopy(text);
+        });
+    } else {
+        fallbackCopy(text);
+    }
+}
+
+function fallbackCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+        document.execCommand("copy");
+        showToast("Results copied to clipboard!");
+    } catch(e) {
+        showToast("Could not copy. Try manually.");
+    }
+    document.body.removeChild(ta);
+}
+
+function showToast(message) {
+    var existing = document.querySelector(".copy-toast");
+    if (existing) existing.remove();
+
+    var toast = document.createElement("div");
+    toast.className = "copy-toast";
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    // Trigger reflow then show
+    toast.offsetHeight;
+    toast.classList.add("show");
+
+    setTimeout(function() {
+        toast.classList.remove("show");
+        setTimeout(function() { toast.remove(); }, 300);
+    }, 2000);
 }
 
 // === HELPERS ===
