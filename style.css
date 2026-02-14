@@ -191,7 +191,7 @@ body {
     justify-content: center;
     text-align: center;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.25s ease, opacity 0.15s ease;
     min-height: 400px;
 }
 
@@ -245,7 +245,7 @@ body {
     margin-bottom: 24px;
 }
 
-.tie-btn, .undo-btn {
+.undo-btn {
     padding: 10px 24px;
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.12);
@@ -256,7 +256,7 @@ body {
     transition: all 0.2s;
 }
 
-.tie-btn:hover, .undo-btn:hover {
+.undo-btn:hover {
     border-color: rgba(255,255,255,0.3);
     color: #fff;
     background: rgba(255,255,255,0.08);

@@ -4,7 +4,6 @@
 var namMember = [];
 var lstMember = [];
 var parent = [];
-var equal = [];
 var rec = [];
 var cmp1, cmp2;
 var head1, head2;
@@ -44,7 +43,6 @@ function resetState() {
     namMember = [];
     lstMember = [];
     parent = [];
-    equal = [];
     rec = [];
     history = [];
     currentMode = null;
@@ -56,7 +54,6 @@ function initList() {
 
     lstMember = [];
     parent = [];
-    equal = [];
     rec = [];
     history = [];
 
@@ -89,10 +86,6 @@ function initList() {
     }
     nrec = 0;
 
-    for (var i = 0; i <= namMember.length; i++) {
-        equal[i] = -1;
-    }
-
     cmp1 = lstMember.length - 2;
     cmp2 = lstMember.length - 1;
     head1 = 0;
@@ -107,7 +100,6 @@ function saveState() {
     history.push({
         lstMember: JSON.parse(JSON.stringify(lstMember)),
         parent: parent.slice(),
-        equal: equal.slice(),
         rec: rec.slice(),
         cmp1: cmp1,
         cmp2: cmp2,
@@ -126,7 +118,6 @@ function undoLast() {
     var state = history.pop();
     lstMember = state.lstMember;
     parent = state.parent;
-    equal = state.equal;
     rec = state.rec;
     cmp1 = state.cmp1;
     cmp2 = state.cmp2;
@@ -149,47 +140,12 @@ function sortList(flag) {
         head1++;
         nrec++;
         finishSize++;
-        while (equal[rec[nrec - 1]] !== -1) {
-            rec[nrec] = lstMember[cmp1][head1];
-            head1++;
-            nrec++;
-            finishSize++;
-        }
-    } else if (flag > 0) {
+    } else {
         // Right chosen
         rec[nrec] = lstMember[cmp2][head2];
         head2++;
         nrec++;
         finishSize++;
-        while (equal[rec[nrec - 1]] !== -1) {
-            rec[nrec] = lstMember[cmp2][head2];
-            head2++;
-            nrec++;
-            finishSize++;
-        }
-    } else {
-        // Tie
-        rec[nrec] = lstMember[cmp1][head1];
-        head1++;
-        nrec++;
-        finishSize++;
-        while (equal[rec[nrec - 1]] !== -1) {
-            rec[nrec] = lstMember[cmp1][head1];
-            head1++;
-            nrec++;
-            finishSize++;
-        }
-        equal[rec[nrec - 1]] = lstMember[cmp2][head2];
-        rec[nrec] = lstMember[cmp2][head2];
-        head2++;
-        nrec++;
-        finishSize++;
-        while (equal[rec[nrec - 1]] !== -1) {
-            rec[nrec] = lstMember[cmp2][head2];
-            head2++;
-            nrec++;
-            finishSize++;
-        }
     }
 
     // Drain remaining items
@@ -250,8 +206,18 @@ function showImage() {
     var leftData = namMember[lstMember[cmp1][head1]].split("|");
     var rightData = namMember[lstMember[cmp2][head2]].split("|");
 
-    document.getElementById("leftField").innerHTML = buildCardHTML(leftData);
-    document.getElementById("rightField").innerHTML = buildCardHTML(rightData);
+    var leftCard = document.getElementById("leftField");
+    var rightCard = document.getElementById("rightField");
+
+    // Brief fade to signal kit change
+    leftCard.style.opacity = "0";
+    rightCard.style.opacity = "0";
+    leftCard.innerHTML = buildCardHTML(leftData);
+    rightCard.innerHTML = buildCardHTML(rightData);
+    setTimeout(function() {
+        leftCard.style.opacity = "1";
+        rightCard.style.opacity = "1";
+    }, 50);
 
     numQuestion++;
 }
@@ -328,17 +294,15 @@ function generateCanvasPoster() {
     }
 
     Promise.all(imagePromises).then(function(images) {
-        var ranking = 1;
-        var sameRank = 1;
-
         for (var i = 0; i < namMember.length; i++) {
             var idx = lstMember[0][i];
             var kitData = kits[idx];
+            var ranking = i + 1;
             var col = i % cols;
             var row = Math.floor(i / cols);
             var x = pad + col * (cardW + gap);
             var y = pad + headerH + row * (cardH + gap);
-            var rankColor = colors[ranking - 1] || "#666";
+            var rankColor = colors[i] || "#666";
 
             // Card background
             ctx.fillStyle = "rgba(255,255,255,0.04)";
@@ -387,15 +351,6 @@ function generateCanvasPoster() {
             ctx.font = "italic 11px sans-serif";
             ctx.fillText(kitData.kit, x + cardW / 2, y + 242);
 
-            // Rank logic for ties
-            if (i < namMember.length - 1) {
-                if (equal[lstMember[0][i]] === lstMember[0][i + 1]) {
-                    sameRank++;
-                } else {
-                    ranking += sameRank;
-                    sameRank = 1;
-                }
-            }
         }
 
         var dataUrl = canvas.toDataURL("image/png");
