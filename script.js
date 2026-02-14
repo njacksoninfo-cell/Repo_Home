@@ -16,7 +16,7 @@ var finishSize;
 var currentMode = null; // "home" or "away"
 
 // Undo history
-var history = [];
+var undoHistory = [];
 
 // === INITIALIZATION ===
 
@@ -44,7 +44,7 @@ function resetState() {
     lstMember = [];
     parent = [];
     rec = [];
-    history = [];
+    undoHistory = [];
     currentMode = null;
 }
 
@@ -55,7 +55,7 @@ function initList() {
     lstMember = [];
     parent = [];
     rec = [];
-    history = [];
+    undoHistory = [];
 
     lstMember[n] = [];
     for (var i = 0; i < namMember.length; i++) {
@@ -97,7 +97,7 @@ function initList() {
 // === SAVE STATE FOR UNDO ===
 
 function saveState() {
-    history.push({
+    undoHistory.push({
         lstMember: JSON.parse(JSON.stringify(lstMember)),
         parent: parent.slice(),
         rec: rec.slice(),
@@ -110,12 +110,12 @@ function saveState() {
         finishSize: finishSize
     });
     // Keep history manageable
-    if (history.length > 100) history.shift();
+    if (undoHistory.length > 100) undoHistory.shift();
 }
 
 function undoLast() {
-    if (history.length === 0) return;
-    var state = history.pop();
+    if (undoHistory.length === 0) return;
+    var state = undoHistory.pop();
     lstMember = state.lstMember;
     parent = state.parent;
     rec = state.rec;
