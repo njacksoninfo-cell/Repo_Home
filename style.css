@@ -689,10 +689,6 @@ body::after {
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
     }
-
-    .kit-card {
-        min-height: 350px;
-    }
 }
 
 /* Large phones */
@@ -722,25 +718,30 @@ body::after {
     }
 
     .battle-area {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
+        gap: 8px;
     }
 
     .kit-card {
-        max-width: 100%;
-        min-height: 300px;
-        padding: 20px 16px;
+        min-height: auto;
+        padding: 12px 8px;
     }
 
     .kit-card img {
-        max-height: 200px;
+        max-height: 140px;
+    }
+
+    .kit-card .kit-team {
+        font-size: 0.85rem;
+    }
+
+    .kit-card .kit-name {
+        font-size: 0.7rem;
     }
 
     .vs-divider {
-        font-size: 1.8rem;
-        min-width: auto;
-        padding: 8px 0;
+        font-size: 1.4rem;
+        min-width: 32px;
+        padding: 0;
     }
 
     .results-header h1 {
@@ -795,6 +796,19 @@ body::after {
 
     .battle-instruction {
         font-size: 0.75rem;
+    }
+
+    .kit-card .kit-team {
+        font-size: 0.75rem;
+    }
+
+    .kit-card .kit-name {
+        font-size: 0.65rem;
+    }
+
+    .vs-divider {
+        font-size: 1.1rem;
+        min-width: 24px;
     }
 
     .results-grid {
@@ -857,6 +871,6 @@ body::after {
     }
 
     .kit-card {
-        padding: 16px 12px;
+        padding: 10px 6px;
     }
 }
