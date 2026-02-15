@@ -717,38 +717,31 @@ body::after {
         height: 40px;
     }
 
-    /* Stack kit cards vertically on mobile */
     .battle-area {
-        flex-direction: column;
-        gap: 0;
-        align-items: center;
+        gap: 8px;
     }
 
     .kit-card {
         min-height: auto;
-        max-width: 100%;
-        width: 100%;
-        padding: 20px 16px;
-        flex: none;
+        padding: 12px 8px;
     }
 
     .kit-card img {
-        max-height: 220px;
-        max-width: 80%;
+        max-height: 140px;
     }
 
     .kit-card .kit-team {
-        font-size: 1rem;
-    }
-
-    .kit-card .kit-name {
         font-size: 0.85rem;
     }
 
+    .kit-card .kit-name {
+        font-size: 0.7rem;
+    }
+
     .vs-divider {
-        font-size: 1.6rem;
-        min-width: auto;
-        padding: 6px 0;
+        font-size: 1.4rem;
+        min-width: 32px;
+        padding: 0;
     }
 
     .results-header h1 {
@@ -757,25 +750,12 @@ body::after {
     }
 
     .results-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 0 8px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
     }
 
     .result-card img {
-        max-height: 120px;
-    }
-
-    .result-card .result-team {
-        font-size: 0.8rem;
-    }
-
-    .result-card .result-kit {
-        font-size: 0.7rem;
-    }
-
-    .result-card .result-rank {
-        font-size: 1.1rem;
+        max-height: 100px;
     }
 }
 
@@ -815,42 +795,25 @@ body::after {
     }
 
     .battle-instruction {
-        font-size: 0.8rem;
-        margin-bottom: 12px;
-    }
-
-    #battleScreen {
-        padding: 12px;
-    }
-
-    .kit-card {
-        padding: 16px 12px;
-        border-radius: 10px;
-    }
-
-    .kit-card img {
-        max-height: 200px;
-        max-width: 75%;
+        font-size: 0.75rem;
     }
 
     .kit-card .kit-team {
-        font-size: 0.95rem;
+        font-size: 0.75rem;
     }
 
     .kit-card .kit-name {
-        font-size: 0.8rem;
+        font-size: 0.65rem;
     }
 
     .vs-divider {
-        font-size: 1.3rem;
-        min-width: auto;
-        padding: 4px 0;
+        font-size: 1.1rem;
+        min-width: 24px;
     }
 
     .results-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
-        padding: 0 4px;
     }
 
     .results-header h1 {
@@ -863,22 +826,21 @@ body::after {
     }
 
     .result-card .result-team {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 
     .result-card .result-kit {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
     }
 
     .result-card img {
-        max-height: 100px;
+        max-height: 80px;
     }
 
     .battle-actions {
         flex-direction: column;
         align-items: center;
         width: 100%;
-        margin-top: 16px;
     }
 
     .modal-actions {
@@ -899,16 +861,6 @@ body::after {
         padding: 20px 12px;
     }
 
-    .mode-header h1 {
-        font-size: 1.7rem;
-        letter-spacing: 2px;
-    }
-
-    .mode-header h2 {
-        font-size: 0.95rem;
-        letter-spacing: 2px;
-    }
-
     .result-modal {
         padding: 16px 8px;
     }
@@ -919,28 +871,6 @@ body::after {
     }
 
     .kit-card {
-        padding: 14px 10px;
-    }
-
-    .kit-card img {
-        max-height: 180px;
-    }
-
-    .results-grid {
-        grid-template-columns: 1fr;
-        max-width: 280px;
-        margin: 0 auto 30px;
-    }
-
-    .result-card img {
-        max-height: 140px;
-    }
-
-    .result-card .result-team {
-        font-size: 0.8rem;
-    }
-
-    .result-card .result-kit {
-        font-size: 0.7rem;
+        padding: 10px 6px;
     }
 }
