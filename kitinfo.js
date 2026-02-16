@@ -71,6 +71,9 @@ function shuffleArray(arr) {
     return arr;
 }
 
+// Combined array for "all kits" mode
+var allKits = homeKits.concat(awayKits, thirdKits);
+
 // Build namMember array from selected mode
 // Format: "imgHTML|TeamName Year|KitName"
 // Also populates the global kitObjects array in the same shuffled order
@@ -78,7 +81,8 @@ function buildKitList(mode) {
     var kits;
     if (mode === "home") kits = homeKits.slice();
     else if (mode === "away") kits = awayKits.slice();
-    else kits = thirdKits.slice();
+    else if (mode === "third") kits = thirdKits.slice();
+    else kits = allKits.slice();
 
     shuffleArray(kits);
 

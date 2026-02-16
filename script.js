@@ -39,12 +39,12 @@ function setSpeed(speed) {
 }
 
 function updateRoundEstimates() {
-    var counts = { home: homeKits.length, away: awayKits.length, third: thirdKits.length };
-    var modes = ["home", "away", "third"];
+    var counts = { home: homeKits.length, away: awayKits.length, third: thirdKits.length, all: allKits.length };
+    var modes = ["home", "away", "third", "all"];
     for (var m = 0; m < modes.length; m++) {
         var n = counts[modes[m]];
         var rounds;
-        if (rankingSpeed === "quick") {
+        if (rankingSpeed === "quick" || modes[m] === "all") {
             rounds = Math.ceil(n * 1.5);
         } else {
             rounds = n * Math.ceil(Math.log(n) / Math.log(2));
@@ -64,7 +64,8 @@ function startRanking(mode) {
     document.getElementById("modeSelect").style.display = "none";
     document.getElementById("battleScreen").style.display = "flex";
 
-    if (rankingSpeed === "quick") {
+    // "All" mode always uses Elo (too many kits for merge sort)
+    if (rankingSpeed === "quick" || mode === "all") {
         initEloRank();
     } else {
         initMergeSort();
@@ -552,76 +553,47 @@ function generateInfographic() {
 
     var kits = kitObjects;
     var totalKits = namMember.length;
+    var displayCount = (currentMode === "all") ? Math.min(totalKits, 20) : Math.min(totalKits, 10);
     var promises = [];
 
-    for (var i = 0; i < totalKits; i++) {
+    for (var i = 0; i < displayCount; i++) {
         var idx = lstMember[0][i];
         promises.push(loadKitImage(kits[idx].img));
     }
 
     Promise.all(promises).then(function(images) {
-        // Check if any images loaded (kitimages.js present and working)
         var hasImages = false;
         for (var i = 0; i < images.length; i++) {
             if (images[i]) { hasImages = true; break; }
         }
         if (!drawAndDownload(images, hasImages)) {
-            // Canvas tainted (shouldn't happen with data URIs, safety net)
             drawAndDownload([], false);
         }
     });
 }
 
 // Draw the infographic canvas and trigger PNG download.
-// Uses a 16:9 aspect ratio at 2x resolution (3200x1800) for crisp text
-// on social media feeds and mobile screens.
+// Top-10 podium layout (16:9) for home/away/third modes.
+// Top-20 layout (4:3) for "all" mode.
 // Returns true if download succeeded, false if canvas was tainted.
 function drawAndDownload(images, tryWithImages) {
-    var modeLabel = currentMode.toUpperCase();
+    var modeLabel = currentMode === "all" ? "ALL-TIME" : currentMode.toUpperCase();
     var kits = kitObjects;
-    var colors = generateGradient(namMember.length);
     var totalKits = namMember.length;
+    var displayCount = (currentMode === "all") ? Math.min(totalKits, 20) : Math.min(totalKits, 10);
+    var colors = generateGradient(totalKits);
+    var font = "-apple-system, BlinkMacSystemFont, sans-serif";
 
-    // --- 16:9 at 2x resolution for retina/social readability ---
+    // Canvas sizing based on display count
     var canvasW = 3200;
-    var canvasH = 1800;
-    var padTop = 240;
-    var padBottom = 80;
-    var cardGap = 16;
-
-    // Determine optimal column count for a wide layout
-    var cols;
-    if (totalKits <= 4) cols = totalKits;
-    else if (totalKits <= 6) cols = 3;
-    else if (totalKits <= 10) cols = 5;
-    else if (totalKits <= 15) cols = 5;
-    else if (totalKits <= 24) cols = 6;
-    else cols = 7;
-    var rows = Math.ceil(totalKits / cols);
-
-    // Size cards to fill the available grid area
-    var gridAreaW = canvasW - 120;
-    var gridAreaH = canvasH - padTop - padBottom;
-    var cardW = Math.floor((gridAreaW - (cols - 1) * cardGap) / cols);
-    var cardH = Math.floor((gridAreaH - (rows - 1) * cardGap) / rows);
-
-    // For text-only, cap card height so it doesn't look sparse
-    if (!tryWithImages && cardH > 180) {
-        cardH = 180;
-    }
-
-    // Center the grid on the canvas
-    var totalGridW = cols * cardW + (cols - 1) * cardGap;
-    var totalGridH = rows * cardH + (rows - 1) * cardGap;
-    var gridStartX = Math.floor((canvasW - totalGridW) / 2);
-    var gridStartY = padTop + Math.floor((gridAreaH - totalGridH) / 2);
+    var canvasH = displayCount > 10 ? 2400 : 1800;
 
     var canvas = document.createElement("canvas");
     canvas.width = canvasW;
     canvas.height = canvasH;
     var ctx = canvas.getContext("2d");
 
-    // Background
+    // === BACKGROUND ===
     ctx.fillStyle = "#1E2F58";
     ctx.fillRect(0, 0, canvasW, canvasH);
 
@@ -635,116 +607,224 @@ function drawAndDownload(images, tryWithImages) {
         ctx.stroke();
     }
 
-    // Title — large and bold for social media thumbnails
+    // === TITLE SECTION (0-200px) ===
     ctx.fillStyle = "#E81F3E";
-    ctx.font = "bold 84px -apple-system, BlinkMacSystemFont, sans-serif";
+    ctx.font = "bold 96px " + font;
     ctx.textAlign = "center";
-    ctx.fillText("FC DALLAS", canvasW / 2, 90);
+    ctx.fillText("FC DALLAS", canvasW / 2, 85);
 
     ctx.fillStyle = "#FFFFFF";
-    ctx.font = "bold 52px -apple-system, BlinkMacSystemFont, sans-serif";
+    ctx.font = "bold 56px " + font;
     ctx.fillText(modeLabel + " KIT RANKINGS", canvasW / 2, 155);
 
-    // Accent line
     ctx.fillStyle = "#E81F3E";
-    ctx.fillRect(canvasW / 2 - 120, 185, 240, 6);
+    ctx.fillRect(canvasW / 2 - 140, 180, 280, 6);
 
-    // Medal colors for top 3
+    // === LAYOUT ZONES ===
     var medalColors = ["#FFD700", "#C0C0C0", "#CD7F32"];
+    var medalBorders = ["rgba(255, 215, 0, 0.6)", "rgba(192, 192, 192, 0.5)", "rgba(205, 127, 50, 0.5)"];
+    var podiumCount = Math.min(displayCount, 3);
+    var restCount = displayCount - podiumCount;
+    var titleH = 200;
+    var footerH = 100;
 
-    // Kit cards
-    for (var i = 0; i < totalKits; i++) {
-        var idx = lstMember[0][i];
+    // Zone heights depend on how many rest rows we need
+    var podiumSectionY = titleH;
+    var podiumSectionH, restRow1Y, restRow1H, restRow2Y, restRow2H;
+    var restRow1Count = 0, restRow2Count = 0;
+
+    if (displayCount > 10) {
+        // Two rest rows: #4-10 and #11-20
+        podiumSectionH = 800;
+        restRow1Count = 7; // #4-10
+        restRow2Count = restCount - 7;
+        restRow1H = 500;
+        restRow2H = 500;
+        restRow1Y = podiumSectionY + podiumSectionH;
+        restRow2Y = restRow1Y + restRow1H;
+    } else if (restCount > 0) {
+        // One rest row
+        podiumSectionH = 900;
+        restRow1Count = restCount;
+        restRow2Count = 0;
+        restRow1H = canvasH - titleH - podiumSectionH - footerH;
+        restRow1Y = podiumSectionY + podiumSectionH;
+        restRow2Y = 0;
+        restRow2H = 0;
+    } else {
+        // Only podium (1-3 kits)
+        podiumSectionH = canvasH - titleH - footerH;
+        restRow1Count = 0;
+        restRow2Count = 0;
+    }
+
+    // === PODIUM SECTION (#1, #2, #3) ===
+    // Visual order: [#2, #1, #3] left-to-right (Olympic podium style)
+    var podiumOrder;
+    if (podiumCount === 1) podiumOrder = [0];
+    else if (podiumCount === 2) podiumOrder = [1, 0];
+    else podiumOrder = [1, 0, 2];
+
+    var podiumMarginX = 200;
+    var podiumGap = 60;
+    var podiumUsableW = canvasW - 2 * podiumMarginX;
+    var podiumColW = Math.floor((podiumUsableW - (podiumCount - 1) * podiumGap) / podiumCount);
+
+    for (var p = 0; p < podiumOrder.length; p++) {
+        var rankIdx = podiumOrder[p];
+        var idx = lstMember[0][rankIdx];
         var k = kits[idx];
-        var rank = i + 1;
-        var rankColor = i < 3 ? medalColors[i] : (colors[i] || "#666666");
+        var rank = rankIdx + 1;
+        var isFirst = (rankIdx === 0);
 
-        var col = i % cols;
-        var row = Math.floor(i / cols);
-        var x = gridStartX + col * (cardW + cardGap);
-        var y = gridStartY + row * (cardH + cardGap);
+        var colX = podiumMarginX + p * (podiumColW + podiumGap);
+        // #1 is elevated and taller
+        var cardY = isFirst ? podiumSectionY + 20 : podiumSectionY + 80;
+        var cardH = isFirst ? podiumSectionH - 40 : podiumSectionH - 100;
 
-        // Card background (brighter for top 3)
-        ctx.fillStyle = i < 3 ? "rgba(42, 64, 118, 0.7)" : "rgba(42, 64, 118, 0.5)";
+        // Card background
+        ctx.fillStyle = "rgba(42, 64, 118, 0.7)";
         ctx.beginPath();
-        canvasRoundRect(ctx, x, y, cardW, cardH, 10);
+        canvasRoundRect(ctx, colX, cardY, podiumColW, cardH, 16);
         ctx.fill();
 
-        // Card border
-        ctx.strokeStyle = i < 3 ? "rgba(255, 215, 0, 0.3)" : "rgba(204, 203, 204, 0.2)";
-        ctx.lineWidth = i < 3 ? 2 : 1;
+        // Card border with medal glow
+        ctx.strokeStyle = medalBorders[rankIdx];
+        ctx.lineWidth = 3;
         ctx.beginPath();
-        canvasRoundRect(ctx, x, y, cardW, cardH, 10);
+        canvasRoundRect(ctx, colX, cardY, podiumColW, cardH, 16);
         ctx.stroke();
 
         // Color bar at top
-        ctx.fillStyle = rankColor;
-        ctx.fillRect(x, y, cardW, 8);
+        ctx.fillStyle = medalColors[rankIdx];
+        ctx.fillRect(colX, cardY, podiumColW, 10);
 
-        if (tryWithImages) {
-            // Draw kit image scaled to fit
-            var img = images[i];
-            var textBlockH = 80; // space reserved for text at bottom
-            if (img && img.naturalWidth > 0) {
-                var imgMaxH = cardH - textBlockH - 20;
-                var imgMaxW = cardW - 30;
-                var scale = Math.min(imgMaxW / img.naturalWidth, imgMaxH / img.naturalHeight);
-                var drawW = img.naturalWidth * scale;
-                var drawH = img.naturalHeight * scale;
-                var imgX = x + (cardW - drawW) / 2;
-                var imgY = y + 14;
-                ctx.drawImage(img, imgX, imgY, drawW, drawH);
+        // Jersey image
+        var imgMaxH = isFirst ? 500 : 420;
+        var imgMaxW = podiumColW - 80;
+        var img = tryWithImages ? images[rankIdx] : null;
+
+        if (img && img.naturalWidth > 0) {
+            var scale = Math.min(imgMaxW / img.naturalWidth, imgMaxH / img.naturalHeight);
+            var drawW = img.naturalWidth * scale;
+            var drawH = img.naturalHeight * scale;
+            var imgX = colX + (podiumColW - drawW) / 2;
+            var imgY = cardY + 30;
+            ctx.drawImage(img, imgX, imgY, drawW, drawH);
+        }
+
+        // Text block at bottom of card
+        var textBaseY = cardY + cardH - 160;
+
+        // Rank number
+        ctx.fillStyle = medalColors[rankIdx];
+        ctx.font = isFirst ? "bold 72px " + font : "bold 60px " + font;
+        ctx.textAlign = "center";
+        ctx.fillText("#" + rank, colX + podiumColW / 2, textBaseY + 50);
+
+        // Team + Year
+        ctx.fillStyle = "#FFFFFF";
+        ctx.font = isFirst ? "bold 40px " + font : "bold 36px " + font;
+        ctx.fillText(k.team + " " + k.year, colX + podiumColW / 2, textBaseY + 100);
+
+        // Kit name
+        ctx.fillStyle = "#CCCBCC";
+        ctx.font = isFirst ? "italic 30px " + font : "italic 28px " + font;
+        ctx.fillText(k.kit, colX + podiumColW / 2, textBaseY + 140);
+    }
+
+    // === REST ROWS ===
+    // Helper to draw a row of kit cards
+    function drawRestRow(startRank, count, sectionY, sectionH) {
+        var restGap = 30;
+        var restMarginX = 120;
+        var restUsableW = canvasW - 2 * restMarginX;
+        var restItemW = Math.floor((restUsableW - (count - 1) * restGap) / count);
+        restItemW = Math.min(restItemW, 450);
+
+        var restTotalW = count * restItemW + (count - 1) * restGap;
+        var restStartX = Math.floor((canvasW - restTotalW) / 2);
+
+        var restCardY = sectionY + 40;
+        var restCardH = sectionH - 80;
+
+        for (var r = 0; r < count; r++) {
+            var ri = startRank + r;
+            var ridx = lstMember[0][ri];
+            var rk = kits[ridx];
+            var rRank = ri + 1;
+            var rankColor = colors[ri] || "#666666";
+            var rImg = tryWithImages ? images[ri] : null;
+
+            var itemX = restStartX + r * (restItemW + restGap);
+
+            // Card background
+            ctx.fillStyle = "rgba(42, 64, 118, 0.5)";
+            ctx.beginPath();
+            canvasRoundRect(ctx, itemX, restCardY, restItemW, restCardH, 12);
+            ctx.fill();
+
+            // Card border
+            ctx.strokeStyle = "rgba(204, 203, 204, 0.2)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            canvasRoundRect(ctx, itemX, restCardY, restItemW, restCardH, 12);
+            ctx.stroke();
+
+            // Color bar
+            ctx.fillStyle = rankColor;
+            ctx.fillRect(itemX, restCardY, restItemW, 6);
+
+            // Jersey image
+            if (rImg && rImg.naturalWidth > 0) {
+                var rImgMaxH = restCardH - 160;
+                var rImgMaxW = restItemW - 40;
+                var rScale = Math.min(rImgMaxW / rImg.naturalWidth, rImgMaxH / rImg.naturalHeight);
+                var rDrawW = rImg.naturalWidth * rScale;
+                var rDrawH = rImg.naturalHeight * rScale;
+                var rImgX = itemX + (restItemW - rDrawW) / 2;
+                var rImgY = restCardY + 20;
+                ctx.drawImage(rImg, rImgX, rImgY, rDrawW, rDrawH);
             }
 
-            // Rank number — large and bold
-            ctx.fillStyle = rankColor;
-            ctx.font = "bold 34px -apple-system, BlinkMacSystemFont, sans-serif";
-            ctx.textAlign = "left";
-            ctx.fillText("#" + rank, x + 14, y + cardH - 40);
+            // Text below image
+            var rTextY = restCardY + restCardH - 120;
 
-            // Team name
-            ctx.fillStyle = "#FFFFFF";
-            ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, sans-serif";
-            ctx.textAlign = "left";
-            var teamText = k.team + " " + k.year;
-            var teamX = x + 14 + ctx.measureText("#" + rank).width + 12;
-            // Wrap to next line if it overflows the card
-            if (teamX + ctx.measureText(teamText).width > x + cardW - 14) {
-                teamX = x + 14;
-                ctx.fillText(teamText, teamX, y + cardH - 14);
-            } else {
-                ctx.fillText(teamText, teamX, y + cardH - 42);
-                // Kit name on second line
-                ctx.fillStyle = "#CCCBCC";
-                ctx.font = "italic 18px -apple-system, BlinkMacSystemFont, sans-serif";
-                ctx.fillText(k.kit, teamX, y + cardH - 18);
-            }
-        } else {
-            // Text-only fallback
             ctx.fillStyle = rankColor;
-            ctx.font = "bold 44px -apple-system, BlinkMacSystemFont, sans-serif";
-            ctx.textAlign = "left";
-            ctx.fillText("#" + rank, x + 18, y + cardH / 2 + 6);
+            ctx.font = "bold 48px " + font;
+            ctx.textAlign = "center";
+            ctx.fillText("#" + rRank, itemX + restItemW / 2, rTextY + 30);
 
-            var rankW = ctx.measureText("#" + rank).width;
             ctx.fillStyle = "#FFFFFF";
-            ctx.font = "bold 24px -apple-system, BlinkMacSystemFont, sans-serif";
-            ctx.fillText(k.team + " " + k.year, x + rankW + 36, y + cardH / 2 - 6);
+            ctx.font = "bold 26px " + font;
+            ctx.fillText(rk.team + " " + rk.year, itemX + restItemW / 2, rTextY + 66);
 
             ctx.fillStyle = "#CCCBCC";
-            ctx.font = "italic 20px -apple-system, BlinkMacSystemFont, sans-serif";
-            ctx.fillText(k.kit, x + rankW + 36, y + cardH / 2 + 24);
+            ctx.font = "italic 22px " + font;
+            ctx.fillText(rk.kit, itemX + restItemW / 2, rTextY + 96);
         }
     }
 
-    // Footer
-    ctx.fillStyle = "rgba(204, 203, 204, 0.5)";
-    ctx.font = "22px -apple-system, BlinkMacSystemFont, sans-serif";
-    ctx.textAlign = "center";
-    var speedLabel = rankingSpeed === "quick" ? "Elo rating" : "pairwise comparison";
-    ctx.fillText("Ranked by " + speedLabel + "  |  FC Dallas Kit Ranker", canvasW / 2, canvasH - 30);
+    // Draw rest row(s)
+    if (restRow1Count > 0) {
+        drawRestRow(3, restRow1Count, restRow1Y, restRow1H);
+    }
+    if (restRow2Count > 0) {
+        drawRestRow(10, restRow2Count, restRow2Y, restRow2H);
+    }
 
-    // Try to export as PNG download
+    // === FOOTER ===
+    ctx.fillStyle = "rgba(204, 203, 204, 0.5)";
+    ctx.font = "24px " + font;
+    ctx.textAlign = "center";
+    var speedLabel = (rankingSpeed === "quick" || currentMode === "all") ? "Elo rating" : "pairwise comparison";
+    var footerText = "Ranked by " + speedLabel + "  |  FC Dallas Kit Ranker";
+    if (totalKits > displayCount) {
+        footerText = "Top " + displayCount + " of " + totalKits + "  |  " + footerText;
+    }
+    ctx.fillText(footerText, canvasW / 2, canvasH - 40);
+
+    // === EXPORT ===
     try {
         var dataUrl = canvas.toDataURL("image/png");
         var link = document.createElement("a");
@@ -754,7 +834,6 @@ function drawAndDownload(images, tryWithImages) {
         showToast("Image downloaded!");
         return true;
     } catch (e) {
-        // Canvas tainted — caller should retry with text-only
         return false;
     }
 }
