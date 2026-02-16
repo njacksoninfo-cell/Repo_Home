@@ -575,7 +575,7 @@ function generateInfographic() {
 // Draw the infographic canvas and trigger PNG download.
 // Top-10 podium layout (16:9) for home/away/third modes.
 // Top-20 layout (4:3) for "all" mode.
-// Returns true if download succeeded, false if canvas was tainted.
+// Optimized for mobile social media viewing (8x downscale on phones).
 function drawAndDownload(images, tryWithImages) {
     var modeLabel = currentMode === "all" ? "ALL-TIME" : currentMode.toUpperCase();
     var kits = kitObjects;
@@ -584,7 +584,6 @@ function drawAndDownload(images, tryWithImages) {
     var colors = generateGradient(totalKits);
     var font = "-apple-system, BlinkMacSystemFont, sans-serif";
 
-    // Canvas sizing based on display count
     var canvasW = 3200;
     var canvasH = displayCount > 10 ? 2400 : 1800;
 
@@ -597,7 +596,6 @@ function drawAndDownload(images, tryWithImages) {
     ctx.fillStyle = "#1E2F58";
     ctx.fillRect(0, 0, canvasW, canvasH);
 
-    // Diagonal stripe pattern
     ctx.strokeStyle = "rgba(232, 31, 62, 0.06)";
     ctx.lineWidth = 3;
     for (var s = -canvasH; s < canvasW; s += 60) {
@@ -607,18 +605,18 @@ function drawAndDownload(images, tryWithImages) {
         ctx.stroke();
     }
 
-    // === TITLE SECTION (0-200px) ===
+    // === TITLE (0-200px) — large for mobile readability ===
     ctx.fillStyle = "#E81F3E";
-    ctx.font = "bold 96px " + font;
+    ctx.font = "bold 120px " + font;
     ctx.textAlign = "center";
-    ctx.fillText("FC DALLAS", canvasW / 2, 85);
+    ctx.fillText("FC DALLAS", canvasW / 2, 95);
 
     ctx.fillStyle = "#FFFFFF";
-    ctx.font = "bold 56px " + font;
-    ctx.fillText(modeLabel + " KIT RANKINGS", canvasW / 2, 155);
+    ctx.font = "bold 64px " + font;
+    ctx.fillText(modeLabel + " KIT RANKINGS", canvasW / 2, 170);
 
     ctx.fillStyle = "#E81F3E";
-    ctx.fillRect(canvasW / 2 - 140, 180, 280, 6);
+    ctx.fillRect(canvasW / 2 - 160, 190, 320, 6);
 
     // === LAYOUT ZONES ===
     var medalColors = ["#FFD700", "#C0C0C0", "#CD7F32"];
@@ -626,47 +624,39 @@ function drawAndDownload(images, tryWithImages) {
     var podiumCount = Math.min(displayCount, 3);
     var restCount = displayCount - podiumCount;
     var titleH = 200;
-    var footerH = 100;
+    var footerH = 50;
 
-    // Zone heights depend on how many rest rows we need
     var podiumSectionY = titleH;
     var podiumSectionH, restRow1Y, restRow1H, restRow2Y, restRow2H;
     var restRow1Count = 0, restRow2Count = 0;
 
     if (displayCount > 10) {
-        // Two rest rows: #4-10 and #11-20
-        podiumSectionH = 800;
-        restRow1Count = 7; // #4-10
+        podiumSectionH = 850;
+        restRow1Count = 7;
         restRow2Count = restCount - 7;
-        restRow1H = 500;
-        restRow2H = 500;
+        var remaining = canvasH - titleH - podiumSectionH - footerH;
+        restRow1H = Math.floor(remaining / 2);
+        restRow2H = remaining - restRow1H;
         restRow1Y = podiumSectionY + podiumSectionH;
         restRow2Y = restRow1Y + restRow1H;
     } else if (restCount > 0) {
-        // One rest row
-        podiumSectionH = 900;
+        podiumSectionH = 1000;
         restRow1Count = restCount;
-        restRow2Count = 0;
         restRow1H = canvasH - titleH - podiumSectionH - footerH;
         restRow1Y = podiumSectionY + podiumSectionH;
-        restRow2Y = 0;
-        restRow2H = 0;
-    } else {
-        // Only podium (1-3 kits)
-        podiumSectionH = canvasH - titleH - footerH;
-        restRow1Count = 0;
         restRow2Count = 0;
+    } else {
+        podiumSectionH = canvasH - titleH - footerH;
     }
 
-    // === PODIUM SECTION (#1, #2, #3) ===
-    // Visual order: [#2, #1, #3] left-to-right (Olympic podium style)
+    // === PODIUM (#1, #2, #3) ===
     var podiumOrder;
     if (podiumCount === 1) podiumOrder = [0];
     else if (podiumCount === 2) podiumOrder = [1, 0];
     else podiumOrder = [1, 0, 2];
 
-    var podiumMarginX = 200;
-    var podiumGap = 60;
+    var podiumMarginX = 80;
+    var podiumGap = 30;
     var podiumUsableW = canvasW - 2 * podiumMarginX;
     var podiumColW = Math.floor((podiumUsableW - (podiumCount - 1) * podiumGap) / podiumCount);
 
@@ -678,30 +668,29 @@ function drawAndDownload(images, tryWithImages) {
         var isFirst = (rankIdx === 0);
 
         var colX = podiumMarginX + p * (podiumColW + podiumGap);
-        // #1 is elevated and taller
-        var cardY = isFirst ? podiumSectionY + 20 : podiumSectionY + 80;
-        var cardH = isFirst ? podiumSectionH - 40 : podiumSectionH - 100;
+        var cardY = isFirst ? podiumSectionY + 10 : podiumSectionY + 60;
+        var cardH = isFirst ? podiumSectionH - 20 : podiumSectionH - 70;
 
-        // Card background
-        ctx.fillStyle = "rgba(42, 64, 118, 0.7)";
+        // Card background — darker for contrast
+        ctx.fillStyle = "rgba(30, 50, 100, 0.85)";
         ctx.beginPath();
         canvasRoundRect(ctx, colX, cardY, podiumColW, cardH, 16);
         ctx.fill();
 
-        // Card border with medal glow
         ctx.strokeStyle = medalBorders[rankIdx];
         ctx.lineWidth = 3;
         ctx.beginPath();
         canvasRoundRect(ctx, colX, cardY, podiumColW, cardH, 16);
         ctx.stroke();
 
-        // Color bar at top
         ctx.fillStyle = medalColors[rankIdx];
         ctx.fillRect(colX, cardY, podiumColW, 10);
 
-        // Jersey image
-        var imgMaxH = isFirst ? 500 : 420;
-        var imgMaxW = podiumColW - 80;
+        // Jersey image — dynamic height, fills the card
+        var textBlockH = 120;
+        var imgTopPad = 15;
+        var imgMaxH = cardH - textBlockH - imgTopPad;
+        var imgMaxW = podiumColW - 40;
         var img = tryWithImages ? images[rankIdx] : null;
 
         if (img && img.naturalWidth > 0) {
@@ -709,44 +698,39 @@ function drawAndDownload(images, tryWithImages) {
             var drawW = img.naturalWidth * scale;
             var drawH = img.naturalHeight * scale;
             var imgX = colX + (podiumColW - drawW) / 2;
-            var imgY = cardY + 30;
+            var imgY = cardY + imgTopPad;
             ctx.drawImage(img, imgX, imgY, drawW, drawH);
         }
 
-        // Text block at bottom of card
-        var textBaseY = cardY + cardH - 160;
+        // Text block — tight at bottom of card
+        var textBaseY = cardY + cardH - textBlockH;
 
-        // Rank number
         ctx.fillStyle = medalColors[rankIdx];
         ctx.font = isFirst ? "bold 72px " + font : "bold 60px " + font;
         ctx.textAlign = "center";
-        ctx.fillText("#" + rank, colX + podiumColW / 2, textBaseY + 50);
+        ctx.fillText("#" + rank, colX + podiumColW / 2, textBaseY + 38);
 
-        // Team + Year
         ctx.fillStyle = "#FFFFFF";
         ctx.font = isFirst ? "bold 40px " + font : "bold 36px " + font;
-        ctx.fillText(k.team + " " + k.year, colX + podiumColW / 2, textBaseY + 100);
+        ctx.fillText(k.team + " " + k.year, colX + podiumColW / 2, textBaseY + 78);
 
-        // Kit name
         ctx.fillStyle = "#CCCBCC";
         ctx.font = isFirst ? "italic 30px " + font : "italic 28px " + font;
-        ctx.fillText(k.kit, colX + podiumColW / 2, textBaseY + 140);
+        ctx.fillText(k.kit, colX + podiumColW / 2, textBaseY + 108);
     }
 
     // === REST ROWS ===
-    // Helper to draw a row of kit cards
     function drawRestRow(startRank, count, sectionY, sectionH) {
-        var restGap = 30;
-        var restMarginX = 120;
+        var restGap = 20;
+        var restMarginX = 40;
         var restUsableW = canvasW - 2 * restMarginX;
         var restItemW = Math.floor((restUsableW - (count - 1) * restGap) / count);
-        restItemW = Math.min(restItemW, 450);
 
         var restTotalW = count * restItemW + (count - 1) * restGap;
         var restStartX = Math.floor((canvasW - restTotalW) / 2);
 
-        var restCardY = sectionY + 40;
-        var restCardH = sectionH - 80;
+        var restCardY = sectionY + 15;
+        var restCardH = sectionH - 30;
 
         for (var r = 0; r < count; r++) {
             var ri = startRank + r;
@@ -758,37 +742,35 @@ function drawAndDownload(images, tryWithImages) {
 
             var itemX = restStartX + r * (restItemW + restGap);
 
-            // Card background
-            ctx.fillStyle = "rgba(42, 64, 118, 0.5)";
+            ctx.fillStyle = "rgba(30, 50, 100, 0.65)";
             ctx.beginPath();
             canvasRoundRect(ctx, itemX, restCardY, restItemW, restCardH, 12);
             ctx.fill();
 
-            // Card border
             ctx.strokeStyle = "rgba(204, 203, 204, 0.2)";
             ctx.lineWidth = 1;
             ctx.beginPath();
             canvasRoundRect(ctx, itemX, restCardY, restItemW, restCardH, 12);
             ctx.stroke();
 
-            // Color bar
             ctx.fillStyle = rankColor;
             ctx.fillRect(itemX, restCardY, restItemW, 6);
 
-            // Jersey image
+            // Jersey image — dynamic, fills card
+            var rTextBlockH = 95;
+            var rImgTopPad = 12;
             if (rImg && rImg.naturalWidth > 0) {
-                var rImgMaxH = restCardH - 160;
-                var rImgMaxW = restItemW - 40;
+                var rImgMaxH = restCardH - rTextBlockH - rImgTopPad;
+                var rImgMaxW = restItemW - 20;
                 var rScale = Math.min(rImgMaxW / rImg.naturalWidth, rImgMaxH / rImg.naturalHeight);
                 var rDrawW = rImg.naturalWidth * rScale;
                 var rDrawH = rImg.naturalHeight * rScale;
                 var rImgX = itemX + (restItemW - rDrawW) / 2;
-                var rImgY = restCardY + 20;
+                var rImgY = restCardY + rImgTopPad;
                 ctx.drawImage(rImg, rImgX, rImgY, rDrawW, rDrawH);
             }
 
-            // Text below image
-            var rTextY = restCardY + restCardH - 120;
+            var rTextY = restCardY + restCardH - rTextBlockH;
 
             ctx.fillStyle = rankColor;
             ctx.font = "bold 48px " + font;
@@ -797,15 +779,14 @@ function drawAndDownload(images, tryWithImages) {
 
             ctx.fillStyle = "#FFFFFF";
             ctx.font = "bold 26px " + font;
-            ctx.fillText(rk.team + " " + rk.year, itemX + restItemW / 2, rTextY + 66);
+            ctx.fillText(rk.team + " " + rk.year, itemX + restItemW / 2, rTextY + 60);
 
             ctx.fillStyle = "#CCCBCC";
             ctx.font = "italic 22px " + font;
-            ctx.fillText(rk.kit, itemX + restItemW / 2, rTextY + 96);
+            ctx.fillText(rk.kit, itemX + restItemW / 2, rTextY + 86);
         }
     }
 
-    // Draw rest row(s)
     if (restRow1Count > 0) {
         drawRestRow(3, restRow1Count, restRow1Y, restRow1H);
     }
@@ -822,7 +803,7 @@ function drawAndDownload(images, tryWithImages) {
     if (totalKits > displayCount) {
         footerText = "Top " + displayCount + " of " + totalKits + "  |  " + footerText;
     }
-    ctx.fillText(footerText, canvasW / 2, canvasH - 40);
+    ctx.fillText(footerText, canvasW / 2, canvasH - 18);
 
     // === EXPORT ===
     try {
