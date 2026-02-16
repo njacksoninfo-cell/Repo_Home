@@ -553,7 +553,7 @@ function generateInfographic() {
 
     var kits = kitObjects;
     var totalKits = namMember.length;
-    var displayCount = (currentMode === "all") ? Math.min(totalKits, 20) : Math.min(totalKits, 10);
+    var displayCount = Math.min(totalKits, 10);
     var promises = [];
 
     for (var i = 0; i < displayCount; i++) {
@@ -580,12 +580,12 @@ function drawAndDownload(images, tryWithImages) {
     var modeLabel = currentMode === "all" ? "ALL-TIME" : currentMode.toUpperCase();
     var kits = kitObjects;
     var totalKits = namMember.length;
-    var displayCount = (currentMode === "all") ? Math.min(totalKits, 20) : Math.min(totalKits, 10);
+    var displayCount = Math.min(totalKits, 10);
     var colors = generateGradient(totalKits);
     var font = "-apple-system, BlinkMacSystemFont, sans-serif";
 
     var canvasW = 3200;
-    var canvasH = displayCount > 10 ? 2400 : 1800;
+    var canvasH = 1800;
 
     var canvas = document.createElement("canvas");
     canvas.width = canvasW;
@@ -627,24 +627,14 @@ function drawAndDownload(images, tryWithImages) {
     var footerH = 50;
 
     var podiumSectionY = titleH;
-    var podiumSectionH, restRow1Y, restRow1H, restRow2Y, restRow2H;
-    var restRow1Count = 0, restRow2Count = 0;
+    var podiumSectionH, restRow1Y, restRow1H;
+    var restRow1Count = 0;
 
-    if (displayCount > 10) {
-        podiumSectionH = 850;
-        restRow1Count = 7;
-        restRow2Count = restCount - 7;
-        var remaining = canvasH - titleH - podiumSectionH - footerH;
-        restRow1H = Math.floor(remaining / 2);
-        restRow2H = remaining - restRow1H;
-        restRow1Y = podiumSectionY + podiumSectionH;
-        restRow2Y = restRow1Y + restRow1H;
-    } else if (restCount > 0) {
+    if (restCount > 0) {
         podiumSectionH = 1000;
         restRow1Count = restCount;
         restRow1H = canvasH - titleH - podiumSectionH - footerH;
         restRow1Y = podiumSectionY + podiumSectionH;
-        restRow2Count = 0;
     } else {
         podiumSectionH = canvasH - titleH - footerH;
     }
@@ -789,9 +779,6 @@ function drawAndDownload(images, tryWithImages) {
 
     if (restRow1Count > 0) {
         drawRestRow(3, restRow1Count, restRow1Y, restRow1H);
-    }
-    if (restRow2Count > 0) {
-        drawRestRow(10, restRow2Count, restRow2Y, restRow2H);
     }
 
     // === FOOTER ===

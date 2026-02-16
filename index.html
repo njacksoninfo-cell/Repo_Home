@@ -30,6 +30,11 @@
             <button class="speed-btn" id="speedFull" onclick="setSpeed('full')">Full Rank</button>
         </div>
         <div class="mode-buttons">
+            <button class="mode-btn all-btn" onclick="startRanking('all')">
+                <span class="mode-btn-icon">&#127760;</span>
+                <span class="mode-btn-label">All Kits</span>
+                <span class="mode-btn-count" id="allCount"></span>
+            </button>
             <button class="mode-btn home-btn" onclick="startRanking('home')">
                 <span class="mode-btn-icon">&#127968;</span>
                 <span class="mode-btn-label">Home Kits</span>
@@ -44,11 +49,6 @@
                 <span class="mode-btn-icon">&#9733;</span>
                 <span class="mode-btn-label">Third Kits</span>
                 <span class="mode-btn-count" id="thirdCount"></span>
-            </button>
-            <button class="mode-btn all-btn" onclick="startRanking('all')">
-                <span class="mode-btn-icon">&#127760;</span>
-                <span class="mode-btn-label">All Kits</span>
-                <span class="mode-btn-count" id="allCount"></span>
             </button>
         </div>
         <p class="mode-footer">Pick a mode to start ranking. You'll compare two kits at a time.</p>
