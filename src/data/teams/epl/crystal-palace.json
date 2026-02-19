@@ -26,6 +26,7 @@
     { "id": "ismaila-sarr", "name": "Ismaila Sarr", "number": 7, "position": "RW" },
     { "id": "jean-philippe-mateta", "name": "Jean-Philippe Mateta", "number": 9, "position": "ST" },
     { "id": "odsonne-edouard", "name": "Odsonne Edouard", "number": 22, "position": "ST" },
-    { "id": "eddie-nketiah", "name": "Eddie Nketiah", "number": 30, "position": "ST" }
+    { "id": "eddie-nketiah", "name": "Eddie Nketiah", "number": 30, "position": "ST" },
+    { "id": "naouirou-ahamada", "name": "Naouirou Ahamada", "number": 15, "position": "CM" }
   ]
 }

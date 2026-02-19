@@ -24,7 +24,7 @@
     { "id": "brajan-gruda", "name": "Brajan Gruda", "number": 16, "position": "RM" },
     { "id": "kaoru-mitoma", "name": "Kaoru Mitoma", "number": 22, "position": "LW" },
     { "id": "simon-adingra", "name": "Simon Adingra", "number": 7, "position": "RW" },
-    { "id": "georginio-rutter", "name": "Georginio Rutter", "number": 10, "position": "CF" },
+    { "id": "georginio-rutter", "name": "Georginio Rutter", "number": 10, "position": "CAM" },
     { "id": "danny-welbeck", "name": "Danny Welbeck", "number": 18, "position": "ST" },
     { "id": "joao-pedro", "name": "Joao Pedro", "number": 9, "position": "ST" },
     { "id": "evan-ferguson", "name": "Evan Ferguson", "number": 28, "position": "ST" }

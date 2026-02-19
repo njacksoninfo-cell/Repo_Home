@@ -13,10 +13,9 @@
     { "id": "max-kilman", "name": "Max Kilman", "number": 4, "position": "CB" },
     { "id": "konstantinos-mavropanos", "name": "Konstantinos Mavropanos", "number": 15, "position": "CB" },
     { "id": "jean-clair-todibo", "name": "Jean-Clair Todibo", "number": 5, "position": "CB" },
-    { "id": "nayef-aguerd", "name": "Nayef Aguerd", "number": 27, "position": "CB" },
     { "id": "aaron-wan-bissaka", "name": "Aaron Wan-Bissaka", "number": 2, "position": "RB" },
     { "id": "emerson-palmieri", "name": "Emerson Palmieri", "number": 33, "position": "LB" },
-    { "id": "vladimir-coufal", "name": "Vladimir Coufal", "number": 5, "position": "RB" },
+    { "id": "vladimir-coufal", "name": "Vladimir Coufal", "number": 28, "position": "RB" },
     { "id": "aaron-cresswell", "name": "Aaron Cresswell", "number": 3, "position": "LB" },
     { "id": "tomas-soucek", "name": "Tomas Soucek", "number": 28, "position": "CM" },
     { "id": "lucas-paqueta", "name": "Lucas Paqueta", "number": 11, "position": "CAM" },
@@ -27,9 +26,7 @@
     { "id": "mohammed-kudus", "name": "Mohammed Kudus", "number": 14, "position": "RW" },
     { "id": "jarrod-bowen", "name": "Jarrod Bowen", "number": 20, "position": "RW" },
     { "id": "crysencio-summerville", "name": "Crysencio Summerville", "number": 7, "position": "LW" },
-    { "id": "luis-guilherme", "name": "Luis Guilherme", "number": 16, "position": "LW" },
-    { "id": "michail-antonio", "name": "Michail Antonio", "number": 9, "position": "ST" },
-    { "id": "danny-ings", "name": "Danny Ings", "number": 18, "position": "ST" },
-    { "id": "niclas-fullkrug", "name": "Niclas Fullkrug", "number": 11, "position": "ST" }
+    { "id": "niclas-fullkrug", "name": "Niclas Fullkrug", "number": 11, "position": "ST" },
+    { "id": "michail-antonio", "name": "Michail Antonio", "number": 9, "position": "ST" }
   ]
 }
