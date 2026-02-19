@@ -1,0 +1,31 @@
+{
+  "id": "orlando-city",
+  "name": "Orlando City SC",
+  "shortName": "ORL",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#633492",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "orl-1", "name": "Pedro Gallese", "number": 1, "position": "GK" },
+    { "id": "orl-33", "name": "Mason Stajduhar", "number": 33, "position": "GK" },
+    { "id": "orl-2", "name": "Rafael Santos", "number": 2, "position": "RB" },
+    { "id": "orl-3", "name": "Robin Jansson", "number": 3, "position": "CB" },
+    { "id": "orl-4", "name": "Rodrigo Schlegel", "number": 4, "position": "CB" },
+    { "id": "orl-5", "name": "Michael Halliday", "number": 5, "position": "LB" },
+    { "id": "orl-6", "name": "Wilder Cartagena", "number": 6, "position": "CDM" },
+    { "id": "orl-8", "name": "Dagur Dan Thorhallsson", "number": 8, "position": "RM" },
+    { "id": "orl-10", "name": "Facundo Torres", "number": 10, "position": "RW" },
+    { "id": "orl-7", "name": "Ivan Angulo", "number": 7, "position": "LW" },
+    { "id": "orl-11", "name": "Gaston Gonzalez", "number": 11, "position": "LW" },
+    { "id": "orl-9", "name": "Duncan McGuire", "number": 9, "position": "ST" },
+    { "id": "orl-14", "name": "Martin Ojeda", "number": 14, "position": "CAM" },
+    { "id": "orl-17", "name": "Cesar Araujo", "number": 17, "position": "CM" },
+    { "id": "orl-20", "name": "Ramiro Enrique", "number": 20, "position": "ST" },
+    { "id": "orl-22", "name": "David Brekalo", "number": 22, "position": "CB" },
+    { "id": "orl-23", "name": "Ercan Kara", "number": 23, "position": "CF" },
+    { "id": "orl-15", "name": "Kyle Smith", "number": 15, "position": "RB" }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "arsenal",
+  "name": "Arsenal",
+  "shortName": "ARS",
+  "league": "epl",
+  "colors": {
+    "primary": "#EF0107",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "david-raya", "name": "David Raya", "number": 22, "position": "GK" },
+    { "id": "neto", "name": "Neto", "number": 32, "position": "GK" },
+    { "id": "ben-white", "name": "Ben White", "number": 4, "position": "RB" },
+    { "id": "william-saliba", "name": "William Saliba", "number": 2, "position": "CB" },
+    { "id": "gabriel-magalhaes", "name": "Gabriel Magalhaes", "number": 6, "position": "CB" },
+    { "id": "jurrien-timber", "name": "Jurrien Timber", "number": 12, "position": "LB" },
+    { "id": "takehiro-tomiyasu", "name": "Takehiro Tomiyasu", "number": 18, "position": "RB" },
+    { "id": "riccardo-calafiori", "name": "Riccardo Calafiori", "number": 33, "position": "LB" },
+    { "id": "jakub-kiwior", "name": "Jakub Kiwior", "number": 15, "position": "CB" },
+    { "id": "declan-rice", "name": "Declan Rice", "number": 41, "position": "CDM" },
+    { "id": "thomas-partey", "name": "Thomas Partey", "number": 5, "position": "CDM" },
+    { "id": "martin-odegaard", "name": "Martin Odegaard", "number": 8, "position": "CAM" },
+    { "id": "jorginho", "name": "Jorginho", "number": 20, "position": "CM" },
+    { "id": "mikel-merino", "name": "Mikel Merino", "number": 23, "position": "CM" },
+    { "id": "ethan-nwaneri", "name": "Ethan Nwaneri", "number": 53, "position": "CAM" },
+    { "id": "bukayo-saka", "name": "Bukayo Saka", "number": 7, "position": "RW" },
+    { "id": "gabriel-martinelli", "name": "Gabriel Martinelli", "number": 11, "position": "LW" },
+    { "id": "leandro-trossard", "name": "Leandro Trossard", "number": 19, "position": "LW" },
+    { "id": "raheem-sterling", "name": "Raheem Sterling", "number": 30, "position": "LM" },
+    { "id": "kai-havertz", "name": "Kai Havertz", "number": 29, "position": "CF" },
+    { "id": "gabriel-jesus", "name": "Gabriel Jesus", "number": 9, "position": "ST" }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "minnesota-united",
+  "name": "Minnesota United FC",
+  "shortName": "MIN",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#E4E5E6",
+    "secondary": "#9BCBEB"
+  },
+  "players": [
+    { "id": "min-1", "name": "Dayne St. Clair", "number": 1, "position": "GK" },
+    { "id": "min-30", "name": "Clint Irwin", "number": 30, "position": "GK" },
+    { "id": "min-2", "name": "DJ Taylor", "number": 2, "position": "RB" },
+    { "id": "min-3", "name": "Michael Boxall", "number": 3, "position": "CB" },
+    { "id": "min-4", "name": "Miguel Tapias", "number": 4, "position": "CB" },
+    { "id": "min-5", "name": "Carlos Harvey", "number": 5, "position": "CB" },
+    { "id": "min-15", "name": "Joseph Rosales", "number": 15, "position": "CM" },
+    { "id": "min-6", "name": "Hassani Dotson", "number": 6, "position": "CM" },
+    { "id": "min-8", "name": "Wil Trapp", "number": 8, "position": "CDM" },
+    { "id": "min-10", "name": "Robin Lod", "number": 10, "position": "CAM" },
+    { "id": "min-7", "name": "Franco Fragapane", "number": 7, "position": "LW" },
+    { "id": "min-11", "name": "Bongokuhle Hlongwane", "number": 11, "position": "RW" },
+    { "id": "min-9", "name": "Teemu Pukki", "number": 9, "position": "ST" },
+    { "id": "min-14", "name": "Kelvin Yeboah", "number": 14, "position": "ST" },
+    { "id": "min-17", "name": "Caden Clark", "number": 17, "position": "CM" },
+    { "id": "min-20", "name": "Sang Bin Jeong", "number": 20, "position": "LW" },
+    { "id": "min-22", "name": "Zarek Valentin", "number": 22, "position": "RB" },
+    { "id": "min-23", "name": "Jefferson Diaz", "number": 23, "position": "LB" },
+    { "id": "min-24", "name": "Devin Padelford", "number": 24, "position": "LB" }
+  ]
+}

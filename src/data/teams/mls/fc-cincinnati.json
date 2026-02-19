@@ -1,0 +1,32 @@
+{
+  "id": "fc-cincinnati",
+  "name": "FC Cincinnati",
+  "shortName": "CIN",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#F05323",
+    "secondary": "#263B80"
+  },
+  "players": [
+    { "id": "cin-1", "name": "Roman Celentano", "number": 1, "position": "GK" },
+    { "id": "cin-33", "name": "Alec Kann", "number": 33, "position": "GK" },
+    { "id": "cin-2", "name": "Alvas Powell", "number": 2, "position": "RB" },
+    { "id": "cin-3", "name": "Matt Miazga", "number": 3, "position": "CB" },
+    { "id": "cin-4", "name": "Nick Hagglund", "number": 4, "position": "CB" },
+    { "id": "cin-5", "name": "Miles Robinson", "number": 5, "position": "CB" },
+    { "id": "cin-15", "name": "DeAndre Yedlin", "number": 15, "position": "RB" },
+    { "id": "cin-6", "name": "Obinna Nwobodo", "number": 6, "position": "CDM" },
+    { "id": "cin-8", "name": "Pavel Bucha", "number": 8, "position": "CM" },
+    { "id": "cin-10", "name": "Luciano Acosta", "number": 10, "position": "CAM" },
+    { "id": "cin-7", "name": "Luca Orellano", "number": 7, "position": "RW" },
+    { "id": "cin-11", "name": "Yamil Asad", "number": 11, "position": "LW" },
+    { "id": "cin-9", "name": "Aaron Boupendza", "number": 9, "position": "ST" },
+    { "id": "cin-14", "name": "Kevin Kelsy", "number": 14, "position": "LW" },
+    { "id": "cin-17", "name": "Ian Murphy", "number": 17, "position": "CB" },
+    { "id": "cin-23", "name": "Bret Halsey", "number": 23, "position": "CM" },
+    { "id": "cin-20", "name": "Corey Baird", "number": 20, "position": "RW" },
+    { "id": "cin-22", "name": "Yuya Kubo", "number": 22, "position": "CF" },
+    { "id": "cin-24", "name": "Liam Burt", "number": 24, "position": "LB" }
+  ]
+}

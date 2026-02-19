@@ -1,0 +1,31 @@
+{
+  "id": "sporting-kansas-city",
+  "name": "Sporting Kansas City",
+  "shortName": "SKC",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#93B1D7",
+    "secondary": "#002F65"
+  },
+  "players": [
+    { "id": "skc-1", "name": "Tim Melia", "number": 1, "position": "GK" },
+    { "id": "skc-29", "name": "John Pulskamp", "number": 29, "position": "GK" },
+    { "id": "skc-2", "name": "Dany Rosero", "number": 2, "position": "CB" },
+    { "id": "skc-3", "name": "Andreu Fontas", "number": 3, "position": "CB" },
+    { "id": "skc-4", "name": "Robert Voloder", "number": 4, "position": "CB" },
+    { "id": "skc-5", "name": "Logan Ndenbe", "number": 5, "position": "LB" },
+    { "id": "skc-15", "name": "Kayden Pierre", "number": 15, "position": "RB" },
+    { "id": "skc-6", "name": "Remi Walter", "number": 6, "position": "CDM" },
+    { "id": "skc-8", "name": "Erik Thommy", "number": 8, "position": "CAM" },
+    { "id": "skc-10", "name": "Daniel Salloi", "number": 10, "position": "RW" },
+    { "id": "skc-7", "name": "Stephen Afrifa", "number": 7, "position": "LW" },
+    { "id": "skc-11", "name": "Khiry Shelton", "number": 11, "position": "ST" },
+    { "id": "skc-9", "name": "Alan Pulido", "number": 9, "position": "ST" },
+    { "id": "skc-14", "name": "Jake Davis", "number": 14, "position": "CM" },
+    { "id": "skc-17", "name": "Johnny Russell", "number": 17, "position": "RW" },
+    { "id": "skc-20", "name": "Memo Rodriguez", "number": 20, "position": "CM" },
+    { "id": "skc-22", "name": "Felipe Hernandez", "number": 22, "position": "CM" },
+    { "id": "skc-23", "name": "Willy Agada", "number": 23, "position": "CF" }
+  ]
+}

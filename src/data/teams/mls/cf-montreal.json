@@ -1,0 +1,32 @@
+{
+  "id": "cf-montreal",
+  "name": "CF Montréal",
+  "shortName": "MTL",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#000000",
+    "secondary": "#0033A1"
+  },
+  "players": [
+    { "id": "mtl-1", "name": "Jonathan Sirois", "number": 1, "position": "GK" },
+    { "id": "mtl-23", "name": "Sebastian Breza", "number": 23, "position": "GK" },
+    { "id": "mtl-2", "name": "Joel Waterman", "number": 2, "position": "CB" },
+    { "id": "mtl-3", "name": "Dawid Bugaj", "number": 3, "position": "LB" },
+    { "id": "mtl-4", "name": "George Campbell", "number": 4, "position": "CB" },
+    { "id": "mtl-5", "name": "Gabriele Corbo", "number": 5, "position": "CB" },
+    { "id": "mtl-15", "name": "Raheem Edwards", "number": 15, "position": "LB" },
+    { "id": "mtl-6", "name": "Samuel Piette", "number": 6, "position": "CDM" },
+    { "id": "mtl-8", "name": "Bryce Duke", "number": 8, "position": "CM" },
+    { "id": "mtl-10", "name": "Caden Clark", "number": 10, "position": "CAM" },
+    { "id": "mtl-7", "name": "Mathieu Choiniere", "number": 7, "position": "LW" },
+    { "id": "mtl-11", "name": "Sunusi Ibrahim", "number": 11, "position": "ST" },
+    { "id": "mtl-9", "name": "Josef Martinez", "number": 9, "position": "ST" },
+    { "id": "mtl-14", "name": "Kwadwo Opoku", "number": 14, "position": "RW" },
+    { "id": "mtl-17", "name": "Lassi Lappalainen", "number": 17, "position": "LW" },
+    { "id": "mtl-20", "name": "Tom Pearce", "number": 20, "position": "LB" },
+    { "id": "mtl-21", "name": "Ariel Lassiter", "number": 21, "position": "RW" },
+    { "id": "mtl-24", "name": "Ruan", "number": 24, "position": "RB" },
+    { "id": "mtl-25", "name": "Victor Wanyama", "number": 25, "position": "CDM" }
+  ]
+}

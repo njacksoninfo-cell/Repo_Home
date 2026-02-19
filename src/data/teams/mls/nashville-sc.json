@@ -1,0 +1,32 @@
+{
+  "id": "nashville-sc",
+  "name": "Nashville SC",
+  "shortName": "NSH",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#ECE83A",
+    "secondary": "#1F1646"
+  },
+  "players": [
+    { "id": "nsh-1", "name": "Joe Willis", "number": 1, "position": "GK" },
+    { "id": "nsh-24", "name": "Elliot Panicco", "number": 24, "position": "GK" },
+    { "id": "nsh-2", "name": "Shaq Moore", "number": 2, "position": "RB" },
+    { "id": "nsh-3", "name": "Walker Zimmerman", "number": 3, "position": "CB" },
+    { "id": "nsh-4", "name": "Jack Maher", "number": 4, "position": "CB" },
+    { "id": "nsh-5", "name": "Daniel Lovitz", "number": 5, "position": "LB" },
+    { "id": "nsh-12", "name": "Anibal Godoy", "number": 12, "position": "CDM" },
+    { "id": "nsh-6", "name": "Dru Yearwood", "number": 6, "position": "CM" },
+    { "id": "nsh-8", "name": "Randall Leal", "number": 8, "position": "LW" },
+    { "id": "nsh-10", "name": "Hany Mukhtar", "number": 10, "position": "CAM" },
+    { "id": "nsh-7", "name": "Alex Muyl", "number": 7, "position": "RM" },
+    { "id": "nsh-11", "name": "Tyler Boyd", "number": 11, "position": "RW" },
+    { "id": "nsh-9", "name": "Sam Surridge", "number": 9, "position": "ST" },
+    { "id": "nsh-14", "name": "Teal Bunbury", "number": 14, "position": "CF" },
+    { "id": "nsh-17", "name": "Taylor Washington", "number": 17, "position": "LB" },
+    { "id": "nsh-15", "name": "Josh Bauer", "number": 15, "position": "CB" },
+    { "id": "nsh-20", "name": "Adem Annabi", "number": 20, "position": "CM" },
+    { "id": "nsh-22", "name": "Jacob Shaffelburg", "number": 22, "position": "LW" },
+    { "id": "nsh-23", "name": "Sean Davis", "number": 23, "position": "CDM" }
+  ]
+}

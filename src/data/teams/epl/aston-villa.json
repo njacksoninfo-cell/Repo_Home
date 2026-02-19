@@ -1,0 +1,32 @@
+{
+  "id": "aston-villa",
+  "name": "Aston Villa",
+  "shortName": "AVL",
+  "league": "epl",
+  "colors": {
+    "primary": "#670E36",
+    "secondary": "#95BFE5"
+  },
+  "players": [
+    { "id": "emiliano-martinez", "name": "Emiliano Martinez", "number": 1, "position": "GK" },
+    { "id": "robin-olsen", "name": "Robin Olsen", "number": 33, "position": "GK" },
+    { "id": "ezri-konsa", "name": "Ezri Konsa", "number": 4, "position": "CB" },
+    { "id": "pau-torres", "name": "Pau Torres", "number": 14, "position": "CB" },
+    { "id": "diego-carlos", "name": "Diego Carlos", "number": 3, "position": "CB" },
+    { "id": "tyrone-mings", "name": "Tyrone Mings", "number": 40, "position": "CB" },
+    { "id": "lucas-digne", "name": "Lucas Digne", "number": 12, "position": "LB" },
+    { "id": "matty-cash", "name": "Matty Cash", "number": 2, "position": "RB" },
+    { "id": "ian-maatsen", "name": "Ian Maatsen", "number": 22, "position": "LB" },
+    { "id": "boubacar-kamara", "name": "Boubacar Kamara", "number": 5, "position": "CDM" },
+    { "id": "youri-tielemans", "name": "Youri Tielemans", "number": 8, "position": "CM" },
+    { "id": "john-mcginn", "name": "John McGinn", "number": 7, "position": "CM" },
+    { "id": "jacob-ramsey", "name": "Jacob Ramsey", "number": 41, "position": "CM" },
+    { "id": "ross-barkley", "name": "Ross Barkley", "number": 6, "position": "CM" },
+    { "id": "amadou-onana", "name": "Amadou Onana", "number": 16, "position": "CDM" },
+    { "id": "morgan-rogers", "name": "Morgan Rogers", "number": 27, "position": "CAM" },
+    { "id": "leon-bailey", "name": "Leon Bailey", "number": 31, "position": "RW" },
+    { "id": "jaden-philogene", "name": "Jaden Philogene", "number": 10, "position": "LW" },
+    { "id": "ollie-watkins", "name": "Ollie Watkins", "number": 11, "position": "ST" },
+    { "id": "jhon-duran", "name": "Jhon Duran", "number": 9, "position": "ST" }
+  ]
+}

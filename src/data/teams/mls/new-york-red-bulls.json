@@ -1,0 +1,31 @@
+{
+  "id": "new-york-red-bulls",
+  "name": "New York Red Bulls",
+  "shortName": "RBNY",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#ED1E36",
+    "secondary": "#27251F"
+  },
+  "players": [
+    { "id": "rbny-1", "name": "Carlos Coronel", "number": 1, "position": "GK" },
+    { "id": "rbny-31", "name": "Ryan Meara", "number": 31, "position": "GK" },
+    { "id": "rbny-2", "name": "Dylan Nealis", "number": 2, "position": "RB" },
+    { "id": "rbny-3", "name": "Sean Nealis", "number": 3, "position": "CB" },
+    { "id": "rbny-4", "name": "Hassan Ndam", "number": 4, "position": "CB" },
+    { "id": "rbny-5", "name": "John Tolkin", "number": 5, "position": "LB" },
+    { "id": "rbny-6", "name": "Frankie Amaya", "number": 6, "position": "CM" },
+    { "id": "rbny-8", "name": "Peter Stroud", "number": 8, "position": "CM" },
+    { "id": "rbny-10", "name": "Lewis Morgan", "number": 10, "position": "RW" },
+    { "id": "rbny-7", "name": "Elias Manoel", "number": 7, "position": "ST" },
+    { "id": "rbny-11", "name": "Daniel Edelman", "number": 11, "position": "CDM" },
+    { "id": "rbny-9", "name": "Dante Vanzeir", "number": 9, "position": "ST" },
+    { "id": "rbny-14", "name": "Cameron Harper", "number": 14, "position": "RW" },
+    { "id": "rbny-17", "name": "Wiki Carmona", "number": 17, "position": "CAM" },
+    { "id": "rbny-20", "name": "Cory Burke", "number": 20, "position": "CF" },
+    { "id": "rbny-22", "name": "Dennis Gjengaar", "number": 22, "position": "LW" },
+    { "id": "rbny-23", "name": "Kyle Duncan", "number": 23, "position": "RB" },
+    { "id": "rbny-15", "name": "Andres Reyes", "number": 15, "position": "CB" }
+  ]
+}

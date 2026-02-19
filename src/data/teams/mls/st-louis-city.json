@@ -1,0 +1,32 @@
+{
+  "id": "st-louis-city",
+  "name": "St. Louis CITY SC",
+  "shortName": "STL",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#D22630",
+    "secondary": "#0A1E3F"
+  },
+  "players": [
+    { "id": "stl-1", "name": "Roman Bürki", "number": 1, "position": "GK" },
+    { "id": "stl-30", "name": "Ben Lundt", "number": 30, "position": "GK" },
+    { "id": "stl-2", "name": "Josh Yaro", "number": 2, "position": "CB" },
+    { "id": "stl-3", "name": "Kyle Hiebert", "number": 3, "position": "CB" },
+    { "id": "stl-4", "name": "Jake Nerwinski", "number": 4, "position": "RB" },
+    { "id": "stl-5", "name": "Tomas Totland", "number": 5, "position": "RB" },
+    { "id": "stl-15", "name": "Tim Parker", "number": 15, "position": "CB" },
+    { "id": "stl-6", "name": "Njabulo Blom", "number": 6, "position": "CDM" },
+    { "id": "stl-8", "name": "Rasmus Alm", "number": 8, "position": "CM" },
+    { "id": "stl-10", "name": "Eduard Löwen", "number": 10, "position": "CAM" },
+    { "id": "stl-7", "name": "Indiana Vassilev", "number": 7, "position": "LW" },
+    { "id": "stl-11", "name": "Cedric Teuchert", "number": 11, "position": "RW" },
+    { "id": "stl-9", "name": "Joao Klauss", "number": 9, "position": "ST" },
+    { "id": "stl-14", "name": "Simon Becher", "number": 14, "position": "ST" },
+    { "id": "stl-17", "name": "Chris Durkin", "number": 17, "position": "CM" },
+    { "id": "stl-20", "name": "Jannes Horn", "number": 20, "position": "LB" },
+    { "id": "stl-22", "name": "Marcel Hartel", "number": 22, "position": "CAM" },
+    { "id": "stl-23", "name": "Akil Watts", "number": 23, "position": "LB" },
+    { "id": "stl-24", "name": "Anthony Markanich", "number": 24, "position": "LW" }
+  ]
+}

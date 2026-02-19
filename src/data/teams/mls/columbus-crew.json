@@ -1,0 +1,32 @@
+{
+  "id": "columbus-crew",
+  "name": "Columbus Crew",
+  "shortName": "CLB",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#FEDD00",
+    "secondary": "#000000"
+  },
+  "players": [
+    { "id": "clb-1", "name": "Patrick Schulte", "number": 1, "position": "GK" },
+    { "id": "clb-30", "name": "Abraham Romero", "number": 30, "position": "GK" },
+    { "id": "clb-2", "name": "Steven Moreira", "number": 2, "position": "RB" },
+    { "id": "clb-3", "name": "Rudy Camacho", "number": 3, "position": "CB" },
+    { "id": "clb-4", "name": "Sean Zawadzki", "number": 4, "position": "CDM" },
+    { "id": "clb-23", "name": "Will Sands", "number": 23, "position": "LB" },
+    { "id": "clb-5", "name": "Yevhen Cheberko", "number": 5, "position": "LB" },
+    { "id": "clb-6", "name": "Darlington Nagbe", "number": 6, "position": "CM" },
+    { "id": "clb-8", "name": "Aidan Morris", "number": 8, "position": "CM" },
+    { "id": "clb-10", "name": "Lucas Zelarayan", "number": 10, "position": "CAM" },
+    { "id": "clb-7", "name": "Dylan Chambost", "number": 7, "position": "LW" },
+    { "id": "clb-11", "name": "Cucho Hernandez", "number": 11, "position": "ST" },
+    { "id": "clb-9", "name": "Christian Ramirez", "number": 9, "position": "ST" },
+    { "id": "clb-14", "name": "Malte Amundsen", "number": 14, "position": "LB" },
+    { "id": "clb-17", "name": "Mohamed Farsi", "number": 17, "position": "RW" },
+    { "id": "clb-20", "name": "Max Arfsten", "number": 20, "position": "RW" },
+    { "id": "clb-22", "name": "Jacen Russell-Rowe", "number": 22, "position": "CF" },
+    { "id": "clb-25", "name": "Evan Bush", "number": 25, "position": "GK" },
+    { "id": "clb-15", "name": "Philip Quinton", "number": 15, "position": "CB" }
+  ]
+}

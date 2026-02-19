@@ -1,0 +1,32 @@
+{
+  "id": "brighton",
+  "name": "Brighton & Hove Albion",
+  "shortName": "BHA",
+  "league": "epl",
+  "colors": {
+    "primary": "#0057B8",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "bart-verbruggen", "name": "Bart Verbruggen", "number": 1, "position": "GK" },
+    { "id": "jason-steele", "name": "Jason Steele", "number": 23, "position": "GK" },
+    { "id": "lewis-dunk", "name": "Lewis Dunk", "number": 5, "position": "CB" },
+    { "id": "jan-paul-van-hecke", "name": "Jan Paul van Hecke", "number": 29, "position": "CB" },
+    { "id": "adam-webster", "name": "Adam Webster", "number": 4, "position": "CB" },
+    { "id": "igor-julio", "name": "Igor Julio", "number": 2, "position": "CB" },
+    { "id": "pervis-estupinan", "name": "Pervis Estupinan", "number": 30, "position": "LB" },
+    { "id": "tariq-lamptey", "name": "Tariq Lamptey", "number": 27, "position": "RB" },
+    { "id": "james-milner", "name": "James Milner", "number": 6, "position": "CM" },
+    { "id": "carlos-baleba", "name": "Carlos Baleba", "number": 45, "position": "CDM" },
+    { "id": "jack-hinshelwood", "name": "Jack Hinshelwood", "number": 8, "position": "CM" },
+    { "id": "matt-oreilly", "name": "Matt O'Riley", "number": 41, "position": "CAM" },
+    { "id": "yasin-ayari", "name": "Yasin Ayari", "number": 24, "position": "CM" },
+    { "id": "brajan-gruda", "name": "Brajan Gruda", "number": 16, "position": "RM" },
+    { "id": "kaoru-mitoma", "name": "Kaoru Mitoma", "number": 22, "position": "LW" },
+    { "id": "simon-adingra", "name": "Simon Adingra", "number": 7, "position": "RW" },
+    { "id": "georginio-rutter", "name": "Georginio Rutter", "number": 10, "position": "CF" },
+    { "id": "danny-welbeck", "name": "Danny Welbeck", "number": 18, "position": "ST" },
+    { "id": "joao-pedro", "name": "Joao Pedro", "number": 9, "position": "ST" },
+    { "id": "evan-ferguson", "name": "Evan Ferguson", "number": 28, "position": "ST" }
+  ]
+}

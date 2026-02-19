@@ -1,0 +1,32 @@
+{
+  "id": "dc-united",
+  "name": "D.C. United",
+  "shortName": "DCU",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#000000",
+    "secondary": "#EF3E42"
+  },
+  "players": [
+    { "id": "dcu-1", "name": "Alex Bono", "number": 1, "position": "GK" },
+    { "id": "dcu-31", "name": "Luis Zamudio", "number": 31, "position": "GK" },
+    { "id": "dcu-2", "name": "Aaron Herrera", "number": 2, "position": "RB" },
+    { "id": "dcu-3", "name": "Lucas Bartlett", "number": 3, "position": "CB" },
+    { "id": "dcu-4", "name": "Derrek Etienne Jr.", "number": 4, "position": "RW" },
+    { "id": "dcu-5", "name": "Pedro Santos", "number": 5, "position": "LW" },
+    { "id": "dcu-15", "name": "Donovan Pines", "number": 15, "position": "CB" },
+    { "id": "dcu-6", "name": "Russell Canouse", "number": 6, "position": "CDM" },
+    { "id": "dcu-8", "name": "Mateusz Klich", "number": 8, "position": "CM" },
+    { "id": "dcu-10", "name": "Cristian Dajome", "number": 10, "position": "RW" },
+    { "id": "dcu-7", "name": "Martin Rodriguez", "number": 7, "position": "LW" },
+    { "id": "dcu-9", "name": "Christian Benteke", "number": 9, "position": "ST" },
+    { "id": "dcu-11", "name": "Theodore Ku-DiPietro", "number": 11, "position": "CM" },
+    { "id": "dcu-14", "name": "Jared Stroud", "number": 14, "position": "RW" },
+    { "id": "dcu-17", "name": "Yohan Croizet", "number": 17, "position": "CAM" },
+    { "id": "dcu-20", "name": "Christopher McVey", "number": 20, "position": "CB" },
+    { "id": "dcu-22", "name": "Jacob Greene", "number": 22, "position": "LB" },
+    { "id": "dcu-23", "name": "Matti Peltola", "number": 23, "position": "CDM" },
+    { "id": "dcu-19", "name": "Gabriel Pirani", "number": 19, "position": "CAM" }
+  ]
+}

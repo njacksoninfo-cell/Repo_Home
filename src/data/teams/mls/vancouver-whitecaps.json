@@ -1,0 +1,32 @@
+{
+  "id": "vancouver-whitecaps",
+  "name": "Vancouver Whitecaps FC",
+  "shortName": "VAN",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#00245E",
+    "secondary": "#9DC2EA"
+  },
+  "players": [
+    { "id": "van-1", "name": "Yohei Takaoka", "number": 1, "position": "GK" },
+    { "id": "van-30", "name": "Isaac Boehmer", "number": 30, "position": "GK" },
+    { "id": "van-2", "name": "Sam Adekugbe", "number": 2, "position": "LB" },
+    { "id": "van-3", "name": "Tristan Blackmon", "number": 3, "position": "CB" },
+    { "id": "van-4", "name": "Ranko Veselinovic", "number": 4, "position": "CB" },
+    { "id": "van-5", "name": "Luis Martins", "number": 5, "position": "LB" },
+    { "id": "van-15", "name": "Julian Gressel", "number": 15, "position": "RB" },
+    { "id": "van-6", "name": "Andres Cubas", "number": 6, "position": "CDM" },
+    { "id": "van-8", "name": "Ryan Raposo", "number": 8, "position": "RW" },
+    { "id": "van-10", "name": "Ryan Gauld", "number": 10, "position": "CAM" },
+    { "id": "van-7", "name": "Pedro Vite", "number": 7, "position": "LW" },
+    { "id": "van-11", "name": "Ali Ahmed", "number": 11, "position": "LW" },
+    { "id": "van-9", "name": "Brian White", "number": 9, "position": "ST" },
+    { "id": "van-14", "name": "Alessandro Schopf", "number": 14, "position": "CM" },
+    { "id": "van-17", "name": "Stuart Armstrong", "number": 17, "position": "CM" },
+    { "id": "van-20", "name": "Fafa Picault", "number": 20, "position": "RW" },
+    { "id": "van-22", "name": "Sebastian Berhalter", "number": 22, "position": "CM" },
+    { "id": "van-23", "name": "Damir Kreilach", "number": 23, "position": "CF" },
+    { "id": "van-24", "name": "Mathias Laborda", "number": 24, "position": "CB" }
+  ]
+}

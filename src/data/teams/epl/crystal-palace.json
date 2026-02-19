@@ -1,0 +1,31 @@
+{
+  "id": "crystal-palace",
+  "name": "Crystal Palace",
+  "shortName": "CRY",
+  "league": "epl",
+  "colors": {
+    "primary": "#1B458F",
+    "secondary": "#C4122E"
+  },
+  "players": [
+    { "id": "dean-henderson", "name": "Dean Henderson", "number": 1, "position": "GK" },
+    { "id": "sam-johnstone", "name": "Sam Johnstone", "number": 32, "position": "GK" },
+    { "id": "marc-guehi", "name": "Marc Guehi", "number": 6, "position": "CB" },
+    { "id": "joachim-andersen", "name": "Joachim Andersen", "number": 5, "position": "CB" },
+    { "id": "chris-richards", "name": "Chris Richards", "number": 26, "position": "CB" },
+    { "id": "trevoh-chalobah", "name": "Trevoh Chalobah", "number": 2, "position": "CB" },
+    { "id": "tyrick-mitchell", "name": "Tyrick Mitchell", "number": 3, "position": "LB" },
+    { "id": "daniel-munoz", "name": "Daniel Munoz", "number": 22, "position": "RB" },
+    { "id": "nathaniel-clyne", "name": "Nathaniel Clyne", "number": 17, "position": "RB" },
+    { "id": "adam-wharton", "name": "Adam Wharton", "number": 10, "position": "CM" },
+    { "id": "cheick-doucoure", "name": "Cheick Doucoure", "number": 28, "position": "CDM" },
+    { "id": "jefferson-lerma", "name": "Jefferson Lerma", "number": 8, "position": "CM" },
+    { "id": "daichi-kamada", "name": "Daichi Kamada", "number": 14, "position": "CAM" },
+    { "id": "will-hughes", "name": "Will Hughes", "number": 19, "position": "CM" },
+    { "id": "eberechi-eze", "name": "Eberechi Eze", "number": 10, "position": "CAM" },
+    { "id": "ismaila-sarr", "name": "Ismaila Sarr", "number": 7, "position": "RW" },
+    { "id": "jean-philippe-mateta", "name": "Jean-Philippe Mateta", "number": 9, "position": "ST" },
+    { "id": "odsonne-edouard", "name": "Odsonne Edouard", "number": 22, "position": "ST" },
+    { "id": "eddie-nketiah", "name": "Eddie Nketiah", "number": 30, "position": "ST" }
+  ]
+}

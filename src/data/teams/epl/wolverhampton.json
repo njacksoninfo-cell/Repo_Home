@@ -1,0 +1,33 @@
+{
+  "id": "wolverhampton",
+  "name": "Wolverhampton Wanderers",
+  "shortName": "WOL",
+  "league": "epl",
+  "colors": {
+    "primary": "#FDB913",
+    "secondary": "#231F20"
+  },
+  "players": [
+    { "id": "jose-sa", "name": "Jose Sa", "number": 1, "position": "GK" },
+    { "id": "daniel-bentley", "name": "Daniel Bentley", "number": 20, "position": "GK" },
+    { "id": "craig-dawson", "name": "Craig Dawson", "number": 15, "position": "CB" },
+    { "id": "santiago-bueno", "name": "Santiago Bueno", "number": 4, "position": "CB" },
+    { "id": "toti-gomes", "name": "Toti Gomes", "number": 24, "position": "CB" },
+    { "id": "yerson-mosquera", "name": "Yerson Mosquera", "number": 14, "position": "CB" },
+    { "id": "matt-doherty", "name": "Matt Doherty", "number": 2, "position": "RB" },
+    { "id": "nelson-semedo", "name": "Nelson Semedo", "number": 22, "position": "RB" },
+    { "id": "rayan-ait-nouri", "name": "Rayan Ait-Nouri", "number": 3, "position": "LB" },
+    { "id": "hugo-bueno", "name": "Hugo Bueno", "number": 17, "position": "LB" },
+    { "id": "joao-gomes", "name": "Joao Gomes", "number": 35, "position": "CDM" },
+    { "id": "mario-lemina", "name": "Mario Lemina", "number": 5, "position": "CDM" },
+    { "id": "tommy-doyle", "name": "Tommy Doyle", "number": 8, "position": "CM" },
+    { "id": "andre-wol", "name": "Andre", "number": 21, "position": "CM" },
+    { "id": "jean-ricner-bellegarde", "name": "Jean-Ricner Bellegarde", "number": 6, "position": "CM" },
+    { "id": "pablo-sarabia", "name": "Pablo Sarabia", "number": 11, "position": "RW" },
+    { "id": "hwang-hee-chan", "name": "Hwang Hee-Chan", "number": 26, "position": "RW" },
+    { "id": "carlos-forbs", "name": "Carlos Forbs", "number": 7, "position": "LW" },
+    { "id": "goncalo-guedes", "name": "Goncalo Guedes", "number": 29, "position": "LW" },
+    { "id": "matheus-cunha", "name": "Matheus Cunha", "number": 10, "position": "CF" },
+    { "id": "jorgen-strand-larsen", "name": "Jorgen Strand Larsen", "number": 9, "position": "ST" }
+  ]
+}

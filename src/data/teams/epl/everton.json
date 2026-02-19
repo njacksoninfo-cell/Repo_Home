@@ -1,0 +1,32 @@
+{
+  "id": "everton",
+  "name": "Everton",
+  "shortName": "EVE",
+  "league": "epl",
+  "colors": {
+    "primary": "#003399",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "jordan-pickford", "name": "Jordan Pickford", "number": 1, "position": "GK" },
+    { "id": "joao-virginia", "name": "Joao Virginia", "number": 12, "position": "GK" },
+    { "id": "james-tarkowski", "name": "James Tarkowski", "number": 2, "position": "CB" },
+    { "id": "jarrad-branthwaite", "name": "Jarrad Branthwaite", "number": 32, "position": "CB" },
+    { "id": "michael-keane", "name": "Michael Keane", "number": 5, "position": "CB" },
+    { "id": "jake-obrien", "name": "Jake O'Brien", "number": 4, "position": "CB" },
+    { "id": "vitalii-mykolenko", "name": "Vitalii Mykolenko", "number": 19, "position": "LB" },
+    { "id": "ashley-young", "name": "Ashley Young", "number": 18, "position": "RB" },
+    { "id": "seamus-coleman", "name": "Seamus Coleman", "number": 23, "position": "RB" },
+    { "id": "idrissa-gueye", "name": "Idrissa Gueye", "number": 27, "position": "CDM" },
+    { "id": "james-garner", "name": "James Garner", "number": 37, "position": "CM" },
+    { "id": "abdoulaye-doucoure", "name": "Abdoulaye Doucoure", "number": 16, "position": "CM" },
+    { "id": "orel-mangala", "name": "Orel Mangala", "number": 28, "position": "CM" },
+    { "id": "tim-iroegbunam", "name": "Tim Iroegbunam", "number": 6, "position": "CDM" },
+    { "id": "iliman-ndiaye", "name": "Iliman Ndiaye", "number": 10, "position": "CAM" },
+    { "id": "dwight-mcneil", "name": "Dwight McNeil", "number": 7, "position": "LW" },
+    { "id": "jack-harrison", "name": "Jack Harrison", "number": 11, "position": "LW" },
+    { "id": "jesper-lindstrom", "name": "Jesper Lindstrom", "number": 29, "position": "RW" },
+    { "id": "dominic-calvert-lewin", "name": "Dominic Calvert-Lewin", "number": 9, "position": "ST" },
+    { "id": "beto", "name": "Beto", "number": 14, "position": "ST" }
+  ]
+}

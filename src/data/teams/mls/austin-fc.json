@@ -1,0 +1,32 @@
+{
+  "id": "austin-fc",
+  "name": "Austin FC",
+  "shortName": "ATX",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#00B140",
+    "secondary": "#000000"
+  },
+  "players": [
+    { "id": "atx-1", "name": "Brad Stuver", "number": 1, "position": "GK" },
+    { "id": "atx-30", "name": "Andrew Tarbell", "number": 30, "position": "GK" },
+    { "id": "atx-2", "name": "Julio Cascante", "number": 2, "position": "CB" },
+    { "id": "atx-3", "name": "Leo Vaisanen", "number": 3, "position": "CB" },
+    { "id": "atx-4", "name": "Brendan Hines-Ike", "number": 4, "position": "CB" },
+    { "id": "atx-5", "name": "Jon Gallagher", "number": 5, "position": "LB" },
+    { "id": "atx-15", "name": "Hector Jimenez", "number": 15, "position": "RB" },
+    { "id": "atx-6", "name": "Dani Pereira", "number": 6, "position": "CDM" },
+    { "id": "atx-8", "name": "Alexander Ring", "number": 8, "position": "CM" },
+    { "id": "atx-10", "name": "Sebastian Driussi", "number": 10, "position": "CAM" },
+    { "id": "atx-7", "name": "Owen Wolff", "number": 7, "position": "LW" },
+    { "id": "atx-11", "name": "Emiliano Rigoni", "number": 11, "position": "RW" },
+    { "id": "atx-9", "name": "Gyasi Zardes", "number": 9, "position": "ST" },
+    { "id": "atx-14", "name": "Jader Obrian", "number": 14, "position": "RW" },
+    { "id": "atx-17", "name": "Diego Rubio", "number": 17, "position": "ST" },
+    { "id": "atx-20", "name": "Guilherme Biro", "number": 20, "position": "LB" },
+    { "id": "atx-22", "name": "Ethan Finlay", "number": 22, "position": "RM" },
+    { "id": "atx-23", "name": "Osman Bukari", "number": 23, "position": "RW" },
+    { "id": "atx-24", "name": "Mikkel Desler", "number": 24, "position": "RB" }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "fc-dallas",
+  "name": "FC Dallas",
+  "shortName": "FCD",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#CF0032",
+    "secondary": "#FFFFFF",
+    "accent": "#00338D"
+  },
+  "players": [
+    { "id": "fcd-1", "name": "Maarten Paes", "number": 1, "position": "GK" },
+    { "id": "fcd-33", "name": "Antonio Carrera", "number": 33, "position": "GK" },
+    { "id": "fcd-2", "name": "Shaq Moore", "number": 2, "position": "RB" },
+    { "id": "fcd-3", "name": "Sebastien Ibeagha", "number": 3, "position": "CB" },
+    { "id": "fcd-5", "name": "Nkosi Tafari", "number": 5, "position": "CB" },
+    { "id": "fcd-15", "name": "Marco Farfan", "number": 15, "position": "LB" },
+    { "id": "fcd-24", "name": "Sam Junqua", "number": 24, "position": "LB" },
+    { "id": "fcd-6", "name": "Nolan Norris", "number": 6, "position": "CB" },
+    { "id": "fcd-23", "name": "Geovane Jesus", "number": 23, "position": "CDM" },
+    { "id": "fcd-19", "name": "Carl Sainte", "number": 19, "position": "CB" },
+    { "id": "fcd-7", "name": "Paul Arriola", "number": 7, "position": "RW" },
+    { "id": "fcd-10", "name": "Paxton Pomykal", "number": 10, "position": "CM" },
+    { "id": "fcd-8", "name": "Tsiki Ntsabeleng", "number": 8, "position": "CM" },
+    { "id": "fcd-14", "name": "Sebastian Lletget", "number": 14, "position": "CAM" },
+    { "id": "fcd-21", "name": "Show", "number": 21, "position": "CM" },
+    { "id": "fcd-20", "name": "Tomas Pondeca", "number": 20, "position": "LW" },
+    { "id": "fcd-11", "name": "Herbert Endeley", "number": 11, "position": "LW" },
+    { "id": "fcd-26", "name": "Alejandro Urzua", "number": 26, "position": "CM" },
+    { "id": "fcd-9", "name": "Petar Musa", "number": 9, "position": "ST" },
+    { "id": "fcd-17", "name": "Logan Farrington", "number": 17, "position": "ST" },
+    { "id": "fcd-18", "name": "Jesus Ferreira", "number": 18, "position": "CF" },
+    { "id": "fcd-16", "name": "Bernard Kamungo", "number": 16, "position": "RW" },
+    { "id": "fcd-22", "name": "Enes Sali", "number": 22, "position": "CAM" },
+    { "id": "fcd-29", "name": "Tarik Scott", "number": 29, "position": "ST" },
+    { "id": "fcd-25", "name": "Alan Velasco", "number": 25, "position": "LW" }
+  ]
+}

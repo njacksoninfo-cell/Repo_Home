@@ -1,0 +1,32 @@
+{
+  "id": "fulham",
+  "name": "Fulham",
+  "shortName": "FUL",
+  "league": "epl",
+  "colors": {
+    "primary": "#FFFFFF",
+    "secondary": "#000000"
+  },
+  "players": [
+    { "id": "bernd-leno", "name": "Bernd Leno", "number": 1, "position": "GK" },
+    { "id": "steven-benda", "name": "Steven Benda", "number": 12, "position": "GK" },
+    { "id": "calvin-bassey", "name": "Calvin Bassey", "number": 3, "position": "CB" },
+    { "id": "issa-diop", "name": "Issa Diop", "number": 31, "position": "CB" },
+    { "id": "tim-ream", "name": "Tim Ream", "number": 13, "position": "CB" },
+    { "id": "antonee-robinson", "name": "Antonee Robinson", "number": 33, "position": "LB" },
+    { "id": "kenny-tete", "name": "Kenny Tete", "number": 2, "position": "RB" },
+    { "id": "timothy-castagne", "name": "Timothy Castagne", "number": 21, "position": "RB" },
+    { "id": "sasa-lukic", "name": "Sasa Lukic", "number": 28, "position": "CDM" },
+    { "id": "harrison-reed", "name": "Harrison Reed", "number": 6, "position": "CM" },
+    { "id": "tom-cairney", "name": "Tom Cairney", "number": 10, "position": "CM" },
+    { "id": "andreas-pereira", "name": "Andreas Pereira", "number": 18, "position": "CAM" },
+    { "id": "emile-smith-rowe", "name": "Emile Smith Rowe", "number": 7, "position": "CAM" },
+    { "id": "alex-iwobi", "name": "Alex Iwobi", "number": 17, "position": "RM" },
+    { "id": "adama-traore", "name": "Adama Traore", "number": 11, "position": "RW" },
+    { "id": "harry-wilson", "name": "Harry Wilson", "number": 8, "position": "LM" },
+    { "id": "rodrigo-muniz", "name": "Rodrigo Muniz", "number": 9, "position": "ST" },
+    { "id": "raul-jimenez", "name": "Raul Jimenez", "number": 14, "position": "ST" },
+    { "id": "reiss-nelson", "name": "Reiss Nelson", "number": 24, "position": "RW" },
+    { "id": "carlos-vinicius", "name": "Carlos Vinicius", "number": 19, "position": "ST" }
+  ]
+}

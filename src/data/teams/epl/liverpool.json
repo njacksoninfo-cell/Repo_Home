@@ -1,0 +1,34 @@
+{
+  "id": "liverpool",
+  "name": "Liverpool",
+  "shortName": "LIV",
+  "league": "epl",
+  "colors": {
+    "primary": "#C8102E",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "alisson-becker", "name": "Alisson Becker", "number": 1, "position": "GK" },
+    { "id": "caoimhin-kelleher", "name": "Caoimhin Kelleher", "number": 62, "position": "GK" },
+    { "id": "virgil-van-dijk", "name": "Virgil van Dijk", "number": 4, "position": "CB" },
+    { "id": "ibrahima-konate", "name": "Ibrahima Konate", "number": 5, "position": "CB" },
+    { "id": "jarell-quansah", "name": "Jarell Quansah", "number": 78, "position": "CB" },
+    { "id": "joe-gomez", "name": "Joe Gomez", "number": 2, "position": "CB" },
+    { "id": "andrew-robertson", "name": "Andrew Robertson", "number": 26, "position": "LB" },
+    { "id": "trent-alexander-arnold", "name": "Trent Alexander-Arnold", "number": 66, "position": "RB" },
+    { "id": "kostas-tsimikas", "name": "Kostas Tsimikas", "number": 21, "position": "LB" },
+    { "id": "conor-bradley", "name": "Conor Bradley", "number": 84, "position": "RB" },
+    { "id": "ryan-gravenberch", "name": "Ryan Gravenberch", "number": 38, "position": "CDM" },
+    { "id": "alexis-mac-allister", "name": "Alexis Mac Allister", "number": 10, "position": "CM" },
+    { "id": "dominik-szoboszlai", "name": "Dominik Szoboszlai", "number": 8, "position": "CAM" },
+    { "id": "wataru-endo", "name": "Wataru Endo", "number": 3, "position": "CDM" },
+    { "id": "curtis-jones", "name": "Curtis Jones", "number": 17, "position": "CM" },
+    { "id": "harvey-elliott", "name": "Harvey Elliott", "number": 19, "position": "CAM" },
+    { "id": "mohamed-salah", "name": "Mohamed Salah", "number": 11, "position": "RW" },
+    { "id": "luis-diaz", "name": "Luis Diaz", "number": 7, "position": "LW" },
+    { "id": "cody-gakpo", "name": "Cody Gakpo", "number": 18, "position": "LW" },
+    { "id": "diogo-jota", "name": "Diogo Jota", "number": 20, "position": "CF" },
+    { "id": "darwin-nunez", "name": "Darwin Nunez", "number": 9, "position": "ST" },
+    { "id": "federico-chiesa", "name": "Federico Chiesa", "number": 14, "position": "RW" }
+  ]
+}

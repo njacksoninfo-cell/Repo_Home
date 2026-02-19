@@ -1,0 +1,32 @@
+{
+  "id": "new-york-city-fc",
+  "name": "New York City FC",
+  "shortName": "NYC",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#6CACE4",
+    "secondary": "#F15524"
+  },
+  "players": [
+    { "id": "nyc-1", "name": "Matt Freese", "number": 1, "position": "GK" },
+    { "id": "nyc-31", "name": "Luis Barraza", "number": 31, "position": "GK" },
+    { "id": "nyc-2", "name": "Mitja Ilenic", "number": 2, "position": "RB" },
+    { "id": "nyc-3", "name": "Thiago Martins", "number": 3, "position": "CB" },
+    { "id": "nyc-4", "name": "Tayvon Gray", "number": 4, "position": "RB" },
+    { "id": "nyc-5", "name": "Strahinja Tanasijevic", "number": 5, "position": "CB" },
+    { "id": "nyc-15", "name": "Birk Risa", "number": 15, "position": "LB" },
+    { "id": "nyc-6", "name": "Keaton Parks", "number": 6, "position": "CM" },
+    { "id": "nyc-8", "name": "James Sands", "number": 8, "position": "CDM" },
+    { "id": "nyc-10", "name": "Maxi Moralez", "number": 10, "position": "CAM" },
+    { "id": "nyc-7", "name": "Andres Perea", "number": 7, "position": "CM" },
+    { "id": "nyc-11", "name": "Talles Magno", "number": 11, "position": "LW" },
+    { "id": "nyc-9", "name": "Alonso Martinez", "number": 9, "position": "ST" },
+    { "id": "nyc-14", "name": "Hannes Wolf", "number": 14, "position": "CAM" },
+    { "id": "nyc-17", "name": "Kevin O'Toole", "number": 17, "position": "LB" },
+    { "id": "nyc-20", "name": "Santiago Rodriguez", "number": 20, "position": "RW" },
+    { "id": "nyc-22", "name": "Monsef Bakrar", "number": 22, "position": "ST" },
+    { "id": "nyc-23", "name": "Justin Haak", "number": 23, "position": "CDM" },
+    { "id": "nyc-24", "name": "Agustin Ojeda", "number": 24, "position": "RW" }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "ipswich-town",
+  "name": "Ipswich Town",
+  "shortName": "IPS",
+  "league": "epl",
+  "colors": {
+    "primary": "#0044AA",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "arijanet-muric", "name": "Arijanet Muric", "number": 1, "position": "GK" },
+    { "id": "christian-walton", "name": "Christian Walton", "number": 13, "position": "GK" },
+    { "id": "luke-woolfenden", "name": "Luke Woolfenden", "number": 6, "position": "CB" },
+    { "id": "cameron-burgess", "name": "Cameron Burgess", "number": 5, "position": "CB" },
+    { "id": "axel-tuanzebe", "name": "Axel Tuanzebe", "number": 4, "position": "CB" },
+    { "id": "jacob-greaves", "name": "Jacob Greaves", "number": 3, "position": "CB" },
+    { "id": "dara-oshea", "name": "Dara O'Shea", "number": 15, "position": "CB" },
+    { "id": "leif-davis", "name": "Leif Davis", "number": 23, "position": "LB" },
+    { "id": "ben-johnson", "name": "Ben Johnson", "number": 2, "position": "RB" },
+    { "id": "sam-morsy", "name": "Sam Morsy", "number": 8, "position": "CM" },
+    { "id": "kalvin-phillips", "name": "Kalvin Phillips", "number": 14, "position": "CDM" },
+    { "id": "massimo-luongo", "name": "Massimo Luongo", "number": 21, "position": "CM" },
+    { "id": "jens-cajuste", "name": "Jens Cajuste", "number": 16, "position": "CM" },
+    { "id": "jack-taylor", "name": "Jack Taylor", "number": 18, "position": "CM" },
+    { "id": "sammie-szmodics", "name": "Sammie Szmodics", "number": 23, "position": "CAM" },
+    { "id": "conor-chaplin", "name": "Conor Chaplin", "number": 10, "position": "CAM" },
+    { "id": "omari-hutchinson", "name": "Omari Hutchinson", "number": 20, "position": "RW" },
+    { "id": "nathan-broadhead", "name": "Nathan Broadhead", "number": 11, "position": "LW" },
+    { "id": "wes-burns", "name": "Wes Burns", "number": 7, "position": "RW" },
+    { "id": "liam-delap", "name": "Liam Delap", "number": 9, "position": "ST" },
+    { "id": "george-hirst", "name": "George Hirst", "number": 19, "position": "ST" }
+  ]
+}

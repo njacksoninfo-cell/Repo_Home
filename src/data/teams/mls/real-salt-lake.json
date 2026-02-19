@@ -1,0 +1,32 @@
+{
+  "id": "real-salt-lake",
+  "name": "Real Salt Lake",
+  "shortName": "RSL",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#B30838",
+    "secondary": "#013474"
+  },
+  "players": [
+    { "id": "rsl-1", "name": "Zac MacMath", "number": 1, "position": "GK" },
+    { "id": "rsl-18", "name": "Gavin Beavers", "number": 18, "position": "GK" },
+    { "id": "rsl-2", "name": "Andrew Brody", "number": 2, "position": "LB" },
+    { "id": "rsl-3", "name": "Bryan Oviedo", "number": 3, "position": "LB" },
+    { "id": "rsl-4", "name": "Marcelo Silva", "number": 4, "position": "CB" },
+    { "id": "rsl-5", "name": "Justen Glad", "number": 5, "position": "CB" },
+    { "id": "rsl-15", "name": "Brayan Vera", "number": 15, "position": "CB" },
+    { "id": "rsl-6", "name": "Pablo Ruiz", "number": 6, "position": "CDM" },
+    { "id": "rsl-8", "name": "Braian Ojeda", "number": 8, "position": "CM" },
+    { "id": "rsl-10", "name": "Diego Luna", "number": 10, "position": "CAM" },
+    { "id": "rsl-7", "name": "Emeka Eneli", "number": 7, "position": "CM" },
+    { "id": "rsl-11", "name": "Anderson Julio", "number": 11, "position": "ST" },
+    { "id": "rsl-9", "name": "Chicho Arango", "number": 9, "position": "ST" },
+    { "id": "rsl-14", "name": "Damir Kreilach", "number": 14, "position": "CF" },
+    { "id": "rsl-17", "name": "Matt Crooks", "number": 17, "position": "CM" },
+    { "id": "rsl-20", "name": "Nelson Palacio", "number": 20, "position": "RW" },
+    { "id": "rsl-22", "name": "Tommy Silva", "number": 22, "position": "RB" },
+    { "id": "rsl-23", "name": "Maikel Chang", "number": 23, "position": "LW" },
+    { "id": "rsl-24", "name": "Luca Langoni", "number": 24, "position": "RW" }
+  ]
+}

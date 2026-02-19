@@ -1,0 +1,34 @@
+{
+  "id": "leicester-city",
+  "name": "Leicester City",
+  "shortName": "LEI",
+  "league": "epl",
+  "colors": {
+    "primary": "#003090",
+    "secondary": "#FDBE11"
+  },
+  "players": [
+    { "id": "mads-hermansen", "name": "Mads Hermansen", "number": 1, "position": "GK" },
+    { "id": "danny-ward", "name": "Danny Ward", "number": 12, "position": "GK" },
+    { "id": "wout-faes", "name": "Wout Faes", "number": 3, "position": "CB" },
+    { "id": "jannik-vestergaard", "name": "Jannik Vestergaard", "number": 23, "position": "CB" },
+    { "id": "conor-coady", "name": "Conor Coady", "number": 5, "position": "CB" },
+    { "id": "caleb-okoli", "name": "Caleb Okoli", "number": 4, "position": "CB" },
+    { "id": "james-justin", "name": "James Justin", "number": 2, "position": "RB" },
+    { "id": "victor-kristiansen", "name": "Victor Kristiansen", "number": 16, "position": "LB" },
+    { "id": "ricardo-pereira", "name": "Ricardo Pereira", "number": 21, "position": "RB" },
+    { "id": "harry-winks", "name": "Harry Winks", "number": 8, "position": "CM" },
+    { "id": "wilfred-ndidi", "name": "Wilfred Ndidi", "number": 25, "position": "CDM" },
+    { "id": "hamza-choudhury", "name": "Hamza Choudhury", "number": 20, "position": "CM" },
+    { "id": "oliver-skipp", "name": "Oliver Skipp", "number": 22, "position": "CDM" },
+    { "id": "bobby-decordova-reid", "name": "Bobby De Cordova-Reid", "number": 14, "position": "CAM" },
+    { "id": "facundo-buonanotte", "name": "Facundo Buonanotte", "number": 10, "position": "CAM" },
+    { "id": "stephy-mavididi", "name": "Stephy Mavididi", "number": 9, "position": "LW" },
+    { "id": "abdul-fatawu", "name": "Abdul Fatawu", "number": 11, "position": "RW" },
+    { "id": "kasey-mcateer", "name": "Kasey McAteer", "number": 19, "position": "RW" },
+    { "id": "bilal-el-khannouss", "name": "Bilal El Khannouss", "number": 13, "position": "CAM" },
+    { "id": "jamie-vardy", "name": "Jamie Vardy", "number": 9, "position": "ST" },
+    { "id": "patson-daka", "name": "Patson Daka", "number": 20, "position": "ST" },
+    { "id": "jordan-ayew", "name": "Jordan Ayew", "number": 18, "position": "ST" }
+  ]
+}

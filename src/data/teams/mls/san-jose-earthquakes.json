@@ -1,0 +1,31 @@
+{
+  "id": "san-jose-earthquakes",
+  "name": "San Jose Earthquakes",
+  "shortName": "SJ",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#0067B1",
+    "secondary": "#000000"
+  },
+  "players": [
+    { "id": "sj-1", "name": "William Yarbrough", "number": 1, "position": "GK" },
+    { "id": "sj-24", "name": "Daniel Vitiello", "number": 24, "position": "GK" },
+    { "id": "sj-2", "name": "Tommy Thompson", "number": 2, "position": "RB" },
+    { "id": "sj-3", "name": "Rodrigues", "number": 3, "position": "CB" },
+    { "id": "sj-4", "name": "Tanner Beason", "number": 4, "position": "CB" },
+    { "id": "sj-5", "name": "Daniel Munie", "number": 5, "position": "CB" },
+    { "id": "sj-15", "name": "Marcos Lopez", "number": 15, "position": "LB" },
+    { "id": "sj-6", "name": "Carlos Gruezo", "number": 6, "position": "CDM" },
+    { "id": "sj-8", "name": "Jackson Yueill", "number": 8, "position": "CM" },
+    { "id": "sj-10", "name": "Cristian Espinoza", "number": 10, "position": "RW" },
+    { "id": "sj-7", "name": "Hernan Lopez", "number": 7, "position": "LW" },
+    { "id": "sj-11", "name": "Amahl Pellegrino", "number": 11, "position": "RW" },
+    { "id": "sj-9", "name": "Jeremy Ebobisse", "number": 9, "position": "ST" },
+    { "id": "sj-14", "name": "Noel Buck", "number": 14, "position": "CM" },
+    { "id": "sj-17", "name": "Ousseni Bouda", "number": 17, "position": "CAM" },
+    { "id": "sj-20", "name": "Cruz Medina", "number": 20, "position": "CM" },
+    { "id": "sj-22", "name": "Miguel Trauco", "number": 22, "position": "LB" },
+    { "id": "sj-23", "name": "Preston Judd", "number": 23, "position": "ST" }
+  ]
+}

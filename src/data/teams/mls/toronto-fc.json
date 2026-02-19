@@ -1,0 +1,32 @@
+{
+  "id": "toronto-fc",
+  "name": "Toronto FC",
+  "shortName": "TOR",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#E31937",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "tor-1", "name": "Sean Johnson", "number": 1, "position": "GK" },
+    { "id": "tor-25", "name": "Luka Gavran", "number": 25, "position": "GK" },
+    { "id": "tor-2", "name": "Richie Laryea", "number": 2, "position": "RB" },
+    { "id": "tor-3", "name": "Matt Hedges", "number": 3, "position": "CB" },
+    { "id": "tor-4", "name": "Kevin Long", "number": 4, "position": "CB" },
+    { "id": "tor-5", "name": "Sigurd Rosted", "number": 5, "position": "CB" },
+    { "id": "tor-15", "name": "Raoul Petretta", "number": 15, "position": "LB" },
+    { "id": "tor-6", "name": "Michael Bradley", "number": 6, "position": "CDM" },
+    { "id": "tor-8", "name": "Brandon Servania", "number": 8, "position": "CM" },
+    { "id": "tor-10", "name": "Federico Bernardeschi", "number": 10, "position": "CAM" },
+    { "id": "tor-7", "name": "Derrick Etienne Jr.", "number": 7, "position": "RW" },
+    { "id": "tor-11", "name": "Adama Diomande", "number": 11, "position": "CF" },
+    { "id": "tor-9", "name": "Prince Owusu", "number": 9, "position": "ST" },
+    { "id": "tor-14", "name": "Lorenzo Insigne", "number": 14, "position": "LW" },
+    { "id": "tor-17", "name": "Alonso Coello", "number": 17, "position": "CM" },
+    { "id": "tor-20", "name": "Jahkeele Marshall-Rutty", "number": 20, "position": "RW" },
+    { "id": "tor-22", "name": "Jonathan Osorio", "number": 22, "position": "CM" },
+    { "id": "tor-23", "name": "Kosi Thompson", "number": 23, "position": "RB" },
+    { "id": "tor-24", "name": "Henry Wingo", "number": 24, "position": "LW" }
+  ]
+}

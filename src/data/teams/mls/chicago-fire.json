@@ -1,0 +1,32 @@
+{
+  "id": "chicago-fire",
+  "name": "Chicago Fire FC",
+  "shortName": "CHI",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#FF0000",
+    "secondary": "#141B4D"
+  },
+  "players": [
+    { "id": "chi-1", "name": "Chris Brady", "number": 1, "position": "GK" },
+    { "id": "chi-30", "name": "Spencer Richey", "number": 30, "position": "GK" },
+    { "id": "chi-2", "name": "Arnaud Souquet", "number": 2, "position": "RB" },
+    { "id": "chi-3", "name": "Carlos Teran", "number": 3, "position": "CB" },
+    { "id": "chi-4", "name": "Jonathan Dean", "number": 4, "position": "CB" },
+    { "id": "chi-5", "name": "Rafael Czichos", "number": 5, "position": "CB" },
+    { "id": "chi-15", "name": "Chase Gasper", "number": 15, "position": "LB" },
+    { "id": "chi-6", "name": "Brian Gutierrez", "number": 6, "position": "CAM" },
+    { "id": "chi-8", "name": "Chris Mueller", "number": 8, "position": "RW" },
+    { "id": "chi-10", "name": "Xherdan Shaqiri", "number": 10, "position": "CAM" },
+    { "id": "chi-14", "name": "Gaston Gimenez", "number": 14, "position": "CDM" },
+    { "id": "chi-7", "name": "Maren Haile-Selassie", "number": 7, "position": "LW" },
+    { "id": "chi-11", "name": "Fabian Herbers", "number": 11, "position": "RW" },
+    { "id": "chi-9", "name": "Hugo Cuypers", "number": 9, "position": "ST" },
+    { "id": "chi-17", "name": "Kellyn Acosta", "number": 17, "position": "CM" },
+    { "id": "chi-20", "name": "Georgios Koutsias", "number": 20, "position": "ST" },
+    { "id": "chi-21", "name": "Allan Arigoni", "number": 21, "position": "CB" },
+    { "id": "chi-23", "name": "Tom Barlow", "number": 23, "position": "CF" },
+    { "id": "chi-25", "name": "Andrew Gutman", "number": 25, "position": "LB" }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "la-galaxy",
+  "name": "LA Galaxy",
+  "shortName": "LAG",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#00245D",
+    "secondary": "#FFD200"
+  },
+  "players": [
+    { "id": "lag-1", "name": "John McCarthy", "number": 1, "position": "GK" },
+    { "id": "lag-24", "name": "Novak Micovic", "number": 24, "position": "GK" },
+    { "id": "lag-2", "name": "Julian Araujo", "number": 2, "position": "RB" },
+    { "id": "lag-3", "name": "Derrick Williams", "number": 3, "position": "CB" },
+    { "id": "lag-4", "name": "Emiro Garces", "number": 4, "position": "CB" },
+    { "id": "lag-5", "name": "Eriq Zavaleta", "number": 5, "position": "CB" },
+    { "id": "lag-15", "name": "Jalen Neal", "number": 15, "position": "CB" },
+    { "id": "lag-6", "name": "Riqui Puig", "number": 6, "position": "CAM" },
+    { "id": "lag-8", "name": "Gastón Brugman", "number": 8, "position": "CDM" },
+    { "id": "lag-10", "name": "Marco Reus", "number": 10, "position": "CAM" },
+    { "id": "lag-7", "name": "Paintsil Joseph", "number": 7, "position": "RW" },
+    { "id": "lag-11", "name": "Gabriel Pec", "number": 11, "position": "LW" },
+    { "id": "lag-9", "name": "Dejan Joveljic", "number": 9, "position": "ST" },
+    { "id": "lag-14", "name": "Tyler Boyd", "number": 14, "position": "RW" },
+    { "id": "lag-17", "name": "Memo Rodriguez", "number": 17, "position": "CM" },
+    { "id": "lag-20", "name": "Edwin Cerrillo", "number": 20, "position": "CDM" },
+    { "id": "lag-22", "name": "Martin Caceres", "number": 22, "position": "CB" },
+    { "id": "lag-23", "name": "Mark Delgado", "number": 23, "position": "CM" },
+    { "id": "lag-19", "name": "Mauricio Cuevas", "number": 19, "position": "RB" },
+    { "id": "lag-25", "name": "Maya Yoshida", "number": 25, "position": "CB" }
+  ]
+}

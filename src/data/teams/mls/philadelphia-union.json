@@ -1,0 +1,31 @@
+{
+  "id": "philadelphia-union",
+  "name": "Philadelphia Union",
+  "shortName": "PHI",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#071B2C",
+    "secondary": "#B18500"
+  },
+  "players": [
+    { "id": "phi-1", "name": "Andre Blake", "number": 1, "position": "GK" },
+    { "id": "phi-18", "name": "Oliver Semmle", "number": 18, "position": "GK" },
+    { "id": "phi-2", "name": "Nathan Harriel", "number": 2, "position": "RB" },
+    { "id": "phi-3", "name": "Jack Elliott", "number": 3, "position": "CB" },
+    { "id": "phi-4", "name": "Stuart Findlay", "number": 4, "position": "CB" },
+    { "id": "phi-5", "name": "Jakob Glesnes", "number": 5, "position": "CB" },
+    { "id": "phi-15", "name": "Kai Wagner", "number": 15, "position": "LB" },
+    { "id": "phi-6", "name": "Leon Flach", "number": 6, "position": "CDM" },
+    { "id": "phi-8", "name": "Jack McGlynn", "number": 8, "position": "CM" },
+    { "id": "phi-10", "name": "Daniel Gazdag", "number": 10, "position": "CAM" },
+    { "id": "phi-7", "name": "Alejandro Bedoya", "number": 7, "position": "CM" },
+    { "id": "phi-11", "name": "Quinn Sullivan", "number": 11, "position": "LW" },
+    { "id": "phi-9", "name": "Mikael Uhre", "number": 9, "position": "ST" },
+    { "id": "phi-14", "name": "Cavan Sullivan", "number": 14, "position": "CAM" },
+    { "id": "phi-17", "name": "Dániel Hackner", "number": 17, "position": "CB" },
+    { "id": "phi-20", "name": "Jeremy Rafanello", "number": 20, "position": "RW" },
+    { "id": "phi-22", "name": "Tai Baribo", "number": 22, "position": "ST" },
+    { "id": "phi-23", "name": "Sam Adeniran", "number": 23, "position": "CF" }
+  ]
+}

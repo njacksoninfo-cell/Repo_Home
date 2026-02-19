@@ -1,0 +1,32 @@
+{
+  "id": "san-diego-fc",
+  "name": "San Diego FC",
+  "shortName": "SD",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#7C2529",
+    "secondary": "#000000"
+  },
+  "players": [
+    { "id": "sd-1", "name": "Duran Ferree", "number": 1, "position": "GK" },
+    { "id": "sd-30", "name": "Alejandro Gómez", "number": 30, "position": "GK" },
+    { "id": "sd-2", "name": "Andres Reyes", "number": 2, "position": "CB" },
+    { "id": "sd-3", "name": "Luca de la Torre", "number": 3, "position": "CM" },
+    { "id": "sd-4", "name": "Marcus Ingvartsen", "number": 4, "position": "ST" },
+    { "id": "sd-5", "name": "Paddy McNair", "number": 5, "position": "CB" },
+    { "id": "sd-15", "name": "Juanmi", "number": 15, "position": "RW" },
+    { "id": "sd-6", "name": "Jeppe Tverskov", "number": 6, "position": "CB" },
+    { "id": "sd-8", "name": "Tomás Ángel", "number": 8, "position": "ST" },
+    { "id": "sd-10", "name": "Hirving Lozano", "number": 10, "position": "RW" },
+    { "id": "sd-7", "name": "Aníbal Moreno", "number": 7, "position": "CDM" },
+    { "id": "sd-11", "name": "Chidozie Awaziem", "number": 11, "position": "CB" },
+    { "id": "sd-9", "name": "Mikey Varas", "number": 9, "position": "CF" },
+    { "id": "sd-14", "name": "Giorgio Tavares", "number": 14, "position": "LW" },
+    { "id": "sd-17", "name": "Werner Blakely", "number": 17, "position": "CM" },
+    { "id": "sd-20", "name": "Marcus Lopez", "number": 20, "position": "LB" },
+    { "id": "sd-22", "name": "Jasper Loeffelsend", "number": 22, "position": "CM" },
+    { "id": "sd-23", "name": "Alex Mighten", "number": 23, "position": "LW" },
+    { "id": "sd-24", "name": "Tor Kristian Karlsen", "number": 24, "position": "RB" }
+  ]
+}

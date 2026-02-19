@@ -1,0 +1,32 @@
+{
+  "id": "new-england-revolution",
+  "name": "New England Revolution",
+  "shortName": "NE",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#0A2240",
+    "secondary": "#CE0E2D"
+  },
+  "players": [
+    { "id": "ne-1", "name": "Djordje Petrovic", "number": 1, "position": "GK" },
+    { "id": "ne-30", "name": "Aljaz Ivacic", "number": 30, "position": "GK" },
+    { "id": "ne-2", "name": "Brandon Bye", "number": 2, "position": "RB" },
+    { "id": "ne-3", "name": "Henry Kessler", "number": 3, "position": "CB" },
+    { "id": "ne-4", "name": "Dave Romney", "number": 4, "position": "CB" },
+    { "id": "ne-5", "name": "Andrew Farrell", "number": 5, "position": "CB" },
+    { "id": "ne-15", "name": "DeJuan Jones", "number": 15, "position": "LB" },
+    { "id": "ne-6", "name": "Matt Polster", "number": 6, "position": "CDM" },
+    { "id": "ne-8", "name": "Emmanuel Boateng", "number": 8, "position": "CM" },
+    { "id": "ne-10", "name": "Carles Gil", "number": 10, "position": "CAM" },
+    { "id": "ne-7", "name": "Luca Langoni", "number": 7, "position": "RW" },
+    { "id": "ne-11", "name": "Giacomo Vrioni", "number": 11, "position": "ST" },
+    { "id": "ne-9", "name": "Bobby Wood", "number": 9, "position": "ST" },
+    { "id": "ne-14", "name": "Dylan Borrero", "number": 14, "position": "LW" },
+    { "id": "ne-17", "name": "Nacho Gil", "number": 17, "position": "CM" },
+    { "id": "ne-20", "name": "Tommy McNamara", "number": 20, "position": "CM" },
+    { "id": "ne-22", "name": "Ian Harkes", "number": 22, "position": "CM" },
+    { "id": "ne-23", "name": "Jonathan Bell", "number": 23, "position": "CB" },
+    { "id": "ne-21", "name": "Esmir Bajraktarevic", "number": 21, "position": "LW" }
+  ]
+}

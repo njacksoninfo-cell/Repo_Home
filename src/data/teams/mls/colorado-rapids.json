@@ -1,0 +1,31 @@
+{
+  "id": "colorado-rapids",
+  "name": "Colorado Rapids",
+  "shortName": "COL",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#960A2C",
+    "secondary": "#8BB8E8"
+  },
+  "players": [
+    { "id": "col-1", "name": "Zack Steffen", "number": 1, "position": "GK" },
+    { "id": "col-30", "name": "Adam Beaudry", "number": 30, "position": "GK" },
+    { "id": "col-2", "name": "Keegan Rosenberry", "number": 2, "position": "RB" },
+    { "id": "col-3", "name": "Andreas Maxso", "number": 3, "position": "CB" },
+    { "id": "col-4", "name": "Lalas Abubakar", "number": 4, "position": "CB" },
+    { "id": "col-5", "name": "Danny Wilson", "number": 5, "position": "CB" },
+    { "id": "col-15", "name": "Sam Vines", "number": 15, "position": "LB" },
+    { "id": "col-6", "name": "Bryan Acosta", "number": 6, "position": "CDM" },
+    { "id": "col-8", "name": "Jack Price", "number": 8, "position": "CM" },
+    { "id": "col-10", "name": "Djordje Mihailovic", "number": 10, "position": "CAM" },
+    { "id": "col-7", "name": "Jonathan Lewis", "number": 7, "position": "LW" },
+    { "id": "col-11", "name": "Darren Yapi", "number": 11, "position": "RW" },
+    { "id": "col-9", "name": "Rafael Navarro", "number": 9, "position": "ST" },
+    { "id": "col-14", "name": "Connor Ronan", "number": 14, "position": "CM" },
+    { "id": "col-17", "name": "Calvin Harris", "number": 17, "position": "RW" },
+    { "id": "col-20", "name": "Cole Bassett", "number": 20, "position": "CM" },
+    { "id": "col-22", "name": "Michael Edwards", "number": 22, "position": "LB" },
+    { "id": "col-23", "name": "Kevin Cabral", "number": 23, "position": "ST" }
+  ]
+}

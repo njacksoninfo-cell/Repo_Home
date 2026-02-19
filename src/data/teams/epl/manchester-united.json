@@ -1,0 +1,35 @@
+{
+  "id": "manchester-united",
+  "name": "Manchester United",
+  "shortName": "MUN",
+  "league": "epl",
+  "colors": {
+    "primary": "#DA291C",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "andre-onana", "name": "Andre Onana", "number": 24, "position": "GK" },
+    { "id": "altay-bayindir", "name": "Altay Bayindir", "number": 1, "position": "GK" },
+    { "id": "harry-maguire", "name": "Harry Maguire", "number": 5, "position": "CB" },
+    { "id": "lisandro-martinez", "name": "Lisandro Martinez", "number": 6, "position": "CB" },
+    { "id": "matthijs-de-ligt", "name": "Matthijs de Ligt", "number": 4, "position": "CB" },
+    { "id": "leny-yoro", "name": "Leny Yoro", "number": 15, "position": "CB" },
+    { "id": "jonny-evans", "name": "Jonny Evans", "number": 35, "position": "CB" },
+    { "id": "diogo-dalot", "name": "Diogo Dalot", "number": 20, "position": "RB" },
+    { "id": "luke-shaw", "name": "Luke Shaw", "number": 23, "position": "LB" },
+    { "id": "noussair-mazraoui", "name": "Noussair Mazraoui", "number": 3, "position": "RB" },
+    { "id": "tyrell-malacia", "name": "Tyrell Malacia", "number": 12, "position": "LB" },
+    { "id": "casemiro", "name": "Casemiro", "number": 18, "position": "CDM" },
+    { "id": "kobbie-mainoo", "name": "Kobbie Mainoo", "number": 37, "position": "CM" },
+    { "id": "manuel-ugarte", "name": "Manuel Ugarte", "number": 25, "position": "CDM" },
+    { "id": "christian-eriksen", "name": "Christian Eriksen", "number": 14, "position": "CAM" },
+    { "id": "mason-mount", "name": "Mason Mount", "number": 7, "position": "CAM" },
+    { "id": "bruno-fernandes", "name": "Bruno Fernandes", "number": 8, "position": "CAM" },
+    { "id": "marcus-rashford", "name": "Marcus Rashford", "number": 10, "position": "LW" },
+    { "id": "alejandro-garnacho", "name": "Alejandro Garnacho", "number": 17, "position": "LW" },
+    { "id": "amad-diallo", "name": "Amad Diallo", "number": 16, "position": "RW" },
+    { "id": "antony", "name": "Antony", "number": 21, "position": "RW" },
+    { "id": "rasmus-hojlund", "name": "Rasmus Hojlund", "number": 11, "position": "ST" },
+    { "id": "joshua-zirkzee", "name": "Joshua Zirkzee", "number": 9, "position": "ST" }
+  ]
+}

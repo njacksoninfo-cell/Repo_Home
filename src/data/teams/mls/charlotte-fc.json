@@ -1,0 +1,32 @@
+{
+  "id": "charlotte-fc",
+  "name": "Charlotte FC",
+  "shortName": "CLT",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#1A85C8",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "clt-1", "name": "Kristijan Kahlina", "number": 1, "position": "GK" },
+    { "id": "clt-31", "name": "Pablo Sisniega", "number": 31, "position": "GK" },
+    { "id": "clt-2", "name": "Jaylin Lindsey", "number": 2, "position": "RB" },
+    { "id": "clt-3", "name": "Adilson Malanda", "number": 3, "position": "CB" },
+    { "id": "clt-4", "name": "Tim Ream", "number": 4, "position": "CB" },
+    { "id": "clt-15", "name": "Andrew Privett", "number": 15, "position": "CB" },
+    { "id": "clt-23", "name": "Brandt Bronico", "number": 23, "position": "CDM" },
+    { "id": "clt-5", "name": "Justin Morrow", "number": 5, "position": "LB" },
+    { "id": "clt-8", "name": "Ashley Westwood", "number": 8, "position": "CM" },
+    { "id": "clt-10", "name": "Karol Swiderski", "number": 10, "position": "ST" },
+    { "id": "clt-6", "name": "Liel Abada", "number": 6, "position": "RW" },
+    { "id": "clt-11", "name": "Kerwin Vargas", "number": 11, "position": "LW" },
+    { "id": "clt-14", "name": "Pep Biel", "number": 14, "position": "CAM" },
+    { "id": "clt-7", "name": "Enzo Copetti", "number": 7, "position": "CF" },
+    { "id": "clt-9", "name": "Patrick Agyemang", "number": 9, "position": "ST" },
+    { "id": "clt-17", "name": "Djibril Diani", "number": 17, "position": "CM" },
+    { "id": "clt-22", "name": "Matt Hedges", "number": 22, "position": "CB" },
+    { "id": "clt-20", "name": "Jere Uronen", "number": 20, "position": "LB" },
+    { "id": "clt-16", "name": "Junior Urso", "number": 16, "position": "CM" }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "los-angeles-fc",
+  "name": "Los Angeles FC",
+  "shortName": "LAFC",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#C39E6D",
+    "secondary": "#000000"
+  },
+  "players": [
+    { "id": "lafc-1", "name": "Hugo Lloris", "number": 1, "position": "GK" },
+    { "id": "lafc-30", "name": "Thomas Hasal", "number": 30, "position": "GK" },
+    { "id": "lafc-2", "name": "Ryan Hollingshead", "number": 2, "position": "RB" },
+    { "id": "lafc-3", "name": "Giorgio Chiellini", "number": 3, "position": "CB" },
+    { "id": "lafc-4", "name": "Jesus Murillo", "number": 4, "position": "CB" },
+    { "id": "lafc-5", "name": "Sergi Palencia", "number": 5, "position": "RB" },
+    { "id": "lafc-15", "name": "Aaron Long", "number": 15, "position": "CB" },
+    { "id": "lafc-6", "name": "Ilie Sanchez", "number": 6, "position": "CDM" },
+    { "id": "lafc-8", "name": "Mateusz Bogusz", "number": 8, "position": "CM" },
+    { "id": "lafc-10", "name": "Carlos Vela", "number": 10, "position": "RW" },
+    { "id": "lafc-7", "name": "Cristian Olivera", "number": 7, "position": "LW" },
+    { "id": "lafc-11", "name": "Timothy Tillman", "number": 11, "position": "CAM" },
+    { "id": "lafc-9", "name": "Denis Bouanga", "number": 9, "position": "ST" },
+    { "id": "lafc-14", "name": "Eduard Atuesta", "number": 14, "position": "CM" },
+    { "id": "lafc-17", "name": "Kei Kamara", "number": 17, "position": "ST" },
+    { "id": "lafc-20", "name": "Denil Maldonado", "number": 20, "position": "CB" },
+    { "id": "lafc-22", "name": "Omar Campos", "number": 22, "position": "LB" },
+    { "id": "lafc-23", "name": "Lewis O'Brien", "number": 23, "position": "CM" },
+    { "id": "lafc-24", "name": "David Martinez", "number": 24, "position": "LB" }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "houston-dynamo",
+  "name": "Houston Dynamo FC",
+  "shortName": "HOU",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#F68712",
+    "secondary": "#101820"
+  },
+  "players": [
+    { "id": "hou-1", "name": "Steve Clark", "number": 1, "position": "GK" },
+    { "id": "hou-31", "name": "Michael Nelson", "number": 31, "position": "GK" },
+    { "id": "hou-2", "name": "Griffin Dorsey", "number": 2, "position": "RB" },
+    { "id": "hou-3", "name": "Erik Sviatchenko", "number": 3, "position": "CB" },
+    { "id": "hou-4", "name": "Ethan Bartlow", "number": 4, "position": "CB" },
+    { "id": "hou-5", "name": "Tate Schmitt", "number": 5, "position": "RB" },
+    { "id": "hou-15", "name": "Franco Escobar", "number": 15, "position": "LB" },
+    { "id": "hou-6", "name": "Hector Herrera", "number": 6, "position": "CM" },
+    { "id": "hou-8", "name": "Adalberto Carrasquilla", "number": 8, "position": "CDM" },
+    { "id": "hou-10", "name": "Ibrahim Aliyu", "number": 10, "position": "RW" },
+    { "id": "hou-7", "name": "Latif Blessing", "number": 7, "position": "LW" },
+    { "id": "hou-11", "name": "Nelson Quinones", "number": 11, "position": "LW" },
+    { "id": "hou-9", "name": "Sebastian Ferreira", "number": 9, "position": "ST" },
+    { "id": "hou-14", "name": "Amine Bassi", "number": 14, "position": "CAM" },
+    { "id": "hou-17", "name": "Daniel Steres", "number": 17, "position": "CB" },
+    { "id": "hou-20", "name": "Coco Carrasquilla", "number": 20, "position": "CM" },
+    { "id": "hou-22", "name": "Ezequiel Ponce", "number": 22, "position": "ST" },
+    { "id": "hou-23", "name": "Artur", "number": 23, "position": "CM" },
+    { "id": "hou-24", "name": "Brooklyn Raines", "number": 24, "position": "RW" }
+  ]
+}

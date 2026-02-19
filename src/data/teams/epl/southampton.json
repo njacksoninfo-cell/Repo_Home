@@ -1,0 +1,34 @@
+{
+  "id": "southampton",
+  "name": "Southampton",
+  "shortName": "SOU",
+  "league": "epl",
+  "colors": {
+    "primary": "#D71920",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "aaron-ramsdale", "name": "Aaron Ramsdale", "number": 1, "position": "GK" },
+    { "id": "alex-mccarthy", "name": "Alex McCarthy", "number": 21, "position": "GK" },
+    { "id": "jan-bednarek", "name": "Jan Bednarek", "number": 6, "position": "CB" },
+    { "id": "jack-stephens", "name": "Jack Stephens", "number": 5, "position": "CB" },
+    { "id": "taylor-harwood-bellis", "name": "Taylor Harwood-Bellis", "number": 4, "position": "CB" },
+    { "id": "yukinari-sugawara", "name": "Yukinari Sugawara", "number": 22, "position": "RB" },
+    { "id": "kyle-walker-peters", "name": "Kyle Walker-Peters", "number": 2, "position": "RB" },
+    { "id": "ryan-manning", "name": "Ryan Manning", "number": 3, "position": "LB" },
+    { "id": "flynn-downes", "name": "Flynn Downes", "number": 16, "position": "CDM" },
+    { "id": "joe-aribo", "name": "Joe Aribo", "number": 7, "position": "CM" },
+    { "id": "adam-lallana", "name": "Adam Lallana", "number": 20, "position": "CM" },
+    { "id": "will-smallbone", "name": "Will Smallbone", "number": 8, "position": "CM" },
+    { "id": "mateus-fernandes", "name": "Mateus Fernandes", "number": 10, "position": "CAM" },
+    { "id": "james-ward-prowse", "name": "James Ward-Prowse", "number": 18, "position": "CM" },
+    { "id": "lesley-ugochukwu", "name": "Lesley Ugochukwu", "number": 24, "position": "CDM" },
+    { "id": "tyler-dibling", "name": "Tyler Dibling", "number": 34, "position": "RW" },
+    { "id": "ben-brereton-diaz", "name": "Ben Brereton Diaz", "number": 11, "position": "LW" },
+    { "id": "samuel-edozie", "name": "Samuel Edozie", "number": 25, "position": "RW" },
+    { "id": "kamaldeen-sulemana", "name": "Kamaldeen Sulemana", "number": 17, "position": "LW" },
+    { "id": "adam-armstrong", "name": "Adam Armstrong", "number": 9, "position": "ST" },
+    { "id": "cameron-archer", "name": "Cameron Archer", "number": 14, "position": "ST" },
+    { "id": "paul-onuachu", "name": "Paul Onuachu", "number": 19, "position": "ST" }
+  ]
+}

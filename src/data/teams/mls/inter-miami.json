@@ -1,0 +1,33 @@
+{
+  "id": "inter-miami",
+  "name": "Inter Miami CF",
+  "shortName": "MIA",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#F7B5CD",
+    "secondary": "#000000"
+  },
+  "players": [
+    { "id": "mia-1", "name": "Drake Callender", "number": 1, "position": "GK" },
+    { "id": "mia-24", "name": "CJ Dos Santos", "number": 24, "position": "GK" },
+    { "id": "mia-2", "name": "DeAndre Yedlin", "number": 2, "position": "RB" },
+    { "id": "mia-3", "name": "Sergii Kryvtsov", "number": 3, "position": "CB" },
+    { "id": "mia-4", "name": "Tomas Aviles", "number": 4, "position": "CB" },
+    { "id": "mia-5", "name": "Jordi Alba", "number": 5, "position": "LB" },
+    { "id": "mia-6", "name": "Sergio Busquets", "number": 6, "position": "CDM" },
+    { "id": "mia-7", "name": "David Ruiz", "number": 7, "position": "CM" },
+    { "id": "mia-8", "name": "Julian Gressel", "number": 8, "position": "RM" },
+    { "id": "mia-10", "name": "Lionel Messi", "number": 10, "position": "RW" },
+    { "id": "mia-11", "name": "Robert Taylor", "number": 11, "position": "LW" },
+    { "id": "mia-14", "name": "Benjamin Cremaschi", "number": 14, "position": "CM" },
+    { "id": "mia-9", "name": "Luis Suarez", "number": 9, "position": "ST" },
+    { "id": "mia-17", "name": "Federico Redondo", "number": 17, "position": "CDM" },
+    { "id": "mia-18", "name": "Diego Gomez", "number": 18, "position": "CM" },
+    { "id": "mia-20", "name": "Marcelo Weigandt", "number": 20, "position": "RB" },
+    { "id": "mia-22", "name": "Facundo Farias", "number": 22, "position": "RW" },
+    { "id": "mia-23", "name": "Leo Campana", "number": 23, "position": "ST" },
+    { "id": "mia-15", "name": "Noah Allen", "number": 15, "position": "CB" },
+    { "id": "mia-25", "name": "Ryan Sailor", "number": 25, "position": "CB" }
+  ]
+}

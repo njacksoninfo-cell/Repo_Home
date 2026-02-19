@@ -1,0 +1,32 @@
+{
+  "id": "portland-timbers",
+  "name": "Portland Timbers",
+  "shortName": "POR",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#004812",
+    "secondary": "#D69F0D"
+  },
+  "players": [
+    { "id": "por-1", "name": "James Pantemis", "number": 1, "position": "GK" },
+    { "id": "por-30", "name": "Maxime Crepeau", "number": 30, "position": "GK" },
+    { "id": "por-2", "name": "Juan Mosquera", "number": 2, "position": "RB" },
+    { "id": "por-3", "name": "Zac McGraw", "number": 3, "position": "CB" },
+    { "id": "por-4", "name": "Kamal Miller", "number": 4, "position": "CB" },
+    { "id": "por-5", "name": "Claudio Bravo", "number": 5, "position": "LB" },
+    { "id": "por-15", "name": "Eric Miller", "number": 15, "position": "RB" },
+    { "id": "por-6", "name": "Diego Chara", "number": 6, "position": "CDM" },
+    { "id": "por-8", "name": "Evander", "number": 8, "position": "CAM" },
+    { "id": "por-10", "name": "Cristhian Paredes", "number": 10, "position": "CM" },
+    { "id": "por-7", "name": "Jonathan Rodriguez", "number": 7, "position": "LW" },
+    { "id": "por-11", "name": "Dairon Asprilla", "number": 11, "position": "RW" },
+    { "id": "por-9", "name": "Felipe Mora", "number": 9, "position": "ST" },
+    { "id": "por-14", "name": "Santiago Moreno", "number": 14, "position": "LW" },
+    { "id": "por-17", "name": "Eryk Williamson", "number": 17, "position": "CM" },
+    { "id": "por-20", "name": "David Ayala", "number": 20, "position": "CM" },
+    { "id": "por-22", "name": "Antony", "number": 22, "position": "RW" },
+    { "id": "por-23", "name": "Yimmi Chara", "number": 23, "position": "RW" },
+    { "id": "por-24", "name": "Nathan Fogaca", "number": 24, "position": "ST" }
+  ]
+}

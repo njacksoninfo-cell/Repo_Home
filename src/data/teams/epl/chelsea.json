@@ -1,0 +1,33 @@
+{
+  "id": "chelsea",
+  "name": "Chelsea",
+  "shortName": "CHE",
+  "league": "epl",
+  "colors": {
+    "primary": "#034694",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "robert-sanchez", "name": "Robert Sanchez", "number": 1, "position": "GK" },
+    { "id": "filip-jorgensen", "name": "Filip Jorgensen", "number": 12, "position": "GK" },
+    { "id": "wesley-fofana", "name": "Wesley Fofana", "number": 2, "position": "CB" },
+    { "id": "levi-colwill", "name": "Levi Colwill", "number": 6, "position": "CB" },
+    { "id": "axel-disasi", "name": "Axel Disasi", "number": 4, "position": "CB" },
+    { "id": "benoit-badiashile", "name": "Benoit Badiashile", "number": 5, "position": "CB" },
+    { "id": "marc-cucurella", "name": "Marc Cucurella", "number": 3, "position": "LB" },
+    { "id": "malo-gusto", "name": "Malo Gusto", "number": 27, "position": "RB" },
+    { "id": "reece-james", "name": "Reece James", "number": 24, "position": "RB" },
+    { "id": "moises-caicedo", "name": "Moises Caicedo", "number": 25, "position": "CDM" },
+    { "id": "enzo-fernandez", "name": "Enzo Fernandez", "number": 8, "position": "CM" },
+    { "id": "romeo-lavia", "name": "Romeo Lavia", "number": 45, "position": "CDM" },
+    { "id": "kiernan-dewsbury-hall", "name": "Kiernan Dewsbury-Hall", "number": 22, "position": "CM" },
+    { "id": "cole-palmer", "name": "Cole Palmer", "number": 20, "position": "CAM" },
+    { "id": "noni-madueke", "name": "Noni Madueke", "number": 11, "position": "RW" },
+    { "id": "pedro-neto-che", "name": "Pedro Neto", "number": 7, "position": "LW" },
+    { "id": "mykhailo-mudryk", "name": "Mykhailo Mudryk", "number": 10, "position": "LM" },
+    { "id": "jadon-sancho", "name": "Jadon Sancho", "number": 17, "position": "RM" },
+    { "id": "christopher-nkunku", "name": "Christopher Nkunku", "number": 18, "position": "CF" },
+    { "id": "nicolas-jackson", "name": "Nicolas Jackson", "number": 15, "position": "ST" },
+    { "id": "marc-guiu", "name": "Marc Guiu", "number": 38, "position": "ST" }
+  ]
+}

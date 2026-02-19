@@ -1,0 +1,34 @@
+{
+  "id": "tottenham",
+  "name": "Tottenham Hotspur",
+  "shortName": "TOT",
+  "league": "epl",
+  "colors": {
+    "primary": "#132257",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "guglielmo-vicario", "name": "Guglielmo Vicario", "number": 1, "position": "GK" },
+    { "id": "fraser-forster", "name": "Fraser Forster", "number": 20, "position": "GK" },
+    { "id": "cristian-romero", "name": "Cristian Romero", "number": 17, "position": "CB" },
+    { "id": "micky-van-de-ven", "name": "Micky van de Ven", "number": 37, "position": "CB" },
+    { "id": "radu-dragusin", "name": "Radu Dragusin", "number": 6, "position": "CB" },
+    { "id": "ben-davies", "name": "Ben Davies", "number": 33, "position": "CB" },
+    { "id": "destiny-udogie", "name": "Destiny Udogie", "number": 13, "position": "LB" },
+    { "id": "pedro-porro", "name": "Pedro Porro", "number": 23, "position": "RB" },
+    { "id": "archie-gray", "name": "Archie Gray", "number": 14, "position": "RB" },
+    { "id": "djed-spence", "name": "Djed Spence", "number": 24, "position": "RWB" },
+    { "id": "rodrigo-bentancur", "name": "Rodrigo Bentancur", "number": 30, "position": "CM" },
+    { "id": "yves-bissouma", "name": "Yves Bissouma", "number": 8, "position": "CDM" },
+    { "id": "pape-sarr", "name": "Pape Sarr", "number": 29, "position": "CM" },
+    { "id": "james-maddison", "name": "James Maddison", "number": 10, "position": "CAM" },
+    { "id": "lucas-bergvall", "name": "Lucas Bergvall", "number": 22, "position": "CM" },
+    { "id": "dejan-kulusevski", "name": "Dejan Kulusevski", "number": 21, "position": "RW" },
+    { "id": "brennan-johnson", "name": "Brennan Johnson", "number": 19, "position": "RW" },
+    { "id": "timo-werner", "name": "Timo Werner", "number": 16, "position": "LW" },
+    { "id": "wilson-odobert", "name": "Wilson Odobert", "number": 26, "position": "LW" },
+    { "id": "heung-min-son", "name": "Heung-Min Son", "number": 7, "position": "LW" },
+    { "id": "richarlison", "name": "Richarlison", "number": 9, "position": "ST" },
+    { "id": "dominic-solanke", "name": "Dominic Solanke", "number": 19, "position": "ST" }
+  ]
+}

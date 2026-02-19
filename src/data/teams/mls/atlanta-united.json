@@ -1,0 +1,34 @@
+{
+  "id": "atlanta-united",
+  "name": "Atlanta United FC",
+  "shortName": "ATL",
+  "league": "mls",
+  "conference": "eastern",
+  "colors": {
+    "primary": "#80000A",
+    "secondary": "#A49781"
+  },
+  "players": [
+    { "id": "atl-1", "name": "Brad Guzan", "number": 1, "position": "GK" },
+    { "id": "atl-33", "name": "Quentin Westberg", "number": 33, "position": "GK" },
+    { "id": "atl-2", "name": "Brooks Lennon", "number": 2, "position": "RB" },
+    { "id": "atl-3", "name": "Derrick Williams", "number": 3, "position": "CB" },
+    { "id": "atl-4", "name": "Stian Gregersen", "number": 4, "position": "CB" },
+    { "id": "atl-5", "name": "Dax McCarty", "number": 5, "position": "CDM" },
+    { "id": "atl-12", "name": "Luis Abram", "number": 12, "position": "CB" },
+    { "id": "atl-15", "name": "Noah Cobb", "number": 15, "position": "LB" },
+    { "id": "atl-6", "name": "Jay Fortune", "number": 6, "position": "CM" },
+    { "id": "atl-8", "name": "Tristan Muyumba", "number": 8, "position": "CM" },
+    { "id": "atl-10", "name": "Thiago Almada", "number": 10, "position": "CAM" },
+    { "id": "atl-7", "name": "Saba Lobjanidze", "number": 7, "position": "LW" },
+    { "id": "atl-14", "name": "Pedro Amador", "number": 14, "position": "LB" },
+    { "id": "atl-17", "name": "Tyler Wolff", "number": 17, "position": "CM" },
+    { "id": "atl-22", "name": "Edwin Mosquera", "number": 22, "position": "RW" },
+    { "id": "atl-19", "name": "Xande Silva", "number": 19, "position": "RW" },
+    { "id": "atl-11", "name": "Jamal Thiare", "number": 11, "position": "ST" },
+    { "id": "atl-9", "name": "Giorgos Giakoumakis", "number": 9, "position": "ST" },
+    { "id": "atl-20", "name": "Daniel Rios", "number": 20, "position": "CF" },
+    { "id": "atl-23", "name": "Caleb Wiley", "number": 23, "position": "LWB" },
+    { "id": "atl-24", "name": "Ronald Hernandez", "number": 24, "position": "RB" }
+  ]
+}

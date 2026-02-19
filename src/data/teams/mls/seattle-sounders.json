@@ -1,0 +1,32 @@
+{
+  "id": "seattle-sounders",
+  "name": "Seattle Sounders FC",
+  "shortName": "SEA",
+  "league": "mls",
+  "conference": "western",
+  "colors": {
+    "primary": "#5D9741",
+    "secondary": "#005595"
+  },
+  "players": [
+    { "id": "sea-1", "name": "Stefan Frei", "number": 1, "position": "GK" },
+    { "id": "sea-24", "name": "Andrew Thomas", "number": 24, "position": "GK" },
+    { "id": "sea-2", "name": "Anton Tinnerholm", "number": 2, "position": "RB" },
+    { "id": "sea-3", "name": "Jackson Ragen", "number": 3, "position": "CB" },
+    { "id": "sea-4", "name": "Yeimar Gomez Andrade", "number": 4, "position": "CB" },
+    { "id": "sea-5", "name": "Nouhou Tolo", "number": 5, "position": "LB" },
+    { "id": "sea-15", "name": "Alex Roldan", "number": 15, "position": "RB" },
+    { "id": "sea-6", "name": "Joao Paulo", "number": 6, "position": "CDM" },
+    { "id": "sea-8", "name": "Albert Rusnak", "number": 8, "position": "CAM" },
+    { "id": "sea-10", "name": "Cristian Roldan", "number": 10, "position": "CM" },
+    { "id": "sea-7", "name": "Pedro de la Vega", "number": 7, "position": "LW" },
+    { "id": "sea-11", "name": "Jordan Morris", "number": 11, "position": "RW" },
+    { "id": "sea-9", "name": "Raul Ruidiaz", "number": 9, "position": "ST" },
+    { "id": "sea-14", "name": "Josh Atencio", "number": 14, "position": "CM" },
+    { "id": "sea-17", "name": "Obed Vargas", "number": 17, "position": "CM" },
+    { "id": "sea-20", "name": "Danny Leyva", "number": 20, "position": "CDM" },
+    { "id": "sea-22", "name": "Paul Rothrock", "number": 22, "position": "RW" },
+    { "id": "sea-23", "name": "Reed Baker-Whiting", "number": 23, "position": "LW" },
+    { "id": "sea-19", "name": "Braudilio Rodrigues", "number": 19, "position": "ST" }
+  ]
+}

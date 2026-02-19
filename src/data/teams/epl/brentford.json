@@ -1,0 +1,32 @@
+{
+  "id": "brentford",
+  "name": "Brentford",
+  "shortName": "BRE",
+  "league": "epl",
+  "colors": {
+    "primary": "#E30613",
+    "secondary": "#FFB81C"
+  },
+  "players": [
+    { "id": "mark-flekken", "name": "Mark Flekken", "number": 1, "position": "GK" },
+    { "id": "hakon-valdimarsson", "name": "Hakon Valdimarsson", "number": 30, "position": "GK" },
+    { "id": "nathan-collins", "name": "Nathan Collins", "number": 22, "position": "CB" },
+    { "id": "ethan-pinnock", "name": "Ethan Pinnock", "number": 5, "position": "CB" },
+    { "id": "sepp-van-den-berg", "name": "Sepp van den Berg", "number": 4, "position": "CB" },
+    { "id": "ben-mee", "name": "Ben Mee", "number": 6, "position": "CB" },
+    { "id": "rico-henry", "name": "Rico Henry", "number": 3, "position": "LB" },
+    { "id": "aaron-hickey", "name": "Aaron Hickey", "number": 2, "position": "RB" },
+    { "id": "mads-roerslev", "name": "Mads Roerslev", "number": 17, "position": "RB" },
+    { "id": "christian-norgaard", "name": "Christian Norgaard", "number": 8, "position": "CDM" },
+    { "id": "vitaly-janelt", "name": "Vitaly Janelt", "number": 27, "position": "CM" },
+    { "id": "mathias-jensen", "name": "Mathias Jensen", "number": 10, "position": "CM" },
+    { "id": "shandon-baptiste", "name": "Shandon Baptiste", "number": 16, "position": "CM" },
+    { "id": "frank-onyeka", "name": "Frank Onyeka", "number": 15, "position": "CM" },
+    { "id": "fabio-carvalho", "name": "Fabio Carvalho", "number": 28, "position": "CAM" },
+    { "id": "mikkel-damsgaard", "name": "Mikkel Damsgaard", "number": 24, "position": "LW" },
+    { "id": "bryan-mbeumo", "name": "Bryan Mbeumo", "number": 19, "position": "RW" },
+    { "id": "keane-lewis-potter", "name": "Keane Lewis-Potter", "number": 23, "position": "LW" },
+    { "id": "yoane-wissa", "name": "Yoane Wissa", "number": 11, "position": "ST" },
+    { "id": "kevin-schade", "name": "Kevin Schade", "number": 9, "position": "ST" }
+  ]
+}

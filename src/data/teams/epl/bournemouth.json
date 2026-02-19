@@ -1,0 +1,32 @@
+{
+  "id": "bournemouth",
+  "name": "AFC Bournemouth",
+  "shortName": "BOU",
+  "league": "epl",
+  "colors": {
+    "primary": "#DA291C",
+    "secondary": "#000000"
+  },
+  "players": [
+    { "id": "kepa-arrizabalaga", "name": "Kepa Arrizabalaga", "number": 23, "position": "GK" },
+    { "id": "mark-travers", "name": "Mark Travers", "number": 42, "position": "GK" },
+    { "id": "illia-zabarnyi", "name": "Illia Zabarnyi", "number": 13, "position": "CB" },
+    { "id": "marcos-senesi", "name": "Marcos Senesi", "number": 3, "position": "CB" },
+    { "id": "chris-mepham", "name": "Chris Mepham", "number": 6, "position": "CB" },
+    { "id": "dean-huijsen", "name": "Dean Huijsen", "number": 4, "position": "CB" },
+    { "id": "milos-kerkez", "name": "Milos Kerkez", "number": 15, "position": "LB" },
+    { "id": "adam-smith", "name": "Adam Smith", "number": 2, "position": "RB" },
+    { "id": "julian-araujo", "name": "Julian Araujo", "number": 22, "position": "RB" },
+    { "id": "lewis-cook", "name": "Lewis Cook", "number": 8, "position": "CM" },
+    { "id": "ryan-christie", "name": "Ryan Christie", "number": 10, "position": "CM" },
+    { "id": "tyler-adams", "name": "Tyler Adams", "number": 14, "position": "CDM" },
+    { "id": "alex-scott-bou", "name": "Alex Scott", "number": 21, "position": "CM" },
+    { "id": "marcus-tavernier", "name": "Marcus Tavernier", "number": 16, "position": "CAM" },
+    { "id": "david-brooks", "name": "David Brooks", "number": 7, "position": "RM" },
+    { "id": "justin-kluivert", "name": "Justin Kluivert", "number": 11, "position": "LM" },
+    { "id": "antoine-semenyo", "name": "Antoine Semenyo", "number": 24, "position": "RW" },
+    { "id": "dango-ouattara", "name": "Dango Ouattara", "number": 9, "position": "RW" },
+    { "id": "evanilson", "name": "Evanilson", "number": 17, "position": "ST" },
+    { "id": "enes-unal", "name": "Enes Unal", "number": 20, "position": "ST" }
+  ]
+}

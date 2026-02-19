@@ -1,0 +1,34 @@
+{
+  "id": "manchester-city",
+  "name": "Manchester City",
+  "shortName": "MCI",
+  "league": "epl",
+  "colors": {
+    "primary": "#6CABDD",
+    "secondary": "#FFFFFF"
+  },
+  "players": [
+    { "id": "ederson", "name": "Ederson", "number": 31, "position": "GK" },
+    { "id": "stefan-ortega", "name": "Stefan Ortega", "number": 18, "position": "GK" },
+    { "id": "ruben-dias", "name": "Ruben Dias", "number": 3, "position": "CB" },
+    { "id": "john-stones", "name": "John Stones", "number": 5, "position": "CB" },
+    { "id": "manuel-akanji", "name": "Manuel Akanji", "number": 25, "position": "CB" },
+    { "id": "nathan-ake", "name": "Nathan Ake", "number": 6, "position": "CB" },
+    { "id": "josko-gvardiol", "name": "Josko Gvardiol", "number": 24, "position": "LB" },
+    { "id": "kyle-walker", "name": "Kyle Walker", "number": 2, "position": "RB" },
+    { "id": "rico-lewis", "name": "Rico Lewis", "number": 82, "position": "RB" },
+    { "id": "rodri", "name": "Rodri", "number": 16, "position": "CDM" },
+    { "id": "mateo-kovacic", "name": "Mateo Kovacic", "number": 8, "position": "CM" },
+    { "id": "ilkay-gundogan", "name": "Ilkay Gundogan", "number": 19, "position": "CM" },
+    { "id": "matheus-nunes", "name": "Matheus Nunes", "number": 27, "position": "CM" },
+    { "id": "kevin-de-bruyne", "name": "Kevin De Bruyne", "number": 17, "position": "CAM" },
+    { "id": "bernardo-silva", "name": "Bernardo Silva", "number": 20, "position": "CAM" },
+    { "id": "phil-foden", "name": "Phil Foden", "number": 47, "position": "LW" },
+    { "id": "jack-grealish", "name": "Jack Grealish", "number": 10, "position": "LW" },
+    { "id": "jeremy-doku", "name": "Jeremy Doku", "number": 11, "position": "RW" },
+    { "id": "savinho", "name": "Savinho", "number": 26, "position": "RW" },
+    { "id": "oscar-bobb", "name": "Oscar Bobb", "number": 52, "position": "RW" },
+    { "id": "erling-haaland", "name": "Erling Haaland", "number": 9, "position": "ST" },
+    { "id": "julian-alvarez", "name": "James McAtee", "number": 87, "position": "CAM" }
+  ]
+}
