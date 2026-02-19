@@ -13,7 +13,6 @@
     { "id": "murillo", "name": "Murillo", "number": 4, "position": "CB" },
     { "id": "nikola-milenkovic", "name": "Nikola Milenkovic", "number": 5, "position": "CB" },
     { "id": "willy-boly", "name": "Willy Boly", "number": 12, "position": "CB" },
-    { "id": "andrew-omobamidele", "name": "Andrew Omobamidele", "number": 15, "position": "CB" },
     { "id": "morato", "name": "Morato", "number": 3, "position": "CB" },
     { "id": "neco-williams", "name": "Neco Williams", "number": 7, "position": "RB" },
     { "id": "ola-aina", "name": "Ola Aina", "number": 43, "position": "RB" },
@@ -21,13 +20,12 @@
     { "id": "ryan-yates", "name": "Ryan Yates", "number": 22, "position": "CM" },
     { "id": "danilo", "name": "Danilo", "number": 6, "position": "CDM" },
     { "id": "ibrahim-sangare", "name": "Ibrahim Sangare", "number": 8, "position": "CDM" },
-    { "id": "elliot-anderson", "name": "Elliot Anderson", "number": 32, "position": "CM" },
     { "id": "morgan-gibbs-white", "name": "Morgan Gibbs-White", "number": 10, "position": "CAM" },
     { "id": "nicolas-dominguez", "name": "Nicolas Dominguez", "number": 20, "position": "CM" },
     { "id": "anthony-elanga", "name": "Anthony Elanga", "number": 21, "position": "LW" },
     { "id": "callum-hudson-odoi", "name": "Callum Hudson-Odoi", "number": 11, "position": "RW" },
-    { "id": "ramon-sosa", "name": "Ramon Sosa", "number": 17, "position": "LW" },
-    { "id": "jota-silva", "name": "Jota Silva", "number": 23, "position": "RW" },
+    { "id": "ramon-sosa", "name": "Ramon Sosa", "number": 17, "position": "LM" },
+    { "id": "jota-silva", "name": "Jota Silva", "number": 23, "position": "RM" },
     { "id": "chris-wood", "name": "Chris Wood", "number": 9, "position": "ST" },
     { "id": "taiwo-awoniyi", "name": "Taiwo Awoniyi", "number": 14, "position": "ST" }
   ]

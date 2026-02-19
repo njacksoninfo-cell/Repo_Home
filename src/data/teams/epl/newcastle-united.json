@@ -14,7 +14,6 @@
     { "id": "fabian-schar", "name": "Fabian Schar", "number": 5, "position": "CB" },
     { "id": "dan-burn", "name": "Dan Burn", "number": 33, "position": "CB" },
     { "id": "lloyd-kelly", "name": "Lloyd Kelly", "number": 6, "position": "CB" },
-    { "id": "emil-krafth", "name": "Emil Krafth", "number": 17, "position": "RB" },
     { "id": "kieran-trippier", "name": "Kieran Trippier", "number": 2, "position": "RB" },
     { "id": "lewis-hall", "name": "Lewis Hall", "number": 20, "position": "LB" },
     { "id": "tino-livramento", "name": "Tino Livramento", "number": 21, "position": "RB" },
@@ -25,10 +24,9 @@
     { "id": "joe-willock", "name": "Joe Willock", "number": 28, "position": "CAM" },
     { "id": "anthony-gordon", "name": "Anthony Gordon", "number": 10, "position": "LW" },
     { "id": "jacob-murphy", "name": "Jacob Murphy", "number": 23, "position": "RW" },
-    { "id": "miguel-almiron", "name": "Miguel Almiron", "number": 24, "position": "RW" },
-    { "id": "harvey-barnes", "name": "Harvey Barnes", "number": 11, "position": "LW" },
+    { "id": "miguel-almiron", "name": "Miguel Almiron", "number": 24, "position": "RM" },
+    { "id": "harvey-barnes", "name": "Harvey Barnes", "number": 11, "position": "LM" },
     { "id": "alexander-isak", "name": "Alexander Isak", "number": 14, "position": "ST" },
-    { "id": "callum-wilson", "name": "Callum Wilson", "number": 9, "position": "ST" },
-    { "id": "william-osula", "name": "William Osula", "number": 15, "position": "ST" }
+    { "id": "callum-wilson", "name": "Callum Wilson", "number": 9, "position": "ST" }
   ]
 }

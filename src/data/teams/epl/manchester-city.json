@@ -27,8 +27,6 @@
     { "id": "jack-grealish", "name": "Jack Grealish", "number": 10, "position": "LW" },
     { "id": "jeremy-doku", "name": "Jeremy Doku", "number": 11, "position": "RW" },
     { "id": "savinho", "name": "Savinho", "number": 26, "position": "RW" },
-    { "id": "oscar-bobb", "name": "Oscar Bobb", "number": 52, "position": "RW" },
-    { "id": "erling-haaland", "name": "Erling Haaland", "number": 9, "position": "ST" },
-    { "id": "julian-alvarez", "name": "James McAtee", "number": 87, "position": "CAM" }
+    { "id": "erling-haaland", "name": "Erling Haaland", "number": 9, "position": "ST" }
   ]
 }
