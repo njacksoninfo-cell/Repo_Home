@@ -1,7 +1,7 @@
 import { WebSocketServer, WebSocket } from "ws";
 import type { IncomingMessage, Server } from "http";
 import { parse as parseUrl } from "url";
-import type { ClientEvent } from "@driver-intercom/shared";
+import type { ClientEvent } from "@proximity/shared";
 import { registerConnection, sendToSession } from "./broadcaster";
 import { handleLocationUpdate } from "./handlers/locationHandler";
 import { handlePttStart, handlePttStop } from "./handlers/pttHandler";

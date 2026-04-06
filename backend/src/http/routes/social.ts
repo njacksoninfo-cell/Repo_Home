@@ -4,7 +4,7 @@ import { getRecentEncounters } from "../../social/encounterTracker";
 import { getRegulars } from "../../social/regularEngine";
 import { sendWave, getConnections } from "../../social/waveService";
 import { getSessionFields } from "../../redis/redisClient";
-import type { VehicleProfile } from "@driver-intercom/shared";
+import type { VehicleProfile } from "@proximity/shared";
 
 async function resolveVehicle(sessionId: string): Promise<VehicleProfile | null> {
   const fields = await getSessionFields(sessionId);

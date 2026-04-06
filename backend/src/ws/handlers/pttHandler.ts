@@ -10,7 +10,7 @@ import {
 } from "../../geo/proximityEngine";
 import { broadcastToSessions } from "../broadcaster";
 import { getRegularCount } from "../../social/regularEngine";
-import { MAX_SAFE_SPEED_MS } from "@driver-intercom/shared";
+import { MAX_SAFE_SPEED_MS } from "@proximity/shared";
 
 // Track last PTT timestamp per session for rate limiting
 const lastPttMs = new Map<string, number>();

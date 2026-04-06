@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
-import { RANGE_OPTIONS_KM, RANGE_LABELS, type RangeKm } from "@driver-intercom/shared";
+import { RANGE_OPTIONS_KM, RANGE_LABELS, type RangeKm } from "@proximity/shared";
 import { useSessionStore } from "../store/sessionStore";
 import { wsService } from "../services/WebSocketService";
 import { useRangeAllowed, useIsPro } from "../hooks/useFeatureGate";

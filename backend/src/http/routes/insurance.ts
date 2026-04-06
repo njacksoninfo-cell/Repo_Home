@@ -1,7 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { getSession } from "../../session/sessionStore";
 import { query } from "../../db/pgClient";
-import type { VehicleProfile } from "@driver-intercom/shared";
+import type { VehicleProfile } from "@proximity/shared";
 
 // Insurance partners — in production, each would have an affiliate API
 const INSURANCE_PARTNERS = [

@@ -8,7 +8,7 @@ import {
   ScrollView,
   TextInput,
 } from "react-native";
-import { VEHICLE_COLORS, type VehicleColor } from "@driver-intercom/shared";
+import { VEHICLE_COLORS, type VehicleColor } from "@proximity/shared";
 import { useSessionStore } from "../store/sessionStore";
 import { API_BASE_URL } from "../lib/constants";
 

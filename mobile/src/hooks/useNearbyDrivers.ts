@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { wsService } from "../services/WebSocketService";
-import type { ServerEvent } from "@driver-intercom/shared";
+import type { ServerEvent } from "@proximity/shared";
 
 /**
  * Subscribe to driver_joined / driver_left events for side effects

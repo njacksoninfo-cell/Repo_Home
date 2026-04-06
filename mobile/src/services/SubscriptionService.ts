@@ -20,8 +20,8 @@ import { Platform } from "react-native";
 import { API_BASE_URL } from "../lib/constants";
 import { useSubscriptionStore } from "../store/subscriptionStore";
 import { useSessionStore } from "../store/sessionStore";
-import type { SubscriptionTier } from "@driver-intercom/shared";
-import { IAP_PRODUCTS } from "@driver-intercom/shared";
+import type { SubscriptionTier } from "@proximity/shared";
+import { IAP_PRODUCTS } from "@proximity/shared";
 
 // RevenueCat API keys — replace with real keys from RevenueCat dashboard
 const RC_API_KEY_IOS = "appl_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";

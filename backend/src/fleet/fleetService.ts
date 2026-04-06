@@ -3,7 +3,7 @@ import { query } from "../db/pgClient";
 import { getRedis } from "../redis/redisClient";
 import { generateRoomToken } from "../livekit/tokenService";
 import { config } from "../config";
-import type { Fleet, FleetMember } from "@driver-intercom/shared";
+import type { Fleet, FleetMember } from "@proximity/shared";
 
 const FLEET_CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 

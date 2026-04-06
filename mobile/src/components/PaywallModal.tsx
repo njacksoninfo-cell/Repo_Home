@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from "react-native";
 import { purchaseProduct, restorePurchases } from "../services/SubscriptionService";
-import { IAP_PRODUCTS, PRO_MONTHLY_PRICE, PRO_ANNUAL_PRICE } from "@driver-intercom/shared";
+import { IAP_PRODUCTS, PRO_MONTHLY_PRICE, PRO_ANNUAL_PRICE } from "@proximity/shared";
 
 interface Props {
   visible: boolean;
@@ -52,7 +52,7 @@ export function PaywallModal({ visible, onClose, featureHint }: Props): React.Re
           <Text style={styles.closeBtnText}>✕</Text>
         </Pressable>
         <Text style={styles.badge}>PRO</Text>
-        <Text style={styles.title}>Unlock Driver Intercom Pro</Text>
+        <Text style={styles.title}>Unlock Proximity Pro</Text>
 
         {featureHint && (
           <Text style={styles.hint}>"{featureHint}" requires Pro</Text>

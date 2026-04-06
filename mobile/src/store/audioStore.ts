@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { VehicleProfile } from "@driver-intercom/shared";
+import type { VehicleProfile } from "@proximity/shared";
 
 export interface SpeakerEntry {
   sessionId: string;

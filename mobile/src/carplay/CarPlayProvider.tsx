@@ -9,8 +9,8 @@ import { useAudioStore } from "../store/audioStore";
 import { useSessionStore } from "../store/sessionStore";
 import { wsService } from "../services/WebSocketService";
 import { livekitService } from "../services/LiveKitService";
-import { RANGE_OPTIONS_KM, RANGE_LABELS, type RangeKm } from "@driver-intercom/shared";
-import { vehicleDisplayName } from "@driver-intercom/shared";
+import { RANGE_OPTIONS_KM, RANGE_LABELS, type RangeKm } from "@proximity/shared";
+import { vehicleDisplayName } from "@proximity/shared";
 import { bearingToCompass, formatDistance } from "../lib/geoUtils";
 
 let pttActive = false;
@@ -37,7 +37,7 @@ function buildRootTemplate() {
     : "Intercom is OFF";
 
   return new CPListTemplate({
-    title: "Driver Intercom",
+    title: "Proximity",
     sections: [
       {
         header: statusText,

@@ -1,6 +1,6 @@
 import { query } from "../db/pgClient";
 import { getRedis } from "../redis/redisClient";
-import { REGULARS_ENCOUNTER_THRESHOLD } from "@driver-intercom/shared";
+import { REGULARS_ENCOUNTER_THRESHOLD } from "@proximity/shared";
 
 const CACHE_TTL = 60 * 60; // 1 hour
 

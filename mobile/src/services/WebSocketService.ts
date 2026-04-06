@@ -1,5 +1,5 @@
 import { WS_URL } from "../lib/constants";
-import type { ClientEvent, ServerEvent } from "@driver-intercom/shared";
+import type { ClientEvent, ServerEvent } from "@proximity/shared";
 import { useChannelStore } from "../store/channelStore";
 import { useAudioStore } from "../store/audioStore";
 import { useSessionStore } from "../store/sessionStore";

@@ -1,6 +1,6 @@
 import { query } from "../db/pgClient";
 import { getRedis } from "../redis/redisClient";
-import type { SubscriptionTier } from "@driver-intercom/shared";
+import type { SubscriptionTier } from "@proximity/shared";
 
 const CACHE_TTL = 60 * 5; // 5 minutes
 

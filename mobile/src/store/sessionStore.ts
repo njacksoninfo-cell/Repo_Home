@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import type { VehicleProfile } from "@driver-intercom/shared";
-import { DEFAULT_RANGE_KM, type RangeKm } from "@driver-intercom/shared";
+import type { VehicleProfile } from "@proximity/shared";
+import { DEFAULT_RANGE_KM, type RangeKm } from "@proximity/shared";
 
 interface SessionState {
   sessionId: string | null;

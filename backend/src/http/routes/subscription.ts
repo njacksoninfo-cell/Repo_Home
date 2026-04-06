@@ -5,7 +5,7 @@ import {
   upsertSubscription,
   validateReceipt,
 } from "../../subscription/subscriptionService";
-import { TIER_RANGE_LIMITS, TIER_HISTORY_DAYS } from "@driver-intercom/shared";
+import { TIER_RANGE_LIMITS, TIER_HISTORY_DAYS } from "@proximity/shared";
 
 export async function subscriptionRoutes(app: FastifyInstance): Promise<void> {
   // GET /api/subscription/status — current tier + entitlements

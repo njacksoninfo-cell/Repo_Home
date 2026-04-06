@@ -8,8 +8,8 @@ import { generateRoomToken } from "../../livekit/tokenService";
 import { broadcastToSessions, sendToSession } from "../broadcaster";
 import { config } from "../../config";
 import { getRegularCount } from "../../social/regularEngine";
-import type { VehicleProfile } from "@driver-intercom/shared";
-import { MAX_SAFE_SPEED_MS } from "@driver-intercom/shared";
+import type { VehicleProfile } from "@proximity/shared";
+import { MAX_SAFE_SPEED_MS } from "@proximity/shared";
 
 export async function handleLocationUpdate(
   sessionId: string,

@@ -1,4 +1,4 @@
--- Driver Intercom — PostgreSQL schema
+-- Proximity — PostgreSQL schema
 -- Only persistent (social graph) data lives here.
 -- Live session state lives in Redis.
 

@@ -60,7 +60,7 @@ export function SettingsScreen({ onEditVehicle }: Props): React.ReactElement {
   const shareConvoyCode = async () => {
     if (!convoCode) return;
     await Share.share({
-      message: `Connect with me on Driver Intercom! My convoy code: ${convoCode}\n\nDownload: https://driverintercom.app`,
+      message: `Connect with me on Proximity! My convoy code: ${convoCode}\n\nDownload: https://getproximity.app`,
     });
   };
 

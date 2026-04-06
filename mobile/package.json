@@ -1,5 +1,5 @@
 {
-  "name": "@driver-intercom/mobile",
+  "name": "@proximity/mobile",
   "version": "1.0.0",
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
@@ -10,7 +10,7 @@
     "prebuild": "expo prebuild"
   },
   "dependencies": {
-    "@driver-intercom/shared": "1.0.0",
+    "@proximity/shared": "1.0.0",
     "@livekit/react-native": "^2.2.0",
     "@livekit/react-native-webrtc": "^125.0.7",
     "@react-native-async-storage/async-storage": "^1.23.1",

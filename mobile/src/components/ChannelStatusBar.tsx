@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Switch } from "react-native";
 import { useChannelStore } from "../store/channelStore";
 import { useSessionStore } from "../store/sessionStore";
 import { wsService } from "../services/WebSocketService";
-import { RANGE_LABELS } from "@driver-intercom/shared";
+import { RANGE_LABELS } from "@proximity/shared";
 
 export function ChannelStatusBar(): React.ReactElement {
   const { nearbyCount } = useChannelStore();

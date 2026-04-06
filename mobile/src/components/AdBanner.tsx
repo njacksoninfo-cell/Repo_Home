@@ -10,7 +10,7 @@ import {
 import { API_BASE_URL } from "../lib/constants";
 import { useSessionStore } from "../store/sessionStore";
 import { useAdsEnabled } from "../hooks/useFeatureGate";
-import type { ContextualAd } from "@driver-intercom/shared";
+import type { ContextualAd } from "@proximity/shared";
 
 const AD_REFRESH_MS = 5 * 60 * 1000; // refresh every 5 minutes
 

@@ -1,5 +1,5 @@
 import WebSocket from "ws";
-import type { ServerEvent } from "@driver-intercom/shared";
+import type { ServerEvent } from "@proximity/shared";
 
 // Registry: sessionId → WebSocket
 const registry = new Map<string, WebSocket>();

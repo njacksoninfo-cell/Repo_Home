@@ -3,7 +3,7 @@ import BackgroundGeolocation, {
 } from "react-native-background-geolocation";
 import { wsService } from "./WebSocketService";
 import { useSessionStore } from "../store/sessionStore";
-import { MAX_SAFE_SPEED_MS } from "@driver-intercom/shared";
+import { MAX_SAFE_SPEED_MS } from "@proximity/shared";
 
 let configured = false;
 
@@ -29,7 +29,7 @@ export async function configureLocationService(): Promise<void> {
 
     // Android foreground service notification
     notification: {
-      title: "Driver Intercom",
+      title: "Proximity",
       text: "Listening for nearby drivers",
       smallIcon: "mipmap/ic_launcher_round",
     },

@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import type { SubscriptionTier } from "@driver-intercom/shared";
-import { TIER_RANGE_LIMITS, TIER_HISTORY_DAYS } from "@driver-intercom/shared";
+import type { SubscriptionTier } from "@proximity/shared";
+import { TIER_RANGE_LIMITS, TIER_HISTORY_DAYS } from "@proximity/shared";
 
 interface Entitlements {
   allowedRangesKm: readonly number[];

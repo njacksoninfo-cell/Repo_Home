@@ -13,8 +13,8 @@ import { useSessionStore } from "../store/sessionStore";
 import { useSubscriptionStore } from "../store/subscriptionStore";
 import { VehicleBadge } from "../components/VehicleBadge";
 import { PaywallModal } from "../components/PaywallModal";
-import type { VehicleProfile } from "@driver-intercom/shared";
-import { TIER_HISTORY_DAYS } from "@driver-intercom/shared";
+import type { VehicleProfile } from "@proximity/shared";
+import { TIER_HISTORY_DAYS } from "@proximity/shared";
 
 interface EncounterItem {
   encounteredId: string;

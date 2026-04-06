@@ -1,4 +1,4 @@
-import type { ContextualAd, AdCategory } from "@driver-intercom/shared";
+import type { ContextualAd, AdCategory } from "@proximity/shared";
 import { v4 as uuidv4 } from "uuid";
 import { query } from "../db/pgClient";
 

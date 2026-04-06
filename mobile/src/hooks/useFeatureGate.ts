@@ -1,5 +1,5 @@
 import { useSubscriptionStore } from "../store/subscriptionStore";
-import type { RangeKm } from "@driver-intercom/shared";
+import type { RangeKm } from "@proximity/shared";
 
 /** Returns true if the current tier allows the given range */
 export function useRangeAllowed(rangeKm: RangeKm): boolean {

@@ -1,7 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { v4 as uuidv4 } from "uuid";
 import { createSession, getSession } from "../../session/sessionStore";
-import { SESSION_TTL_SECONDS } from "@driver-intercom/shared";
+import { SESSION_TTL_SECONDS } from "@proximity/shared";
 
 export async function sessionRoutes(app: FastifyInstance): Promise<void> {
   // Create a new anonymous session

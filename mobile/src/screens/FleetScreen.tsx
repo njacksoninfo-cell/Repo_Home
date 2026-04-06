@@ -15,7 +15,7 @@ import { useSessionStore } from "../store/sessionStore";
 import { useFleetAccess, useIsPro } from "../hooks/useFeatureGate";
 import { PaywallModal } from "../components/PaywallModal";
 import { livekitService } from "../services/LiveKitService";
-import type { Fleet } from "@driver-intercom/shared";
+import type { Fleet } from "@proximity/shared";
 
 export function FleetScreen(): React.ReactElement {
   const { sessionId } = useSessionStore();

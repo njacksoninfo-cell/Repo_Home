@@ -5,7 +5,7 @@ import {
   resolveConvoyCode,
   sendWave,
 } from "../../social/waveService";
-import type { VehicleProfile } from "@driver-intercom/shared";
+import type { VehicleProfile } from "@proximity/shared";
 
 export async function profileRoutes(app: FastifyInstance): Promise<void> {
   // GET /api/profile — get current session's vehicle profile

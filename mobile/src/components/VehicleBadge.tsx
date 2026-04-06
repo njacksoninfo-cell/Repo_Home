@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import type { VehicleProfile } from "@driver-intercom/shared";
-import { vehicleDisplayName } from "@driver-intercom/shared";
+import type { VehicleProfile } from "@proximity/shared";
+import { vehicleDisplayName } from "@proximity/shared";
 
 const COLOR_MAP: Record<string, string> = {
   Red: "#ef4444",

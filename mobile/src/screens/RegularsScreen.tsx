@@ -10,7 +10,7 @@ import {
 import { API_BASE_URL } from "../lib/constants";
 import { useSessionStore } from "../store/sessionStore";
 import { VehicleBadge } from "../components/VehicleBadge";
-import type { VehicleProfile } from "@driver-intercom/shared";
+import type { VehicleProfile } from "@proximity/shared";
 
 interface RegularItem {
   encounteredId: string;

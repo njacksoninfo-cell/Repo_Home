@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { useAudioStore } from "../store/audioStore";
 import { VehicleBadge } from "./VehicleBadge";
 import { bearingToCompass, formatDistance } from "../lib/geoUtils";
-import { vehicleDisplayName } from "@driver-intercom/shared";
+import { vehicleDisplayName } from "@proximity/shared";
 
 export function ActiveSpeakerList(): React.ReactElement | null {
   const { activeSpeakers } = useAudioStore();

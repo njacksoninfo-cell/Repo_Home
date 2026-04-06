@@ -29,7 +29,7 @@ export function OnboardingScreen({ onComplete }: Props): React.ReactElement {
     } else {
       Alert.alert(
         "Microphone Required",
-        "Driver Intercom needs microphone access to let you talk with nearby drivers. Please enable it in Settings.",
+        "Proximity needs microphone access to let you talk with nearby drivers. Please enable it in Settings.",
         [{ text: "OK" }]
       );
     }
@@ -49,7 +49,7 @@ export function OnboardingScreen({ onComplete }: Props): React.ReactElement {
     } else {
       Alert.alert(
         "Location Required",
-        "Driver Intercom needs background location to find nearby drivers even when the app is in the background. Please enable it in Settings.",
+        "Proximity needs background location to find nearby drivers even when the app is in the background. Please enable it in Settings.",
         [{ text: "OK" }]
       );
     }
@@ -59,7 +59,7 @@ export function OnboardingScreen({ onComplete }: Props): React.ReactElement {
     return (
       <SafeAreaView style={styles.safe}>
         <View style={styles.container}>
-          <Text style={styles.title}>Driver Intercom</Text>
+          <Text style={styles.title}>Proximity</Text>
           <Text style={styles.subtitle}>
             Talk to nearby drivers like a CB radio.{"\n"}Tap, hold, and speak.
           </Text>

@@ -11,7 +11,7 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@driver-intercom/shared": ["../shared/src/index.ts"]
+      "@proximity/shared": ["../shared/src/index.ts"]
     }
   },
   "include": ["src/**/*"],

@@ -6,8 +6,8 @@ import {
   geoRemove,
   removeFromRoom,
 } from "../redis/redisClient";
-import type { VehicleProfile, RangeKm } from "@driver-intercom/shared";
-import { DEFAULT_RANGE_KM } from "@driver-intercom/shared";
+import type { VehicleProfile, RangeKm } from "@proximity/shared";
+import { DEFAULT_RANGE_KM } from "@proximity/shared";
 
 export interface SessionData {
   sessionId: string;

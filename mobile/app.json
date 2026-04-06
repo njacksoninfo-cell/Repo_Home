@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Driver Intercom",
-    "slug": "driver-intercom",
+    "name": "Proximity",
+    "slug": "proximity",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,11 +13,11 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.driverintercom.app",
+      "bundleIdentifier": "com.getproximity.app",
       "infoPlist": {
-        "NSLocationAlwaysAndWhenInUseUsageDescription": "Driver Intercom needs your location to connect you with nearby drivers.",
-        "NSLocationWhenInUseUsageDescription": "Driver Intercom needs your location to connect you with nearby drivers.",
-        "NSMicrophoneUsageDescription": "Driver Intercom uses your microphone for push-to-talk communication with nearby drivers.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Proximity needs your location to connect you with nearby drivers.",
+        "NSLocationWhenInUseUsageDescription": "Proximity needs your location to connect you with nearby drivers.",
+        "NSMicrophoneUsageDescription": "Proximity uses your microphone for push-to-talk communication with nearby drivers.",
         "UIBackgroundModes": ["audio", "location", "fetch"],
         "UIApplicationSceneManifest": {
           "UIApplicationSupportsMultipleScenes": true,
@@ -36,7 +36,7 @@
       }
     },
     "android": {
-      "package": "com.driverintercom.app",
+      "package": "com.getproximity.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0d0d0d"
