@@ -7,11 +7,13 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { HomeScreen } from "./screens/HomeScreen";
 import { ConvoyHistoryScreen } from "./screens/ConvoyHistoryScreen";
 import { RegularsScreen } from "./screens/RegularsScreen";
+import { FleetScreen } from "./screens/FleetScreen";
 import { SettingsScreen } from "./screens/SettingsScreen";
 import { OnboardingScreen } from "./screens/OnboardingScreen";
 import { VehicleSetupScreen } from "./screens/VehicleSetupScreen";
 
 import { initSession } from "./services/SessionService";
+import { initSubscriptions } from "./services/SubscriptionService";
 import {
   configureLocationService,
   startLocationTracking,
@@ -110,6 +112,11 @@ export default function App(): React.ReactElement {
             options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 20, color }}>⭐</Text> }}
           />
           <Tab.Screen
+            name="Fleets"
+            component={FleetScreen}
+            options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 20, color }}>📡</Text> }}
+          />
+          <Tab.Screen
             name="Settings"
             options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 20, color }}>⚙️</Text> }}
           >
@@ -125,6 +132,8 @@ async function bootstrap(sessionId: string): Promise<void> {
   wsService.connect(sessionId);
   await configureLocationService();
   await startLocationTracking();
+  // Load subscription tier (non-blocking — UI defaults to free until resolved)
+  initSubscriptions(sessionId).catch(() => {});
 }
 
 const styles = StyleSheet.create({

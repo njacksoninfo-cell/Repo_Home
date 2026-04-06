@@ -8,6 +8,10 @@ import { sessionRoutes } from "./http/routes/session";
 import { tokenRoutes } from "./http/routes/token";
 import { profileRoutes } from "./http/routes/profile";
 import { socialRoutes } from "./http/routes/social";
+import { subscriptionRoutes } from "./http/routes/subscription";
+import { adsRoutes } from "./http/routes/ads";
+import { fleetRoutes } from "./http/routes/fleet";
+import { insuranceRoutes } from "./http/routes/insurance";
 import { attachWebSocketServer } from "./ws/wsServer";
 import { startEvictionJob } from "./jobs/staleDriverEviction";
 
@@ -26,6 +30,10 @@ async function main() {
   await app.register(tokenRoutes);
   await app.register(profileRoutes);
   await app.register(socialRoutes);
+  await app.register(subscriptionRoutes);
+  await app.register(adsRoutes);
+  await app.register(fleetRoutes);
+  await app.register(insuranceRoutes);
 
   // Build the underlying Node http.Server so we can attach WS
   await app.ready();

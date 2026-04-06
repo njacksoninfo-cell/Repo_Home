@@ -42,7 +42,38 @@ export const VEHICLE_COLORS = [
 ] as const;
 export type VehicleColor = (typeof VEHICLE_COLORS)[number];
 
-// WebSocket event type names
+// ─── Subscription tiers ───────────────────────────────────────────────────────
+
+export const SUBSCRIPTION_TIERS = ["free", "pro", "fleet"] as const;
+export type SubscriptionTier = (typeof SUBSCRIPTION_TIERS)[number];
+
+/** Ranges available per tier */
+export const TIER_RANGE_LIMITS: Record<SubscriptionTier, RangeKm[]> = {
+  free: [0.4, 0.8],           // 0.25 mi and 0.5 mi only
+  pro: [0.4, 0.8, 1.6, 8.0], // all ranges
+  fleet: [0.4, 0.8, 1.6, 8.0],
+};
+
+/** Convoy history days available per tier */
+export const TIER_HISTORY_DAYS: Record<SubscriptionTier, number> = {
+  free: 7,
+  pro: 365,
+  fleet: 365,
+};
+
+export const PRO_MONTHLY_PRICE = "$4.99/mo";
+export const PRO_ANNUAL_PRICE = "$39.99/yr";
+export const FLEET_SEAT_PRICE = "$9.99/seat/mo";
+
+// RevenueCat product IDs
+export const IAP_PRODUCTS = {
+  PRO_MONTHLY: "di_pro_monthly",
+  PRO_ANNUAL: "di_pro_annual",
+  FLEET_MONTHLY: "di_fleet_monthly",
+} as const;
+
+// ─── WebSocket event type names ───────────────────────────────────────────────
+
 export const WS_EVENTS = {
   // Client → Server
   LOCATION_UPDATE: "location_update",

@@ -24,6 +24,7 @@
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-background-geolocation": "^4.14.2",
+    "react-native-purchases": "^7.27.0",
     "react-native-carplay": "^3.0.0",
     "react-native-permissions": "^4.1.5",
     "react-native-reanimated": "~3.10.1",

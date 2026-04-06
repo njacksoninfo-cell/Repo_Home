@@ -4,6 +4,7 @@ import { ChannelStatusBar } from "../components/ChannelStatusBar";
 import { PTTButton } from "../components/PTTButton";
 import { ActiveSpeakerList } from "../components/ActiveSpeakerList";
 import { RangeSelector } from "../components/RangeSelector";
+import { AdBanner } from "../components/AdBanner";
 import { useRoomConnection } from "../hooks/useRoomConnection";
 import { useNearbyDrivers } from "../hooks/useNearbyDrivers";
 
@@ -28,9 +29,12 @@ export function HomeScreen(): React.ReactElement {
           <PTTButton />
         </View>
 
-        {/* Bottom: range selector */}
+        {/* Bottom: range selector + contextual ad */}
         <View style={styles.bottom}>
           <RangeSelector />
+          <View style={styles.adSlot}>
+            <AdBanner />
+          </View>
         </View>
       </View>
     </SafeAreaView>
@@ -58,5 +62,9 @@ const styles = StyleSheet.create({
   },
   bottom: {
     paddingBottom: 24,
+    gap: 12,
+  },
+  adSlot: {
+    minHeight: 0,
   },
 });

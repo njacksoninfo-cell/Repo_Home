@@ -1,4 +1,4 @@
-import type { RangeKm, VehicleColor } from "./constants";
+import type { RangeKm, VehicleColor, SubscriptionTier } from "./constants";
 
 export interface VehicleProfile {
   color: VehicleColor;
@@ -74,4 +74,70 @@ export interface Wave {
   fromSessionId: string;
   toSessionId: string;
   sentAt: number; // unix ms
+}
+
+// ─── Subscription ─────────────────────────────────────────────────────────────
+
+export interface Subscription {
+  sessionId: string;
+  tier: SubscriptionTier;
+  platform: "ios" | "android" | "web" | null;
+  productId: string | null;
+  expiresAt: number | null; // unix ms, null = lifetime/free
+  createdAt: number;
+}
+
+// ─── Fleet / Car Club ─────────────────────────────────────────────────────────
+
+export interface Fleet {
+  id: string;           // uuid
+  name: string;
+  description: string | null;
+  type: "car_club" | "fleet_business";
+  adminSessionId: string;
+  inviteCode: string;   // 6-char code for joining
+  memberCount: number;
+  createdAt: number;
+  roomId: string;       // persistent LiveKit room for fleet comms
+}
+
+export interface FleetMember {
+  fleetId: string;
+  sessionId: string;
+  role: "admin" | "member";
+  joinedAt: number;
+}
+
+// ─── Contextual Ads ───────────────────────────────────────────────────────────
+
+export interface ContextualAd {
+  id: string;
+  advertiser: string;      // e.g. "Shell", "AutoZone"
+  headline: string;        // e.g. "$0.10 off per gallon"
+  subtext: string;         // e.g. "Exit 14 · 0.3 mi ahead"
+  category: AdCategory;
+  ctaLabel: string;        // "Get Deal", "Get Quote", "Learn More"
+  ctaUrl: string;
+  logoEmoji: string;       // placeholder until real logos
+}
+
+export const AD_CATEGORIES = [
+  "fuel",
+  "auto_parts",
+  "auto_service",
+  "insurance",
+  "food_drive_thru",
+  "ev_charging",
+] as const;
+export type AdCategory = (typeof AD_CATEGORIES)[number];
+
+// ─── Insurance Lead ───────────────────────────────────────────────────────────
+
+export interface InsuranceLead {
+  id: number;
+  sessionId: string;
+  vehicle: VehicleProfile;
+  zipCode: string | null;
+  submittedAt: number;
+  partner: string;  // e.g. "Progressive", "Geico"
 }
