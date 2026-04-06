@@ -1,0 +1,14 @@
+{
+  "name": "driver-intercom",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "shared",
+    "backend",
+    "mobile"
+  ],
+  "scripts": {
+    "backend": "yarn workspace backend dev",
+    "mobile": "yarn workspace mobile start"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "expo": {
+    "name": "Driver Intercom",
+    "slug": "driver-intercom",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0d0d0d"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.driverintercom.app",
+      "infoPlist": {
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Driver Intercom needs your location to connect you with nearby drivers.",
+        "NSLocationWhenInUseUsageDescription": "Driver Intercom needs your location to connect you with nearby drivers.",
+        "NSMicrophoneUsageDescription": "Driver Intercom uses your microphone for push-to-talk communication with nearby drivers.",
+        "UIBackgroundModes": ["audio", "location", "fetch"],
+        "UIApplicationSceneManifest": {
+          "UIApplicationSupportsMultipleScenes": true,
+          "UISceneConfigurations": {
+            "CPTemplateApplicationSceneSessionRoleApplication": [
+              {
+                "UISceneConfigurationName": "CarPlay Configuration",
+                "UISceneDelegateClassName": "CarPlaySceneDelegate"
+              }
+            ]
+          }
+        }
+      },
+      "entitlements": {
+        "com.apple.developer.carplay-communication": true
+      }
+    },
+    "android": {
+      "package": "com.driverintercom.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0d0d0d"
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "RECORD_AUDIO",
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_LOCATION",
+        "FOREGROUND_SERVICE_MICROPHONE"
+      ]
+    },
+    "plugins": [
+      [
+        "react-native-background-geolocation",
+        {
+          "license": "YOUR_TRANSISTOR_LICENSE_KEY"
+        }
+      ],
+      "react-native-permissions"
+    ]
+  }
+}
